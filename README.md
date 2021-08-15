@@ -1,1 +1,1 @@
-*A Emacs theme!*
+*An Emacs theme!*

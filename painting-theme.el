@@ -1,4 +1,4 @@
-;;; painting-theme.el --- A dark theme  -*- lexical-binding: t; -*-
+;;; painting-theme.el --- A minimal dark theme  -*- lexical-binding: t; -*-
 
 ;; Author: L.M.haoran
 ;; Keywords: theme
@@ -8,7 +8,7 @@
 ;;
 ;; This file is not part of GNU Emacs.
 
-;; This program is free software; you can redistribute it and/or
+;; This program is free software; you can red-1istribute it and/or
 ;; modify it under the terms of the GNU General Public License
 ;; as published by the Free Software Foundation; either version 3
 ;; of the License, or (at your option) any later version.
@@ -26,7 +26,7 @@
 
 ;;; Commentary: Add (load-file "~/.spacemacs.d/themes/painting-theme.el") into ~/.emacs.d/painting-theme.el
 
-;;; This is a dark theme.
+;;; This is a concise and dark theme.
 
 ;;; Code:
 
@@ -35,74 +35,81 @@
 (defvar painting-theme-use-italic t
   "Non-nil means use italic for comment and docstring.")
 
-(defvar painting-theme-main-color "#00AAAA"
+;; (defvar painting-theme-main-color "#00AAAA"
+(defvar painting-theme-main-color "#8b8b8b"
   "The main color used for some places.
 You may want to set this to window's border color.")
 
 (let (
       (italic painting-theme-use-italic)
       (main painting-theme-main-color)
-      (white-1         "#E0E0E0")
-      (white-2         "#f8f8f2")
-      (cyan-1          "#8be9fd")
-      (yellow-1        "#CFA300")
-      (yellow-2        "#f1fa8c")
-      (red             "#E24C49")
-      (blue-1          "#009F9F")
-      (blue-2          "#0189cc")
-      (green-1         "#39BA7E")
-      (green-2         "#50fa7b")
-      (purple-1        "#B762DE")
-      (purple-2        "#B28CE2")
-      (purple-3        "#bd93f9")
-      (pink-1          "#ff79c6")
-      (orange-1        "#FC9F4E")
-      (orange-2        "#ffb86c")
-      (gray-1          "#AFAFAF")
-      (gray-2          "#CCCCCC")
-      (gray-3          "#828997")
+      (ash-1           "#7C6F64")
+      (ash-2           "#bcc7c7")
       (black-1         "#171717")
       (black-2         "#242424")
       (black-3         "#303030")
       (black-4         "#323232")
-      (black-5         "#3c3c3c")
+      (black-5         "#3C3C3C")
       (black-6         "#404040")
       (black-7         "#505050")
+      (blue-1          "#009F9F")
+      (blue-2          "#0189cc")
+      (blue-3          "#57c7ff")
+      (blue-4          "#9aedfe")
+      (cyan-1          "#8BE9FD")
+      (gray-1          "#AFAFAF")
+      ;; (gray-2          "#CCCCCC")
+      (gray-3          "#828997")
+      (green-1         "#39BA7E")
+      (green-2         "#50FA7B")
+      (orange-1        "#FC9F4E")
+      (orange-2        "#ffb86c")
+      (pink-1          "#ff79c6")
+      (purple-1        "#B762DE")
+      (purple-2        "#B28CE2")
+      (purple-3        "#BD93F9")
+      (red-1           "#E24C49")
+      (white-1         "#E0E0E0")
+      (white-2         "#F8F8F2")
+      (yellow-1        "#CFA300")
+      (yellow-2        "#F1FA8C")
       )
-  (defconst -test-bg                         black-1)
   (defconst -test-fg                         gray-1)
-  (defconst -test-comment-delimiter          gray-1)
-  (defconst -test-comment                    blue-1)
+  (defconst -test-bg                         black-1)
+  (defconst -test-comment                    ash-1)
+  (defconst -test-comment-delimiter          ash-1)
 
-  (defvar test-bg                         -test-bg)
   (defvar test-fg                         -test-fg)
-  (defvar test-comment-delimiter          -test-comment-delimiter)
+  (defvar test-bg                         -test-bg)
   (defvar test-comment                    -test-comment)
+  (defvar test-comment-delimiter          -test-comment-delimiter)
 
   (custom-theme-set-faces
    `painting
    ;; We don't specify default foreground/background in TTY.
    `(default                           ((((type tty))) (((type graphic)) :background ,test-bg :foreground ,test-fg)))
+
    ;; Font Locks
-   `(font-lock-comment-face            ((t (:backaground nil :foreground ,test-comment :italic ,italic))))
-   `(font-lock-comment-delimiter-face  ((t (:backaground nil :foreground ,test-comment-delimiter :italic ,italic))))
-   `(font-lock-string-face             ((t (:backaground nil :foreground ,orange-1))))
-   `(font-lock-doc-face                ((t (:backaground nil :foreground ,blue-1 :italic ,italic))))
-   `(font-lock-builtin-face            ((t (:backaground nil :foreground ,red))))
-   `(font-lock-type-face               ((t (:backaground nil :foreground ,red))))
-   `(font-lock-variable-name-face      ((t (:backaground nil :foreground ,red))))
-   `(font-lock-keyword-face            ((t (:backaground nil :foreground ,purple-1))))
-   `(font-lock-constant-face           ((t (:backaground nil :foreground ,blue-1))))
-   `(font-lock-function-name-face      ((t (:backaground nil :bold t))))
-   `(font-lock-warning-face            ((t (:backaground nil :foreground ,red))))
-   `(font-lock-preprocessor-face       ((t (:backaground nil :inherit font-lock-constant-face))))
+   `(font-lock-comment-face            ((t (:foreground ,test-comment :italic ,italic))))
+   `(font-lock-comment-delimiter-face  ((t (:foreground ,test-comment-delimiter :italic ,italic))))
+   `(font-lock-string-face             ((t (:foreground ,orange-1))))
+   `(font-lock-doc-face                ((t (:foreground ,blue-1 :italic ,italic))))
+   `(font-lock-builtin-face            ((t (:foreground ,test-fg))))
+   `(font-lock-type-face               ((t (:foreground ,test-fg))))
+   `(font-lock-variable-name-face      ((t (:foreground ,test-fg))))
+   `(font-lock-keyword-face            ((t (:foreground ,purple-3))))
+   `(font-lock-constant-face           ((t (:foreground ,blue-1))))
+   `(font-lock-function-name-face      ((t (:foreground ,gray-1 :bold nil))))
+   `(font-lock-warning-face            ((t (:foreground ,red-1))))
+   `(font-lock-preprocessor-face       ((t (:inherit font-lock-constant-face))))
 
    ;; Basics
+   `(fringe                      ((t (:foreground nil :background nil))))
+   `(vertical-border             ((t (:foreground ,black-1))))
    `(cursor                      ((t (:background ,white-1))))
    `(region                      ((t (:background ,black-5))))
    `(hl-line                     ((((type graphic)) :background ,black-2) (((type tty)))))
-   `(header-line                 ((t (:background ,black-2 :foreground ,gray-2))))  ;; TODO
-   `(fringe                      ((t (:foreground nil :background ,black-6))))
+   `(header-line                 ((t (:background ,black-2 :foreground ,white-1))))
    `(show-paren-match            ((t (:underline ,green-1))))
    `(highlight                   ((t (:background ,black-3))))
    `(button                      ((t (:foreground "#2299CC" :underline t))))
@@ -115,15 +122,16 @@ You may want to set this to window's border color.")
                                   (((type graphic)) :inherit default :foreground ,yellow-1 :background ,black-2)))
    `(completions-common-part     ((t ())))
    `(minibuffer-prompt           ((t ())))
-   `(lazy-highlight              ((t (:background ,black-6))))
+   '(lazy-highlight              ((t (:background "#86dc2f" :foreground "#262626"))))
    `(compilation-info            ((t (:inherit font-lock-function-name-face))))
    `(compilation-warning         ((t (:inherit font-lock-warning-face))))
    `(warning                     ((t (:inherit font-lock-warning-face))))
    `(match                       ((t (:background ,black-3))))
+   `(which-func                  ((t (:foreground ,gray-1 :bold nil))))
 
    ;; ISearch
    `(isearch                     ((t (:background ,green-1 :foreground "black"))))
-   `(isearch-fail                ((t (:backgronud ,red :foreground "black"))))
+   `(isearch-fail                ((t (:backgronud ,red-1 :foreground "black"))))
 
    ;; IMenu
    `(imenu-list-entry-face-0          ((t ())))
@@ -143,10 +151,10 @@ You may want to set this to window's border color.")
    `(company-template-field           ((t (:inherit yas-field-highlight-face))))
 
    ;; Ivy
+   `(ivy-current-match              ((t (:foreground ,black-1 :background ,main :weight bold))))
    `(ivy-highlight-face             ((t ())))
    `(ivy-yanked-word                ((t (:background "yellow-1" :foreground "black"))))
    `(ivy-remote                     ((t ())))
-   `(ivy-current-match              ((t (:foreground ,black-1 :background ,main))))
    `(ivy-minibuffer-match-highlight ((t ())))
    `(ivy-minibuffer-match-face-1    ((t ())))
    `(ivy-minibuffer-match-face-2    ((t ())))
@@ -162,19 +170,15 @@ You may want to set this to window's border color.")
    `(swiper-match-face-3            ((t (:foreground "white-1"))))
    `(swiper-match-face-4            ((t (:foreground "white-1"))))
 
-   ;; SMerge
-   `(smerge-refined-added           ((t (:background "#253325"))))
-   `(smerge-lower                   ((t (:background "#173017"))))
-
    ;; Diff-hl
    `(diff-hl-insert                 ((t (:foreground ,green-1 :background ,green-1))))
    `(diff-hl-change                 ((t (:foreground ,blue-1 :background ,blue-1))))
-   `(diff-hl-delete                 ((t (:foreground ,red :background ,red))))
+   `(diff-hl-delete                 ((t (:foreground ,red-1 :background ,red-1))))
 
    `(tooltip                        ((t ())))
-   `(dired-directory                ((t (:foreground ,purple-2))))
+   `(dired-directory                ((t ())))
    `(web-mode-html-tag-face         ((t (:foreground ,green-1))))
-   `(web-mode-html-attr-name-face   ((t (:foreground ,red))))
+   `(web-mode-html-attr-name-face   ((t (:foreground ,red-1))))
 
    ;; Web Mode
    `(web-mode-function-call-face    ((t ())))
@@ -194,7 +198,7 @@ You may want to set this to window's border color.")
    `(markdown-header-face-8         ((t (:inherit outline-8 :height 1.0 :foreground "#66D9EF"))))
 
    ;; Org-mode
-   `(org-table                      ((t (:foreground ,gray-2))))
+   ;; `(org-table                      ((t (:foreground ,gray-2))))
    `(org-level-1                    ((t (:inherit outline-1 :height 1.0 :weight normal :foreground ,pink-1))))
    `(org-level-2                    ((t (:inherit outline-2 :height 1.0 :weight normal :foreground ,purple-3))))
    `(org-level-3                    ((t (:inherit outline-3 :height 1.0 :weight normal :foreground ,green-2))))
@@ -217,4 +221,5 @@ You may want to set this to window's border color.")
                    (file-name-directory load-file-name))))
 
 (provide-theme 'painting)
+
 ;;; painting-theme.el ends here
