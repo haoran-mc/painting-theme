@@ -57,6 +57,7 @@ You may want to set this to window's border color.")
       (blue-2          "#0189cc")
       (blue-3          "#57c7ff")
       (blue-4          "#9aedfe")
+      (blue-5          "#96cbfe")
       (cyan-1          "#8BE9FD")
       (gray-1          "#AFAFAF")
       (gray-2          "#CCCCCC")
@@ -212,6 +213,8 @@ You may want to set this to window's border color.")
    `(org-level-8                    ((t (:inherit outline-8 :height 1.0 :weight normal :foreground ,white-2))))
    `(org-document-title             ((t (:inherit font-lock-string-face))))
    `(org-code                       ((t (:inherit font-lock-constant-face))))
+   `(link                           ((t (:foreground ,blue-5 :underline t))))
+   `(org-ellipsis                   ((t (:foreground ,test-comment))))   ;; #6272a4
 
    ;; Treemacs
    `(treemacs-root-face             ((t (:inherit font-lock-function-name-face :height 1.4 :underline t)))))
