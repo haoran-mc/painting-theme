@@ -1,3 +1,3 @@
 *An Emacs theme!*
 
-![screenshot](./screenshots.png)
+![screenshot](./screenshot.png)
