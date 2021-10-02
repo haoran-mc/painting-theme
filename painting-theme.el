@@ -203,6 +203,13 @@ You may want to set this to window's border color.")
    `(markdown-header-face-7         ((t (:inherit outline-7 :height 1.0 :foreground "#F92672"))))
    `(markdown-header-face-8         ((t (:inherit outline-8 :height 1.0 :foreground "#66D9EF"))))
 
+	 ;; mode-line
+   `(mode-line ((t (:background ,black-3))))
+   `(mode-line-inactive ((t (:inverse-video nil (list
+																								 :foreground ,ash-3
+																								 :background ,black-1
+																								 :box ,black-1)))))
+
    ;; Org-mode
    `(shadow                         ((t (:foreground ,test-comment))))
    `(org-level-1                    ((t (:inherit outline-1 :height 1.0 :weight normal :foreground ,pink-1))))
@@ -215,8 +222,12 @@ You may want to set this to window's border color.")
    `(org-level-8                    ((t (:inherit outline-8 :height 1.0 :weight normal :foreground ,white-2))))
    `(org-document-title             ((t (:inherit font-lock-string-face))))
    `(org-code                       ((t (:inherit font-lock-constant-face))))
-   `(org-link                       ((t (:foreground ,blue-5 :underline t))))
+   `(org-link                       ((t (:foreground ,blue-5 :underline nil))))
    `(org-ellipsis                   ((t (:foreground ,test-comment))))
+   `(org-table                      ((t (:foreground ,purple-3))))
+	 `(org-document-info              ((t (:foreground "#0189cc"))))
+	 `(org-document-info-keyword      ((t (:foreground "#6272a4"))))
+	 `(org-document-title             ((t (:weight bold :foreground "#ffb86c"))))
 
    ;; Treemacs
    `(treemacs-root-face             ((t (:inherit font-lock-function-name-face :height 1.4 :underline t)))))
