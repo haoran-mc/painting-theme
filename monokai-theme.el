@@ -145,17 +145,17 @@ Also affects 'linum-mode' background."
   :type 'string
   :group 'monokai)
 
-(defcustom monokai-foreground "#F8F8F2"
+(defcustom monokai-foreground "#D6D6D4"
   "Adaptive colors - foreground"
   :type 'string
   :group 'monokai)
 
-(defcustom monokai-background "#272822"
+(defcustom monokai-background "#1C1E1F"
   "Adaptive colors - background"
   :type 'string
   :group 'monokai)
 
-(defcustom monokai-comments "#75715E"
+(defcustom monokai-comments "#525254"
   "Adaptive colors - comments"
   :type 'string
   :group 'monokai)
@@ -180,7 +180,7 @@ Also affects 'linum-mode' background."
   :type 'string
   :group 'monokai)
 
-(defcustom monokai-highlight-line "#3C3D37"
+(defcustom monokai-highlight-line "#222323"
   "Adaptive colors - line highlight"
   :type 'string
   :group 'monokai)
@@ -4567,7 +4567,7 @@ Also affects 'linum-mode' background."
                                      :foreground ,monokai-256-blue))))
 
    `(org-link
-     ((,monokai-class (:foreground ,monokai-blue
+     ((,monokai-class (:foreground ,monokai-orange
                                    :underline t))
       (,monokai-256-class (:foreground ,monokai-256-blue
                                         :underline t))))
