@@ -30,119 +30,147 @@
 
 ;;; Code:
 
-(deftheme painting "A dark theme.")
+(deftheme painting "a dark theme")
 
-(let (
-      (italic t)
-      (main "#8b8b8b")
-      (black-1         "#171717")
-      (black-2         "#242424")
-      (black-3         "#303030")
-      (black-4         "#323232")
-      (black-6         "#404040")
-      (ash           "#7c7c7c")
-	  (gray          "#AFAFAF")
+(defvar painting-theme-use-italic t
+  "Non-nil means use italic for comment and docstring.")
 
-      (pink          "#ff79c6")
-      (orange        "#FC9F4E")
-      (red           "#E24C49")
-      (white         "#E0E0E0")
-      (yellow        "#CFA300")
-      (purple        "#B762DE")
-      (cyan          "#8BE9FD")
-      (green         "#39BA7E")
+(defvar painting-theme-header-scales '(1.0 1.0 1.0 1.0 1.0 1.0 1.0)
+  "Scales for headers.")
 
-      (lightblue          "#96cbfe")
-      (lightgreen         "#50FA7B")
-      (lightorange        "#ffb86c")
-      (lightpurple        "#BD93F9")
+(defvar painting-theme-main-color "#8b8b8b8b"
+  "The main color used for some places.
 
-      (deepcyan          "#009F9F")
-      )
-  (defconst -test-fg                         gray)
-  (defconst -test-bg                         black-1)
-  (defconst -test-comment                    ash)
-  (defconst -test-comment-delimiter          ash)
+You may want to set this to window's border color.")
 
-  (defvar test-fg                         -test-fg)
-  (defvar test-bg                         -test-bg)
-  (defvar test-comment                    -test-comment)
-  (defvar test-comment-delimiter          -test-comment-delimiter)
 
+(let ((fg "#AFAFAF")
+      (fg+1 "#CCCCCC")
+      (fg-1 "#909090")
+      (bg "#171717")
+      (bg-1 "#131313")
+      (bg+1 "#242424")
+      (bg+2 "#303030")
+      (bg+3 "#404040")
+      (bg+4 "#505050")
+      (white "#E0E0E0")
+      (italic painting-theme-use-italic)
+      (yellow "#CFA300")
+      (red "#E24C49")
+      (blue "#009F9F")
+      (green "#39BA7E")
+      (purple "#B762DE")
+      (light-purple "#B28CE2")
+      (orange "#FC9F4E")
+      (region "#173525")
+      (region2 "#350035")
+      (main painting-theme-main-color))
   (custom-theme-set-faces
    `painting
-
-   `(default ((:background ,test-bg :foreground ,test-fg))) ;;
-
-
-   `(font-lock-comment-face            ((t (:foreground ,test-comment :italic ,italic)))) ;;
-   `(font-lock-comment-delimiter-face  ((t (:foreground ,test-comment-delimiter :italic ,italic)))) ;;
-   `(font-lock-string-face             ((t (:foreground ,orange)))) ;;
-   `(font-lock-doc-face                ((t (:foreground ,deepcyan :italic ,italic)))) ;;
-   `(font-lock-builtin-face            ((t (:foreground ,test-fg)))) ;;
-   `(font-lock-type-face               ((t (:foreground ,test-fg)))) ;;
-   `(font-lock-variable-name-face      ((t (:foreground ,test-fg)))) ;;
-   `(font-lock-keyword-face            ((t (:foreground ,lightpurple)))) ;;
-   `(font-lock-constant-face           ((t (:foreground ,deepcyan)))) ;;
-   `(font-lock-function-name-face      ((t (:foreground ,gray :bold nil)))) ;;
-   `(font-lock-warning-face            ((t (:foreground ,red)))) ;;
-   `(font-lock-preprocessor-face       ((t (:inherit font-lock-constant-face)))) ;;
-
+   ;; We don't specify default foreground/background in TTY.
+   `(default                        ((((type tty)))
+                                     (((type graphic))
+                                      :background ,bg
+                                      :foreground ,fg)))
    ;; Basics
-   `(fringe                      ((t (:foreground nil :background nil))))
-   `(vertical-border             ((t (:foreground ,black-1))))
-   `(cursor                      ((t (:background ,white))))
-   `(region                      ((t (:background ,black-4))))
-   `(hl-line                     ((((type graphic)) :background ,black-2) (((type tty)))))
-   `(header-line                 ((t (:background ,black-1 :foreground ,white))))
-   `(show-paren-match            ((t (:underline ,green))))
-   `(highlight                   ((t (:background ,black-3))))
-   `(button                      ((t (:foreground "#2299CC" :underline t))))
-   `(vertical-border             ((t ())))
-   `(window-divider              ((t (:foreground ,black-6))))
-   `(window-divider-first-pixel  ((t (:foreground ,black-2))))
-   `(window-divider-last-pixel   ((t (:foreground ,black-2))))
-   `(line-number                 ((t (:foreground ,black-6 :inherit default))))
-   `(line-number-current-line    ((((type tty)) :foreground ,yellow)
-                                  (((type graphic)) :inherit default :foreground ,yellow :background ,black-2)))
-   `(completions-common-part     ((t ())))
-   `(minibuffer-prompt           ((t ())))
-   '(lazy-highlight              ((t (:background "#86dc2f" :foreground "#262626"))))
-   `(compilation-info            ((t (:inherit font-lock-function-name-face))))
-   `(compilation-warning         ((t (:inherit font-lock-warning-face))))
-   `(warning                     ((t (:inherit font-lock-warning-face))))
-   `(match                       ((t (:background ,black-3))))
-   `(which-func                  ((t (:foreground ,gray :bold nil))))
+
+   `(cursor                         ((t (:background ,white))))
+   `(region                         ((t (:background ,region))))
+   `(hl-line                        ((((type graphic)) :background "#424868") ;; 高亮行
+                                     (((type tty)))))
+   `(fringe                         ((t (:background ,bg))))
+   `(show-paren-match               ((t (:underline ,green))))
+   `(highlight                      ((t (:background ,bg+2))))
+   `(button                         ((t (:foreground "#2299CC" :underline t))))
+   `(vertical-border                ((t ())))
+   `(window-divider                 ((t (:foreground ,bg+3))))
+   `(window-divider-first-pixel     ((t (:foreground ,bg+1))))
+   `(window-divider-last-pixel      ((t (:foreground ,bg+1))))
+   `(line-number                    ((t (:foreground ,bg+3 :inherit default))))
+   `(line-number-current-line       ((((type tty)) :foreground ,yellow)
+                                     (((type graphic)) :inherit default :foreground ,yellow :background ,bg+1)))
+   `(parenthesis                    ((t (:foreground ,fg-1))))
+   `(completions-common-part        ((t ())))
+   `(minibuffer-prompt              ((t ())))
+   `(lazy-highlight                 ((t (:background ,bg+3))))
+   `(compilation-info               ((t (:inherit font-lock-function-name-face))))
+   `(compilation-warning            ((t (:inherit font-lock-warning-face))))
+   `(warning                        ((t (:inherit font-lock-warning-face))))
+   `(match                          ((t (:background ,bg+2))))
+   `(secondary-selection            ((t (:background ,region2 :extend t))))
 
    ;; ISearch
-   `(isearch                     ((t (:background ,green :foreground "black"))))
-   `(isearch-fail                ((t (:backgronud ,red :foreground "black"))))
+   `(isearch                        ((t (:background ,green :foreground "black"))))
+   `(isearch-fail                   ((t (:backgronud ,red :foreground "black"))))
+
+   ;; Font Locks
+   `(font-lock-comment-face         ((t (:foreground ,blue :italic ,italic))))
+   `(font-lock-comment-delimiter-face         ((t (:foreground ,blue :italic ,italic))))
+   `(font-lock-string-face          ((t (:foreground ,red))))
+   `(font-lock-doc-face             ((t (:foreground ,blue :italic ,italic))))
+   `(font-lock-builtin-face         ((t ())))
+   `(font-lock-type-face            ((t ())))
+   `(font-lock-variable-name-face   ((t ())))
+   `(font-lock-keyword-face         ((t (:foreground ,yellow))))
+   `(font-lock-constant-face        ((t (:foreground ,purple))))
+   `(font-lock-function-name-face   ((t (:bold t))))
+   `(font-lock-warning-face         ((t (:foreground ,orange))))
+   `(font-lock-preprocessor-face    ((t (:inherit font-lock-constant-face))))
 
    ;; IMenu
    `(imenu-list-entry-face-0          ((t ())))
    `(imenu-list-entry-subalist-face-0 ((t (:bold t))))
 
    ;; Mode Line
-   `(mode-line                        ((t (:background ,black-4))))
+   `(mode-line                      ((t (:background ,bg-1))))
+   `(mode-line-inactive             ((t (:background ,bg+1))))
+
+
+   ;; Yascroll
+   `(yascroll:thumb-fringe          ((t (:background ,main :foreground ,main))))
+   `(yascroll:thumb-text-area       ((t (:background ,main :foreground ,main))))
 
    ;; Company
-   `(company-tooltip-common           ((t (:bold t))))
+   `(company-tooltip-common         ((t (:bold t))))
    `(company-tooltip-common-selection ((t (:bold t))))
-   `(company-tooltip                  ((t (:background ,black-3))))
-   `(company-tooltip-selection        ((t (:inverse-video t))))
-   `(company-tooltip-annotation       ((t (:foreground ,deepcyan))))
-   `(company-scrollbar-black-1        ((t (:background ,black-3 :height 0.3))))
-   `(company-scrollbar-gray         ((t (:background ,black-6 :height 0.3))))
-   `(company-template-field           ((t (:inherit yas-field-highlight-face))))
+   `(company-tooltip                ((t (:background ,bg+2))))
+   `(company-tooltip-selection      ((t (:inverse-video t))))
+   `(company-tooltip-annotation     ((t (:foreground ,blue))))
+   `(company-scrollbar-bg           ((t (:background ,bg+2 :height 0.3))))
+   `(company-scrollbar-fg           ((t (:background ,bg+4 :height 0.3))))
+   `(company-template-field         ((t (:inherit yas-field-highlight-face))))
+
+   ;; Yasnippet
+   `(yas-field-highlight-face       ((t (:background ,region2))))
+
+   ;; Meow
+   `(meow-keypad-indicator          ((t (:foreground "black" :background ,red))))
+   `(meow-insert-indicator          ((t (:foreground "black" :background ,green))))
+   `(meow-normal-indicator          ((t (:foreground "black" :background ,yellow))))
+   `(meow-motion-indicator          ((t (:foreground "black" :background ,blue))))
+   `(meow-keypad-cursor             ((t ())))
+   `(meow-insert-cursor             ((t ())))
+   `(meow-normal-cursor             ((t ())))
+   `(meow-motion-cursor             ((t ())))
+
+   ;; Cider
+   ;;
+   `(cider-result-overlay-face      ((t (:background "black"))))
+   `(cider-repl-stderr-face         ((t (:foreground ,blue))))
+   `(cider-repl-stdout-face         ((t (:foreground ,fg-1))))
+
+   ;; Clojure
+   ;;
+   `(clojure-character-face         ((t (:foreground ,purple))))
 
    ;; Ivy
    `(ivy-highlight-face             ((t ())))
    `(ivy-yanked-word                ((t (:background "yellow" :foreground "black"))))
    `(ivy-remote                     ((t ())))
-   `(ivy-minibuffer-match-highlight ((t (:background ,main :foreground ,black-1 :weight bold))))
-   `(ivy-current-match              ((t (:background ,main :foreground ,black-1 :weight bold))))
+   `(ivy-current-match              ((t (:foreground ,bg :background ,main))))
+   `(ivy-minibuffer-match-highlight ((t ())))
    `(ivy-minibuffer-match-face-1    ((t ())))
-   `(ivy-minibuffer-match-face-2    ((t (:background ,main :foreground ,black-1 :weight bold))))
+   `(ivy-minibuffer-match-face-2    ((t ())))
    `(ivy-minibuffer-match-face-3    ((t ())))
    `(ivy-minibuffer-match-face-4    ((t ())))
    `(counsel-outline-default        ((t ())))
@@ -155,60 +183,83 @@
    `(swiper-match-face-3            ((t (:foreground "white"))))
    `(swiper-match-face-4            ((t (:foreground "white"))))
 
+   ;; Selectrum
+   `(selectrum-current-candidate    ((t (:foreground ,main :inverse-video t))))
+
+   ;; Magit
+   `(magit-diff-file-heading-highlight ((t (:background ,bg+1))))
+   `(magit-section-highlight           ((t (:background ,bg+1))))
+   `(magit-diff-removed             ((t (:inherit font-lock-string-face))))
+   `(magit-diff-added               ((t (:inherit font-lock-comment-face))))
+   `(magit-diff-removed-highlight   ((t (:inherit font-lock-string-face :background ,bg+2))))
+   `(magit-diff-added-highlight     ((t (:inherit font-lock-comment-face :background ,bg+2))))
+   `(magit-diff-highlight           ((t (:background ,bg+1))))
+   `(magit-diff-context-highlight   ((t (:background ,bg+1))))
+
+   ;; SMerge
+   `(smerge-refined-added           ((t (:background "#253325"))))
+   `(smerge-lower                   ((t (:background "#173017"))))
+
    ;; Diff-hl
    `(diff-hl-insert                 ((t (:foreground ,green :background ,green))))
-   `(diff-hl-change                 ((t (:foreground ,deepcyan :background ,deepcyan))))
+   `(diff-hl-change                 ((t (:foreground ,blue :background ,blue))))
    `(diff-hl-delete                 ((t (:foreground ,red :background ,red))))
 
+   ;; Term
+   `(term-color-blue                ((t (:foreground ,blue :background ,blue))))
+   `(term-color-green               ((t (:foreground ,green :background ,green))))
+   `(term-color-red                 ((t (:foreground ,red :background ,red))))
+
+   ;; Popup
+   `(popup-tip-face                 ((t (:background ,bg+4 :foreground ,fg))))
+   `(popup-isearch-match            ((t (:background "#CFA300" :foreground "black"))))
+
    `(tooltip                        ((t ())))
-   `(dired-directory                ((t (:foreground ,lightblue))))
+   `(dired-directory                ((t (:foreground ,light-purple))))
+   `(web-mode-html-attr-name-face   ((t ())))
+   `(web-mode-html-tag-face         ((t ())))
+
+   ;; Emacs Rime
+   `(rime-preedit-face              ((t (:underline ,blue :background ,bg+2))))
+   `(rime-cursor-face               ((t (:inherit font-lock-constant-face))))
+   `(rime-indicator-face            ((t (:foreground ,purple))))
+   `(rime-indicator-dim-face        ((t (:foreground ,bg+4))))
 
    ;; Web Mode
    `(web-mode-function-call-face    ((t ())))
    `(web-mode-function-name-face    ((t ())))
+   `(web-mode-html-tag-bracket-face ((t (:inherit parenthesis))))
    `(web-mode-symbol-face           ((t (:foreground ,purple))))
    `(css-selector                   ((t (:foreground ,purple))))
 
    ;; Markdown
-   `(markdown-header-face-1         ((t (:inherit outline-1 :height 1.0 :foreground "#FD971F"))))
-   `(markdown-header-face-2         ((t (:inherit outline-2 :height 1.0 :foreground "#A6E22E"))))
-   `(markdown-header-face-3         ((t (:inherit outline-3 :height 1.0 :foreground "#66D9EF"))))
-   `(markdown-header-face-4         ((t (:inherit outline-4 :height 1.0 :foreground "#E6DB74"))))
-   `(markdown-header-face-5         ((t (:inherit outline-5 :height 1.0 :foreground "#A1EFE4"))))
-   `(markdown-header-face-6         ((t (:inherit outline-6 :height 1.0 :foreground "#A6E22E"))))
-   `(markdown-header-face-7         ((t (:inherit outline-7 :height 1.0 :foreground "#F92672"))))
-   `(markdown-header-face-8         ((t (:inherit outline-8 :height 1.0 :foreground "#66D9EF"))))
+   `(markdown-header-face-1         ((t (:bold t :height ,(nth 0 painting-theme-header-scales)))))
+   `(markdown-header-face-2         ((t (:bold t :height ,(nth 1 painting-theme-header-scales)))))
+   `(markdown-header-face-3         ((t (:bold t :height ,(nth 2 painting-theme-header-scales)))))
+   `(markdown-header-face-4         ((t (:bold t :height ,(nth 3 painting-theme-header-scales)))))
+   `(markdown-header-face-5         ((t (:bold t :height ,(nth 4 painting-theme-header-scales)))))
+   `(markdown-header-face-6         ((t (:bold t :height ,(nth 5 painting-theme-header-scales)))))
+   `(markdown-header-face-7         ((t (:bold t :height ,(nth 6 painting-theme-header-scales)))))
 
-   ;; mode-line
-   `(mode-line ((t (:background ,black-3))))
-   `(mode-line-inactive ((t (:inverse-video nil (list
-												 :foreground ,ash
-												 :background ,black-1
-												 :box ,black-1)))))
+   ;; Telega
+   `(telega-entity-type-code        ((t (:inherit font-lock-string-face))))
+   `(telega-msg-heading             ((t (:inherit hl-line))))
+   `(telega-unmuted-count           ((t (:inherit font-lock-function-name-face))))
 
    ;; Org-mode
-   `(shadow            ((t (:foreground ,test-comment))))
-   `(org-level-1       ((t (:inherit outline-1 :height 1.0 :weight normal :foreground ,pink))))
-   `(org-level-2       ((t (:inherit outline-2 :height 1.0 :weight normal :foreground ,lightpurple))))
-   `(org-level-3       ((t (:inherit outline-3 :height 1.0 :weight normal :foreground ,lightgreen))))
-   `(org-level-4       ((t (:inherit outline-4 :height 1.0 :weight normal :foreground ,yellow))))
-   `(org-level-5       ((t (:inherit outline-5 :height 1.0 :weight normal :foreground ,cyan))))
-   `(org-level-6       ((t (:inherit outline-6 :height 1.0 :weight normal :foreground ,lightorange))))
-   `(org-level-7       ((t (:inherit outline-7 :height 1.0 :weight normal :foreground ,lightblue))))
-   `(org-level-8       ((t (:inherit outline-8 :height 1.0 :weight normal :foreground ,white))))
+   `(org-table                      ((t (:foreground ,fg+1))))
+   `(org-level-1                    ((t (:bold t :height ,(nth 0 painting-theme-header-scales)))))
+   `(org-level-2                    ((t (:bold t :height ,(nth 1 painting-theme-header-scales)))))
+   `(org-level-3                    ((t (:bold t :height ,(nth 2 painting-theme-header-scales)))))
+   `(org-level-4                    ((t (:bold t :height ,(nth 3 painting-theme-header-scales)))))
+   `(org-level-5                    ((t (:bold t :height ,(nth 4 painting-theme-header-scales)))))
+   `(org-level-6                    ((t (:bold t :height ,(nth 5 painting-theme-header-scales)))))
+   `(org-level-7                    ((t (:bold t :height ,(nth 6 painting-theme-header-scales)))))
    `(org-document-title             ((t (:inherit font-lock-string-face))))
    `(org-code                       ((t (:inherit font-lock-constant-face))))
-   `(org-link                       ((t (:foreground ,blue-5 :underline t))))
-   `(org-ellipsis                   ((t (:foreground ,test-comment))))
-   `(org-table                      ((t (:foreground ,lightpurple))))
-   `(org-document-info              ((t (:foreground "#0189cc"))))
-   `(org-document-info-keyword      ((t (:foreground "#6272a4"))))
-   `(org-document-title             ((t (:weight bold :foreground "#ffb86c"))))
-   `(org-date                       ((t (:foreground ,blue-5))))
 
    ;; Treemacs
-   `(treemacs-root-face             ((t (:inherit font-lock-function-name-face :height 1.4 :underline t)))))
-  )
+   `(treemacs-root-face             ((t (:inherit font-lock-function-name-face :height 1.4 :underline t))))))
 
 (and load-file-name
      (boundp 'custom-theme-load-path)
@@ -217,5 +268,4 @@
                    (file-name-directory load-file-name))))
 
 (provide-theme 'painting)
-
 ;;; painting-theme.el ends here
