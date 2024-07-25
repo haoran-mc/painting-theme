@@ -4571,6 +4571,8 @@ Also affects 'linum-mode' background."
                                    :underline t))
       (,monokai-256-class (:foreground ,monokai-256-blue
                                         :underline t))))
+   `(org-list-dt ((t (:bold nil
+                            :foreground ,monokai-red))))
 
    `(org-sexp-date
      ((,monokai-class (:foreground ,monokai-violet))
