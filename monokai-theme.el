@@ -4512,35 +4512,27 @@ Also affects 'linum-mode' background."
 
    `(org-level-1
      ((,monokai-class (:inherit ,monokai-pitch
-                                :height ,monokai-height-plus-4
                                 :foreground ,monokai-orange))
       (,monokai-256-class (:inherit ,monokai-pitch
-                                     :height ,monokai-height-plus-4
-                                     :foreground ,monokai-256-orange))))
+                                    :foreground ,monokai-256-orange))))
 
    `(org-level-2
      ((,monokai-class (:inherit ,monokai-pitch
-                                :height ,monokai-height-plus-3
                                 :foreground ,monokai-green))
       (,monokai-256-class (:inherit ,monokai-pitch
-                                     :height ,monokai-height-plus-3
-                                     :foreground ,monokai-256-green))))
+                                    :foreground ,monokai-256-green))))
 
    `(org-level-3
      ((,monokai-class (:inherit ,monokai-pitch
-                                :height ,monokai-height-plus-2
                                 :foreground ,monokai-blue))
       (,monokai-256-class (:inherit ,monokai-pitch
-                                     :height ,monokai-height-plus-2
-                                     :foreground ,monokai-256-blue))))
+                                    :foreground ,monokai-256-blue))))
 
    `(org-level-4
      ((,monokai-class (:inherit ,monokai-pitch
-                                :height ,monokai-height-plus-1
                                 :foreground ,monokai-yellow))
       (,monokai-256-class (:inherit ,monokai-pitch
-                                     :height ,monokai-height-plus-1
-                                     :foreground ,monokai-256-yellow))))
+                                    :foreground ,monokai-256-yellow))))
 
    `(org-level-5
      ((,monokai-class (:inherit ,monokai-pitch
