@@ -175,7 +175,7 @@ Also affects 'linum-mode' background."
   :type 'string
   :group 'monokai)
 
-(defcustom monokai-highlight-alt "#3E3D31"
+(defcustom monokai-highlight-alt "#2D2E2E"
   "Adaptive colors - highlight"
   :type 'string
   :group 'monokai)
