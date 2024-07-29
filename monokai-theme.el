@@ -3947,25 +3947,6 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:underline t
                                   :weight bold))))
 
-   ;; weechat
-   `(weechat-error-face
-     ((,monokai-class (:inherit error))))
-
-   `(weechat-highlight-face
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :weight bold))))
-
-   `(weechat-nick-self-face
-     ((,monokai-class (:foreground ,monokai-green
-                                   :weight unspecified
-                                   :inverse-video t))))
-
-   `(weechat-prompt-face
-     ((,monokai-class (:inherit minibuffer-prompt))))
-
-   `(weechat-time-face
-     ((,monokai-class (:foreground ,monokai-comments))))
-
    ;; which-func-mode
    `(which-func
      ((,monokai-class (:foreground ,monokai-green))))
@@ -4068,18 +4049,7 @@ Also affects 'linum-mode' background."
        (340 . "#2790C3")
        (360 . ,monokai-blue)))
    `(vc-annotate-very-old-color nil)
-   `(vc-annotate-background nil)
-
-   ;; weechat
-   `(weechat-color-list
-     '(unspecified ,monokai-background ,monokai-highlight-line
-                   ,monokai-red-d ,monokai-red
-                   ,monokai-green-d ,monokai-green
-                   ,monokai-yellow-d ,monokai-yellow
-                   ,monokai-blue-d ,monokai-blue
-                   ,monokai-magenta-d ,monokai-magenta
-                   ,monokai-cyan-d ,monokai-cyan
-                   ,monokai-foreground ,monokai-emphasis))))
+   `(vc-annotate-background nil)))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
