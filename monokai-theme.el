@@ -2404,31 +2404,6 @@ Also affects 'linum-mode' background."
    `(mingus-stopped-face
      ((,monokai-class (:foreground ,monokai-red))))
 
-   ;; mmm
-   `(mmm-init-submode-face
-     ((,monokai-class (:background ,monokai-violet-d))))
-
-   `(mmm-cleanup-submode-face
-     ((,monokai-class (:background ,monokai-orange-d))))
-
-   `(mmm-declaration-submode-face
-     ((,monokai-class (:background ,monokai-cyan-l))))
-
-   `(mmm-comment-submode-face
-     ((,monokai-class (:background ,monokai-blue-d))))
-
-   `(mmm-output-submode-face
-     ((,monokai-class (:background ,monokai-red-d))))
-
-   `(mmm-special-submode-face
-     ((,monokai-class (:background ,monokai-green-d))))
-
-   `(mmm-code-submode-face
-     ((,monokai-class (:background ,monokai-gray))))
-
-   `(mmm-default-submode-face
-     ((,monokai-class (:background ,monokai-gray-d))))
-
    ;; moccur
    `(moccur-current-line-face
      ((,monokai-class (:underline t))))
