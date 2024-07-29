@@ -214,8 +214,7 @@ Also affects 'linum-mode' background."
        (monokai-violet-l       "#C9ACFF")
        (monokai-blue-d         "#40CAE4")
        (monokai-blue-l         "#92E7F7")
-       (monokai-cyan-d         "#74DBCD")
-       (monokai-cyan-l         "#D3FBF6")
+       (monokai-cyan-l         "#74DBCD")
        (monokai-green-d        "#86C30D")
        (monokai-green-l        "#BBEF53")
        (monokai-gray-d         "#35331D")
@@ -406,10 +405,10 @@ Also affects 'linum-mode' background."
                                    :weight normal))))
 
    `(success
-     ((,monokai-class (:foreground ,monokai-green ))))
+     ((,monokai-class (:foreground ,monokai-green))))
 
    `(warning
-     ((,monokai-class (:foreground ,monokai-yellow ))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(error
      ((,monokai-class (:foreground ,monokai-red))))
@@ -2413,7 +2412,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:background ,monokai-orange-d))))
 
    `(mmm-declaration-submode-face
-     ((,monokai-class (:background ,monokai-cyan-d))))
+     ((,monokai-class (:background ,monokai-cyan-l))))
 
    `(mmm-comment-submode-face
      ((,monokai-class (:background ,monokai-blue-d))))
@@ -3474,7 +3473,7 @@ Also affects 'linum-mode' background."
 
    `(term-color-cyan
      ((,monokai-class (:foreground ,monokai-cyan
-                                   :background ,monokai-cyan-d))))
+                                   :background ,monokai-cyan-l))))
 
    `(term-color-white
      ((,monokai-class (:foreground ,monokai-emphasis
