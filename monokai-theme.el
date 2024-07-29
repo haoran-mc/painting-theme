@@ -533,8 +533,7 @@ Also affects 'linum-mode' background."
 
    `(dired-header
      ((,monokai-class (:foreground ,monokai-blue
-                                   :background ,monokai-background
-                                   :inherit bold))))
+                                   :background ,monokai-highlight))))
 
    `(dired-ignored
      ((,monokai-class (:inherit shadow))))
