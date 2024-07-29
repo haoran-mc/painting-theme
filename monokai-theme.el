@@ -2841,7 +2841,7 @@ Also affects 'linum-mode' background."
                                    :box (:line-width 1 :style released-button)))))
 
    `(org-code
-     ((,monokai-class (:foreground ,monokai-comments))))
+     ((,monokai-class (:foreground ,monokai-violet-lc))))
 
    `(org-date
      ((,monokai-class (:foreground ,monokai-blue
