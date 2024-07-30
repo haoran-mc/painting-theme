@@ -701,39 +701,6 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:inherit bold
                                 :foreground ,monokai-orange))))
 
-   ;; auto-complete
-   `(ac-candidate-face
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-blue))))
-
-   `(ac-selection-face
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-background))))
-
-   `(ac-candidate-mouse-face
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-background))))
-
-   `(ac-completion-face
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :underline t))))
-
-   `(ac-gtags-candidate-face
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-blue))))
-
-   `(ac-gtags-selection-face
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-background))))
-
-   `(ac-yasnippet-candidate-face
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-yellow))))
-
-   `(ac-yasnippet-selection-face
-     ((,monokai-class (:background ,monokai-yellow
-                                   :foreground ,monokai-background))))
-
    ;; auto highlight symbol
    `(ahs-definition-face
      ((,monokai-class (:foreground ,monokai-background
