@@ -1955,20 +1955,6 @@ Also affects 'linum-mode' background."
    `(lsp-ui-doc-background
      ((,monokai-class (:background ,monokai-highlight-line))))
 
-   ;; lusty-explorer
-   `(lusty-directory-face
-     ((,monokai-class (:inherit dimonokai-red-directory))))
-
-   `(lusty-file-face
-     ((,monokai-class nil)))
-
-   `(lusty-match-face
-     ((,monokai-class (:inherit ido-first-match))))
-
-   `(lusty-slash-face
-     ((,monokai-class (:foreground ,monokai-cyan-l
-                                   :weight bold))))
-
    ;; magit
    `(magit-bisect-good
      ((,monokai-class (:foreground ,monokai-green))))
@@ -3023,92 +3009,6 @@ Also affects 'linum-mode' background."
    `(realgud-backtrace-number
      ((,monokai-class (:foreground ,monokai-yellow-d
                                    :weight bold))))
-
-   ;; rhtm-mode
-   `(erb-face
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-background))))
-
-   `(erb-delim-face
-     ((,monokai-class (:foreground ,monokai-cyan-l
-                                   :background ,monokai-background))))
-
-   `(erb-exec-face
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-background))))
-
-   `(erb-exec-delim-face
-     ((,monokai-class (:foreground ,monokai-cyan-l
-                                   :background ,monokai-background))))
-
-   `(erb-out-face
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-background))))
-
-   `(erb-out-delim-face
-     ((,monokai-class (:foreground ,monokai-cyan-l
-                                   :background ,monokai-background))))
-
-   `(erb-comment-face
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :background ,monokai-background))))
-
-   `(erb-comment-delim-face
-     ((,monokai-class (:foreground ,monokai-cyan-l
-                                   :background ,monokai-background))))
-
-   ;; rst-mode
-   `(rst-level-1-face
-     ((,monokai-class (:background ,monokai-yellow
-                                   :foreground ,monokai-background))))
-
-   `(rst-level-2-face
-     ((,monokai-class (:background ,monokai-cyan-l
-                                   :foreground ,monokai-background))))
-
-   `(rst-level-3-face
-     ((,monokai-class (:background ,monokai-blue
-                                   :foreground ,monokai-background))))
-
-   `(rst-level-4-face
-     ((,monokai-class (:background ,monokai-violet
-                                   :foreground ,monokai-background))))
-
-   `(rst-level-5-face
-     ((,monokai-class (:background ,monokai-magenta
-                                   :foreground ,monokai-background))))
-
-   `(rst-level-6-face
-     ((,monokai-class (:background ,monokai-red
-                                   :foreground ,monokai-background))))
-
-   ;; rpm-mode
-   `(rpm-spec-dir-face
-     ((,monokai-class (:foreground ,monokai-green))))
-
-   `(rpm-spec-doc-face
-     ((,monokai-class (:foreground ,monokai-green))))
-
-   `(rpm-spec-ghost-face
-     ((,monokai-class (:foreground ,monokai-red))))
-
-   `(rpm-spec-macro-face
-     ((,monokai-class (:foreground ,monokai-yellow))))
-
-   `(rpm-spec-obsolete-tag-face
-     ((,monokai-class (:foreground ,monokai-red))))
-
-   `(rpm-spec-package-face
-     ((,monokai-class (:foreground ,monokai-red))))
-
-   `(rpm-spec-section-face
-     ((,monokai-class (:foreground ,monokai-yellow))))
-
-   `(rpm-spec-tag-face
-     ((,monokai-class (:foreground ,monokai-blue))))
-
-   `(rpm-spec-var-face
-     ((,monokai-class (:foreground ,monokai-red))))
 
    ;; sh-mode
    `(sh-quoted-exec
