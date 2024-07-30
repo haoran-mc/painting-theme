@@ -1365,20 +1365,6 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-cyan-l
                                    :inherit bold))))
 
-   ;; evil-ex-substitute
-   `(evil-ex-substitute-matches
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-red-l
-                                   :inherit italic))))
-   `(evil-ex-substitute-replacement
-     ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-green-l
-                                   :inherit italic))))
-
-   ;; evil-search-highlight-persist
-   `(evil-search-highlight-persist-highlight-face
-     ((,monokai-class (:inherit region))))
-
    ;; fic
    `(fic-author-face
      ((,monokai-class (:background ,monokai-background
