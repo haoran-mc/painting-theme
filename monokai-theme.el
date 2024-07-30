@@ -408,7 +408,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-green))))
 
    `(warning
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(error
      ((,monokai-class (:foreground ,monokai-red))))
@@ -510,7 +510,7 @@ Also affects 'linum-mode' background."
 
    ;; cua
    `(cua-global-mark
-     ((,monokai-class (:background ,monokai-cyan
+     ((,monokai-class (:background ,monokai-yellow
                                    :foreground ,monokai-background))))
 
    `(cua-rectangle
@@ -521,7 +521,7 @@ Also affects 'linum-mode' background."
 
    ;; diary
    `(diary
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    ;; dired
    `(dired-directory
@@ -609,7 +609,7 @@ Also affects 'linum-mode' background."
    `(isearch
      ((,monokai-class (:inherit region
                                 :foreground ,monokai-background
-                                :background ,monokai-cyan))))
+                                :background ,monokai-yellow))))
 
    `(isearch-fail
      ((,monokai-class (:inherit isearch
@@ -625,7 +625,7 @@ Also affects 'linum-mode' background."
                                    :inverse-video nil))))
 
    `(ace-jump-face-foreground
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :background ,monokai-background
                                    :inverse-video nil
                                    :weight bold))))
@@ -672,7 +672,7 @@ Also affects 'linum-mode' background."
 
    `(font-latex-sectioning-5-face
      ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-cyan
+                                :foreground ,monokai-yellow
                                 :weight bold))))
 
    `(font-latex-sedate-face
@@ -728,10 +728,10 @@ Also affects 'linum-mode' background."
 
    `(ac-yasnippet-candidate-face
      ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-cyan))))
+                                   :foreground ,monokai-yellow))))
 
    `(ac-yasnippet-selection-face
-     ((,monokai-class (:background ,monokai-cyan
+     ((,monokai-class (:background ,monokai-yellow
                                    :foreground ,monokai-background))))
 
    ;; auto highlight symbol
@@ -745,7 +745,7 @@ Also affects 'linum-mode' background."
 
    `(ahs-face
      ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-cyan))))
+                                   :background ,monokai-yellow))))
 
    `(ahs-plugin-bod-face
      ((,monokai-class (:foreground ,monokai-background
@@ -778,7 +778,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-comments))))
 
    `(android-mode-warning-face
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    ;; anzu-mode
    `(anzu-mode-line
@@ -808,7 +808,7 @@ Also affects 'linum-mode' background."
 
    `(cfw:face-annotation
      ((,monokai-class (:inherit cfw:face-day-title
-                                :foreground ,monokai-cyan))))
+                                :foreground ,monokai-yellow))))
 
    `(cfw:face-default-content
      ((,monokai-class (:foreground ,monokai-green))))
@@ -852,7 +852,7 @@ Also affects 'linum-mode' background."
 
    `(cfw:face-title
      ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-cyan
+                                :foreground ,monokai-yellow
                                 :weight bold
                                 :height ,monokai-height-plus-4))))
 
@@ -882,12 +882,12 @@ Also affects 'linum-mode' background."
 
    ;; cider
    `(cider-enlightened
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :background unspecified
-                                   :box (:color ,monokai-cyan :line-width -1 :style nil)))))
+                                   :box (:color ,monokai-yellow :line-width -1 :style nil)))))
 
    `(cider-enlightened-local
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(cider-instrumented-face
      ((,monokai-class (:foreground ,monokai-violet
@@ -1026,7 +1026,7 @@ Also affects 'linum-mode' background."
                                 :underline nil))))
 
    `(compilation-warning-face
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :weight normal
                                    :underline nil))))
 
@@ -1053,7 +1053,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-blue))))
 
    `(cscope-line-number-face
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(cscope-line-face
      ((,monokai-class (:foreground ,monokai-foreground))))
@@ -1071,7 +1071,7 @@ Also affects 'linum-mode' background."
 
    `(ctbl:face-continue-bar
      ((,monokai-class (:background ,monokai-gray
-                                   :foreground ,monokai-cyan))))
+                                   :foreground ,monokai-yellow))))
 
    `(ctbl:face-row-select
      ((,monokai-class (:background ,monokai-highlight-line
@@ -1080,7 +1080,7 @@ Also affects 'linum-mode' background."
 
    ;; coffee
    `(coffee-mode-class-name
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :weight bold))))
 
    `(coffee-mode-function-param
@@ -1290,14 +1290,14 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:inherit erc-default-face))))
 
    `(erc-input-face
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(erc-keyword-face
      ((,monokai-class (:foreground ,monokai-blue
                                    :weight bold))))
 
    `(erc-nick-default-face
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :weight bold))))
 
    `(erc-my-nick-face
@@ -1358,7 +1358,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:inherit font-lock-doc-face))))
 
    `(eshell-ls-special
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :inherit bold))))
 
    `(eshell-ls-symlink
@@ -1443,7 +1443,7 @@ Also affects 'linum-mode' background."
 
    `(flymake-warnline
      ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-cyan)
+       (:underline (:style wave :color ,monokai-yellow)
                    :inherit unspecified
                    :foreground unspecified
                    :background unspecified))
@@ -1522,9 +1522,9 @@ Also affects 'linum-mode' background."
    ;; flyspell
    `(flyspell-duplicate
      ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-cyan)
+       (:underline (:style wave :color ,monokai-yellow)
                    :inherit unspecified))
-      (,monokai-class (:foreground ,monokai-cyan
+      (,monokai-class (:foreground ,monokai-yellow
                                    :weight bold
                                    :underline t))
       (,(append '((supports :underline (:style wave))) monokai-256-class )
@@ -1748,7 +1748,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-foreground))))
 
    `(gnus-summary-selected
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :weight bold))))
 
    `(gnus-cite-1
@@ -1779,13 +1779,13 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-red))))
 
    `(gnus-cite-10
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(gnus-cite-11
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(gnus-group-news-1-empty
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(gnus-group-news-2-empty
      ((,monokai-class (:foreground ,monokai-green))))
@@ -1806,7 +1806,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-comments))))
 
    `(gnus-signature
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(gnus-x-face
      ((,monokai-class (:background ,monokai-foreground
@@ -1878,12 +1878,12 @@ Also affects 'linum-mode' background."
 
    ;; ido-mode
    `(ido-first-match
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :weight normal))))
 
    `(ido-only-match
      ((,monokai-class (:foreground ,monokai-background
-                                   :background ,monokai-cyan
+                                   :background ,monokai-yellow
                                    :weight normal))))
 
    `(ido-subdir
@@ -1923,7 +1923,7 @@ Also affects 'linum-mode' background."
                                    :inherit bold))))
 
    `(info-string
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(info-title-1
      ((,monokai-class (:height ,monokai-height-plus-4))))
@@ -2077,7 +2077,7 @@ Also affects 'linum-mode' background."
                                    :background ,monokai-background))))
 
    `(magit-diff-base
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :background ,monokai-background))))
 
    `(magit-diff-context
@@ -2092,7 +2092,7 @@ Also affects 'linum-mode' background."
                                    :background ,monokai-highlight-alt))))
 
    `(magit-diff-base-highlight
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :background ,monokai-highlight-alt))))
 
    `(magit-diff-context-highlight
@@ -2157,7 +2157,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:background ,monokai-highlight-line))))
 
    `(magit-section-heading
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :weight bold))))
 
    `(magit-section-heading-selection
@@ -2231,7 +2231,7 @@ Also affects 'linum-mode' background."
 
    ;; monky
    `(monky-section-title
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :weight bold))))
 
    `(monky-diff-add
@@ -2286,7 +2286,7 @@ Also affects 'linum-mode' background."
                                    :weight normal))))
 
    `(message-header-newsgroups
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :weight bold))))
 
    `(message-header-subject
@@ -2297,7 +2297,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-cyan-l))))
 
    `(message-mml
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :weight bold))))
 
    `(message-separator
@@ -2309,7 +2309,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-orange))))
 
    `(mew-face-header-from
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(mew-face-header-date
      ((,monokai-class (:foreground ,monokai-green))))
@@ -2356,7 +2356,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-orange))))
 
    `(mew-face-body-cite4
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(mew-face-body-cite5
      ((,monokai-class (:foreground ,monokai-red))))
@@ -2371,7 +2371,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-red))))
 
    `(mew-face-mark-unlink
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(mew-face-mark-refile
      ((,monokai-class (:foreground ,monokai-green))))
@@ -2383,7 +2383,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-green))))
 
    `(mew-face-eof-part
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    ;; mingus
    `(mingus-directory-face
@@ -2399,7 +2399,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-cyan-l ))))
 
    `(mingus-song-file-face
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(mingus-stopped-face
      ((,monokai-class (:foreground ,monokai-red))))
@@ -2414,7 +2414,7 @@ Also affects 'linum-mode' background."
                                    :slant italic))))
 
    `(moccur-edit-face
-     ((,monokai-class (:background ,monokai-cyan
+     ((,monokai-class (:background ,monokai-yellow
                                    :foreground ,monokai-background))))
 
    `(moccur-edit-file-face
@@ -2435,7 +2435,7 @@ Also affects 'linum-mode' background."
 
    `(search-buffers-header-face
      ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-cyan
+                                   :foreground ,monokai-yellow
                                    :weight bold))))
 
    ;; mu4e
@@ -2455,7 +2455,7 @@ Also affects 'linum-mode' background."
                                    :weight normal))))
 
    `(mu4e-cited-4-face
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :slant italic
                                    :weight normal))))
 
@@ -2479,7 +2479,7 @@ Also affects 'linum-mode' background."
                                    :weight bold))))
 
    `(mu4e-view-url-number-face
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :weight normal))))
 
    `(mu4e-warning-face
@@ -2578,7 +2578,7 @@ Also affects 'linum-mode' background."
 
    ;; nav
    `(nav-face-heading
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(nav-face-button-num
      ((,monokai-class (:foreground ,monokai-cyan-l))))
@@ -2785,7 +2785,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-comments))))
 
    `(org-formula
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(org-headline-done
      ((,monokai-class (:foreground ,monokai-green))))
@@ -2807,7 +2807,7 @@ Also affects 'linum-mode' background."
 
    `(org-level-4
      ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-cyan))))
+                                :foreground ,monokai-yellow))))
 
    `(org-level-5
      ((,monokai-class (:inherit ,monokai-pitch
@@ -2863,7 +2863,7 @@ Also affects 'linum-mode' background."
                                    :weight bold))))
 
    `(org-upcoming-deadline
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :weight normal
                                    :underline nil))))
 
@@ -2888,7 +2888,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:background ,monokai-green-lc))))
 
    `(org-habit-alert-face
-     ((,monokai-class (:background ,monokai-cyan
+     ((,monokai-class (:background ,monokai-yellow
                                    :foreground ,monokai-yellow-lc))))
 
    `(org-habit-alert-future-face
@@ -2906,10 +2906,10 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-comments))))
 
    `(org-agenda-restriction-lock
-     ((,monokai-class (:background ,monokai-cyan))))
+     ((,monokai-class (:background ,monokai-yellow))))
 
    `(org-clock-overlay
-     ((,monokai-class (:background ,monokai-cyan))))
+     ((,monokai-class (:background ,monokai-yellow))))
 
    `(org-column
      ((,monokai-class (:background ,monokai-highlight-line
@@ -2984,7 +2984,7 @@ Also affects 'linum-mode' background."
 
    ;; pretty-mode
    `(pretty-mode-symbol-face
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :weight normal))))
 
    ;; popup
@@ -3028,7 +3028,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-green))))
 
    `(rainbow-delimiters-depth-4-face
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(rainbow-delimiters-depth-5-face
      ((,monokai-class (:foreground ,monokai-orange))))
@@ -3046,7 +3046,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-green))))
 
    `(rainbow-delimiters-depth-10-face
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(rainbow-delimiters-depth-11-face
      ((,monokai-class (:foreground ,monokai-orange))))
@@ -3123,7 +3123,7 @@ Also affects 'linum-mode' background."
 
    ;; rst-mode
    `(rst-level-1-face
-     ((,monokai-class (:background ,monokai-cyan
+     ((,monokai-class (:background ,monokai-yellow
                                    :foreground ,monokai-background))))
 
    `(rst-level-2-face
@@ -3157,7 +3157,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-red))))
 
    `(rpm-spec-macro-face
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(rpm-spec-obsolete-tag-face
      ((,monokai-class (:foreground ,monokai-red))))
@@ -3166,7 +3166,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-red))))
 
    `(rpm-spec-section-face
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(rpm-spec-tag-face
      ((,monokai-class (:foreground ,monokai-blue))))
@@ -3180,11 +3180,11 @@ Also affects 'linum-mode' background."
                                    :weight bold))))
 
    `(sh-escaped-newline
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :weight bold))))
 
    `(sh-heredoc
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :weight bold))))
 
    ;; smartparens
@@ -3283,7 +3283,7 @@ Also affects 'linum-mode' background."
 
    `(speedbar-selected-face
      ((,monokai-class (:inherit ,monokai-pitch
-                                :foreground ,monokai-cyan
+                                :foreground ,monokai-yellow
                                 :underline t))))
 
    `(speedbar-separator-face
@@ -3304,7 +3304,7 @@ Also affects 'linum-mode' background."
                                    :weight bold))))
 
    `(sr-editing-path-face
-     ((,monokai-class (:background ,monokai-cyan
+     ((,monokai-class (:background ,monokai-yellow
                                    :foreground ,monokai-background
                                    :weight bold
                                    :height ,monokai-height-plus-1))))
@@ -3386,7 +3386,7 @@ Also affects 'linum-mode' background."
    ;; syslog-mode
    `(syslog-ip-face
      ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-cyan))))
+                                   :foreground ,monokai-yellow))))
 
    `(syslog-hour-face
      ((,monokai-class (:background unspecified
@@ -3435,7 +3435,7 @@ Also affects 'linum-mode' background."
                                    :background ,monokai-green-d))))
 
    `(term-color-yellow
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :background ,monokai-yellow-d))))
 
    `(term-color-blue
@@ -3474,7 +3474,7 @@ Also affects 'linum-mode' background."
                                    :weight bold))))
 
    `(treemacs-header-face
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :background ,monokai-background
                                    :underline t
                                    :weight bold))))
@@ -3517,7 +3517,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-emphasis))))
 
    `(tuareg-font-lock-error-face
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :background ,monokai-red
                                    :weight bold))))
 
@@ -3545,7 +3545,7 @@ Also affects 'linum-mode' background."
                                    :weight bold))))
 
    `(undo-tree-visualizer-register-face
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    ;; volatile highlights
    `(vhl/default-face
@@ -3564,7 +3564,7 @@ Also affects 'linum-mode' background."
 
    `(w3m-header-line-location-title
      ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-cyan))))
+                                   :foreground ,monokai-yellow))))
 
    `(w3m-header-line-location-content
 
@@ -3613,7 +3613,7 @@ Also affects 'linum-mode' background."
 
    `(w3m-tab-mouse
      ((,monokai-class (:background ,monokai-highlight-line
-                                   :foreground ,monokai-cyan))))
+                                   :foreground ,monokai-yellow))))
 
    `(w3m-tab-selected
      ((,monokai-class (:background ,monokai-highlight-line
@@ -3675,7 +3675,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:inherit web-mode-html-attr-name-face))))
 
    `(web-mode-html-attr-value-face
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(web-mode-html-tag-face
      ((,monokai-class (:foreground ,monokai-green))))
@@ -3687,12 +3687,12 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-red))))
 
    `(web-mode-preprocessor-face
-     ((,monokai-class (:foreground ,monokai-cyan
+     ((,monokai-class (:foreground ,monokai-yellow
                                    :slant normal
                                    :weight unspecified))))
 
    `(web-mode-string-face
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(web-mode-type-face
      ((,monokai-class (:inherit font-lock-type-face))))
@@ -3824,7 +3824,7 @@ Also affects 'linum-mode' background."
 
    `(whitespace-indentation
      ((,monokai-class (:background unspecified
-                                   :foreground ,monokai-cyan
+                                   :foreground ,monokai-yellow
                                    :inverse-video unspecified
                                    :weight bold))))
 
@@ -3908,7 +3908,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-foreground))))
 
    `(wl-highlight-summary-thread-top-face
-     ((,monokai-class (:foreground ,monokai-cyan))))
+     ((,monokai-class (:foreground ,monokai-yellow))))
 
    `(wl-highlight-thread-indent-face
      ((,monokai-class (:foreground ,monokai-magenta))))
@@ -3971,8 +3971,8 @@ Also affects 'linum-mode' background."
 
   (custom-theme-set-variables
    'monokai
-   `(ansi-color-names-vector [,monokai-background ,monokai-red ,monokai-green ,monokai-cyan
-                                                  ,monokai-blue ,monokai-magenta ,monokai-cyan-l ,monokai-foreground])
+   `(ansi-color-names-vector [,monokai-background ,monokai-red ,monokai-green ,monokai-yellow
+                                                  ,monokai-blue ,monokai-magenta ,monokai-cyan ,monokai-foreground])
 
    ;; compilation
    `(compilation-message-face 'default)
@@ -4006,7 +4006,7 @@ Also affects 'linum-mode' background."
      '((20 . ,monokai-red)
        (40 . "#CF4F1F")
        (60 . "#C26C0F")
-       (80 . ,monokai-cyan)
+       (80 . ,monokai-yellow)
        (100 . "#AB8C00")
        (120 . "#A18F00")
        (140 . "#989200")
@@ -4016,7 +4016,7 @@ Also affects 'linum-mode' background."
        (220 . "#609C3C")
        (240 . "#4E9D5B")
        (260 . "#3C9F79")
-       (280 . ,monokai-cyan-l)
+       (280 . ,monokai-cyan)
        (300 . "#299BA6")
        (320 . "#2896B5")
        (340 . "#2790C3")
