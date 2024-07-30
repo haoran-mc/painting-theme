@@ -730,23 +730,6 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-red
                                    :weight bold))))
 
-   ;; android mode
-   `(android-mode-debug-face
-     ((,monokai-class (:foreground ,monokai-green))))
-
-   `(android-mode-error-face
-     ((,monokai-class (:foreground ,monokai-orange
-                                   :weight bold))))
-
-   `(android-mode-info-face
-     ((,monokai-class (:foreground ,monokai-foreground))))
-
-   `(android-mode-verbose-face
-     ((,monokai-class (:foreground ,monokai-comments))))
-
-   `(android-mode-warning-face
-     ((,monokai-class (:foreground ,monokai-yellow))))
-
    ;; anzu-mode
    `(anzu-mode-line
      ((,monokai-class (:foreground ,monokai-violet
