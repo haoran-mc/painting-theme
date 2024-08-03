@@ -2140,7 +2140,7 @@ Also affects 'linum-mode' background."
                                    :weight normal))))
 
    `(org-block
-     ((,monokai-class (:foreground ,monokai-emphasis
+     ((,monokai-class (:foreground ,monokai-violet
                                    :background ,monokai-highlight-alt))))
 
    `(org-block-background
