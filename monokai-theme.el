@@ -2319,8 +2319,7 @@ Also affects 'linum-mode' background."
      ((,monokai-class (:foreground ,monokai-foreground))))
 
    `(org-document-title
-     ((,monokai-class (:foreground ,monokai-emphasis
-                                   :height ,monokai-height-plus-4))))
+     ((,monokai-class (:foreground ,monokai-emphasis))))
 
    `(org-drawer
      ((,monokai-class (:foreground ,monokai-cyan-l))))
