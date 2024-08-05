@@ -496,6 +496,21 @@ Also affects 'linum-mode' background."
    `(tab-line-tab-modified
      ((,monokai-class (:inherit tab-line-tab))))
 
+   ;; tab-bar
+   `(tab-bar
+     ((,monokai-class (:background ,monokai-background))))
+   `(tab-bar-tab
+     ((,monokai-class (:foreground ,monokai-background
+                                   :background ,monokai-orange
+                                   :box (:line-width -2 :color ,monokai-orange)))))
+   `(tab-bar-tab-inactive
+     ((,monokai-class (:foreground ,monokai-foreground
+                                   :background ,monokai-background))))
+
+   ;; hl-todo
+   `(hl-todo
+     ((,monokai-class (:weight normal))))
+
    ;; window-tool-bar
    `(window-tool-bar-button
      ((,monokai-class (:inherit tab-line))))
@@ -790,7 +805,7 @@ Also affects 'linum-mode' background."
 
    `(cfw:face-today
      ((,monokai-class (:background ,monokai-highlight-line
-                               :foreground unspecified))))
+                                   :foreground unspecified))))
 
    `(cfw:face-today-title
      ((,monokai-class (:background ,monokai-yellow-lc
@@ -2162,7 +2177,7 @@ Also affects 'linum-mode' background."
                                    :box (:line-width 1 :style released-button)))))
 
    `(org-code
-     ((,monokai-class (:foreground ,monokai-violet-lc))))
+     ((,monokai-class (:foreground ,monokai-orange))))
 
    `(org-date
      ((,monokai-class (:foreground ,monokai-blue
@@ -2216,7 +2231,7 @@ Also affects 'linum-mode' background."
                                 :foreground ,monokai-blue))))
 
    `(org-link
-     ((,monokai-class (:foreground ,monokai-orange
+     ((,monokai-class (:foreground ,monokai-magenta-l
                                    :underline t))))
 
    `(org-list-dt ((t (:bold nil
@@ -2316,16 +2331,16 @@ Also affects 'linum-mode' background."
                                    :inverse-video t))))
 
    `(org-document-info
-     ((,monokai-class (:foreground ,monokai-foreground))))
+     ((,monokai-class (:foreground ,monokai-blue))))
 
    `(org-document-title
-     ((,monokai-class (:foreground ,monokai-emphasis))))
+     ((,monokai-class (:foreground ,monokai-blue))))
 
    `(org-drawer
      ((,monokai-class (:foreground ,monokai-cyan-l))))
 
    `(org-footnote
-     ((,monokai-class (:foreground ,monokai-magenta
+     ((,monokai-class (:foreground ,monokai-orange-lc
                                    :underline t))))
 
    `(org-latex-and-export-specials
