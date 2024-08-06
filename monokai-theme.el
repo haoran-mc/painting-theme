@@ -435,15 +435,6 @@ Also affects 'linum-mode' background."
    `(dropdown-list-selection-face ((t (:background ,monokai-green
                                                    :foreground ,monokai-background))))
 
-   ;; ee
-   `(ee-bookmarked ((t (:foreground ,monokai-emphasis))))
-   `(ee-category ((t (:foreground ,monokai-blue))))
-   `(ee-link ((t (:inherit link))))
-   `(ee-link-visited ((t (:inherit link-visited))))
-   `(ee-marked ((t (:foreground ,monokai-magenta))))
-   `(ee-omitted ((t (:foreground ,monokai-comments))))
-   `(ee-shadow ((t (:inherit shadow))))
-
    ;; grep
    `(grep-context-face ((t (:foreground ,monokai-foreground))))
    `(grep-error-face ((t (:foreground ,monokai-red :underline t))))
@@ -469,51 +460,6 @@ Also affects 'linum-mode' background."
                                                :background ,monokai-background
                                                :inverse-video nil))))
 
-   ;; auctex
-   `(font-latex-bold-face ((t (:inherit bold :foreground ,monokai-emphasis))))
-   `(font-latex-doctex-documentation-face ((t (:background unspecified))))
-   `(font-latex-doctex-preprocessor-face ((t
-                                           (:inherit (font-latex-doctex-documentation-face
-                                                      font-lock-builtin-face
-                                                      font-lock-preprocessor-face)))))
-
-   `(font-latex-italic-face ((t (:inherit italic :foreground ,monokai-emphasis))))
-   `(font-latex-math-face ((t (:foreground ,monokai-violet))))
-   `(font-latex-sectioning-0-face ((t (:inherit font-latex-sectioning-1-face
-                                                :height ,monokai-height-plus-1))))
-   `(font-latex-sectioning-1-face ((t (:inherit font-latex-sectioning-2-face
-                                                :height ,monokai-height-plus-1))))
-   `(font-latex-sectioning-2-face ((t (:inherit font-latex-sectioning-3-face
-                                                :height ,monokai-height-plus-1))))
-   `(font-latex-sectioning-3-face ((t (:inherit font-latex-sectioning-4-face
-                                                :height ,monokai-height-plus-1))))
-   `(font-latex-sectioning-4-face ((t (:inherit font-latex-sectioning-5-face
-                                                :height ,monokai-height-plus-1))))
-   `(font-latex-sectioning-5-face ((t (:inherit ,monokai-pitch
-                                                :foreground ,monokai-yellow))))
-   `(font-latex-slide-title-face ((t (:inherit (,monokai-pitch font-lock-type-face)
-                                               :height ,monokai-height-plus-3))))
-
-   `(font-latex-string-face ((t (:foreground ,monokai-cyan-l))))
-   `(font-latex-subscript-face ((t (:height ,monokai-height-minus-1))))
-   `(font-latex-superscript-face ((t (:height ,monokai-height-minus-1))))
-   `(font-latex-sedate-face ((t (:foreground ,monokai-emphasis))))
-   `(font-latex-verbatim-face ((t (:inherit fixed-pitch
-                                            :foreground ,monokai-foreground
-                                            :slant italic))))
-
-   `(font-latex-warning-face ((t (:inherit bold :foreground ,monokai-orange))))
-
-   ;; auto highlight symbol
-   `(ahs-definition-face ((t (:foreground ,monokai-background :background ,monokai-blue))))
-   `(ahs-edit-mode-face ((t (:foreground ,monokai-background :background ,monokai-highlight))))
-   `(ahs-face ((t (:foreground ,monokai-background :background ,monokai-yellow))))
-   `(ahs-plugin-bod-face ((t (:foreground ,monokai-background :background ,monokai-violet ))))
-   `(ahs-warning-face ((t (:foreground ,monokai-red))))
-   `(ahs-plugin-defalt-face ((t (:foreground ,monokai-background :background ,monokai-orange))))
-   `(ahs-plugin-whole-buffer-face ((t (:foreground ,monokai-background
-                                                   :background ,monokai-green))))
-
    ;; anzu-mode
    `(anzu-mode-line ((t (:foreground ,monokai-violet))))
 
@@ -523,32 +469,6 @@ Also affects 'linum-mode' background."
    `(bm-persistent-face ((t (:background ,monokai-green-lc :foreground ,monokai-background))))
    `(bm-fringe-persistent-face ((t (:background ,monokai-green-lc
                                                 :foreground ,monokai-background))))
-
-   ;; calfw
-   `(cfw:face-day-title ((t (:background ,monokai-highlight-line))))
-   `(cfw:face-annotation ((t (:inherit cfw:face-day-title :foreground ,monokai-yellow))))
-   `(cfw:face-default-content ((t (:foreground ,monokai-green))))
-   `(cfw:face-default-day ((t (:inherit cfw:face-day-title))))
-   `(cfw:face-disable ((t (:inherit cfw:face-day-title :foreground ,monokai-comments))))
-   `(cfw:face-grid ((t (:foreground ,monokai-comments))))
-   `(cfw:face-header ((t (:foreground ,monokai-blue-hc :background ,monokai-blue-lc))))
-   `(cfw:face-holiday ((t (:background unspecified :foreground ,monokai-red))))
-   `(cfw:face-periods ((t (:foreground ,monokai-magenta))))
-   `(cfw:face-select ((t (:background ,monokai-magenta-lc :foreground ,monokai-magenta-hc))))
-   `(cfw:face-saturday ((t (:foreground ,monokai-cyan-hc :background ,monokai-cyan-lc))))
-   `(cfw:face-sunday ((t (:foreground ,monokai-red-hc :background ,monokai-red-lc))))
-   `(cfw:face-title ((t (:inherit ,monokai-pitch
-                                  :foreground ,monokai-yellow
-                                  :height ,monokai-height-plus-4))))
-
-   `(cfw:face-today ((t (:background ,monokai-highlight-line :foreground unspecified))))
-   `(cfw:face-today-title ((t (:background ,monokai-yellow-lc :foreground ,monokai-yellow-hc))))
-   `(cfw:face-toolbar ((t (:background ,monokai-highlight-line :foreground ,monokai-foreground))))
-   `(cfw:face-toolbar-button-off ((t (:background ,monokai-yellow-lc
-                                                  :foreground ,monokai-yellow-hc))))
-
-   `(cfw:face-toolbar-button-on ((t (:background ,monokai-yellow-hc
-                                                 :foreground ,monokai-yellow-lc))))
 
    ;; cider
    `(cider-enlightened ((t (:foreground ,monokai-yellow
@@ -623,13 +543,6 @@ Also affects 'linum-mode' background."
                                               :foreground ,monokai-red))))
 
    `(compilation-mode-line-run ((t (:foreground ,monokai-orange))))
-
-   ;; CSCOPE
-   `(cscope-file-face ((t (:foreground ,monokai-green))))
-   `(cscope-function-face ((t (:foreground ,monokai-blue))))
-   `(cscope-line-number-face ((t (:foreground ,monokai-yellow))))
-   `(cscope-line-face ((t (:foreground ,monokai-foreground))))
-   `(cscope-mouse-face ((t (:background ,monokai-blue :foreground ,monokai-foreground))))
 
    ;; ctable
    `(ctbl:face-cell-select ((t (:background ,monokai-highlight-line
@@ -713,22 +626,9 @@ Also affects 'linum-mode' background."
    `(ediff-odd-diff-C  ((t (:background ,monokai-comments
                                         :foreground ,monokai-background ))))
 
-   ;; elfeed
-   `(elfeed-search-date-face  ((t (:foreground ,monokai-comments))))
-   `(elfeed-search-feed-face  ((t (:foreground ,monokai-comments))))
-   `(elfeed-search-tag-face   ((t (:foreground ,monokai-foreground))))
-   `(elfeed-search-title-face ((t (:foreground ,monokai-cyan-l))))
-
    ;; elixir
    `(elixir-attribute-face ((t (:foreground ,monokai-orange))))
    `(elixir-atom-face      ((t (:foreground ,monokai-violet))))
-
-   ;; ein
-   `(ein:cell-input-area ((t (:background ,monokai-highlight-line))))
-   `(ein:cell-input-prompt ((t (:foreground ,monokai-green))))
-   `(ein:cell-output-prompt ((t (:foreground ,monokai-red))))
-   `(ein:notification-tab-normal ((t (:foreground ,monokai-blue))))
-   `(ein:notification-tab-selected ((t (:foreground ,monokai-orange :inherit bold))))
 
    ;; enhanced ruby mode
    `(enh-ruby-string-delimiter-face ((t (:inherit font-lock-string-face))))
@@ -754,25 +654,6 @@ Also affects 'linum-mode' background."
    `(eshell-ls-product ((t (:inherit font-lock-doc-face))))
    `(eshell-ls-special ((t (:foreground ,monokai-yellow :inherit bold))))
    `(eshell-ls-symlink ((t (:foreground ,monokai-cyan-l :inherit bold))))
-
-   ;; fic
-   `(fic-author-face ((t (:background ,monokai-background
-                                      :foreground ,monokai-orange
-                                      :underline t
-                                      :slant italic))))
-   `(fic-face ((t (:background ,monokai-background
-                               :foreground ,monokai-orange
-                               :weight normal
-                               :slant italic))))
-   `(font-lock-fic-face ((t (:background ,monokai-background
-                                         :foreground ,monokai-orange
-                                         :weight normal
-                                         :slant italic))))
-
-   ;; flx
-   `(flx-highlight-face ((t (:foreground ,monokai-blue
-                                         :weight normal
-                                         :underline nil))))
 
    ;; flymake
    `(flymake-errline
@@ -897,44 +778,6 @@ Also affects 'linum-mode' background."
                    :inherit unspecified))
       (,monokai-256-class (:foreground ,monokai-256-red
                                        :underline t))))
-
-
-   ;; git-gutter
-   `(git-gutter:added ((t (:background ,monokai-green
-                                       :foreground ,monokai-background
-                                       :inherit bold))))
-   `(git-gutter:deleted ((t (:background ,monokai-red
-                                         :foreground ,monokai-background
-                                         :inherit bold))))
-   `(git-gutter:modified ((t (:background ,monokai-blue
-                                          :foreground ,monokai-background
-                                          :inherit bold))))
-   `(git-gutter:unchanged ((t (:background ,monokai-highlight-line
-                                           :foreground ,monokai-background
-                                           :inherit bold))))
-
-   ;; git-gutter-fr
-   `(git-gutter-fr:added    ((t (:foreground ,monokai-green :inherit bold))))
-   `(git-gutter-fr:deleted  ((t (:foreground ,monokai-red :inherit bold))))
-   `(git-gutter-fr:modified ((t (:foreground ,monokai-blue :inherit bold))))
-
-   ;; git-gutter+ and git-gutter+-fr
-   `(git-gutter+-added ((t (:background ,monokai-green
-                                        :foreground ,monokai-background
-                                        :inherit bold))))
-   `(git-gutter+-deleted ((t (:background ,monokai-red
-                                          :foreground ,monokai-background
-                                          :inherit bold))))
-   `(git-gutter+-modified ((t (:background ,monokai-blue
-                                           :foreground ,monokai-background
-                                           :inherit bold))))
-   `(git-gutter+-unchanged ((t (:background ,monokai-highlight-line
-                                            :foreground ,monokai-background
-                                            :inherit bold))))
-
-   `(git-gutter-fr+-added ((t (:foreground ,monokai-green))))
-   `(git-gutter-fr+-deleted ((t (:foreground ,monokai-red))))
-   `(git-gutter-fr+-modified ((t (:foreground ,monokai-blue))))
 
    ;; git-timemachine
    `(git-timemachine-minibuffer-detail-face ((t (:foreground ,monokai-blue
@@ -1203,20 +1046,6 @@ Also affects 'linum-mode' background."
    `(search-buffers-header-face ((t (:background ,monokai-highlight-line
                                                  :foreground ,monokai-yellow))))
 
-   ;; mumamo
-   `(mumamo-background-chunk-submode1 ((t (:background ,monokai-highlight-line))))
-
-   ;; nav
-   `(nav-face-heading ((t (:foreground ,monokai-yellow))))
-   `(nav-face-button-num ((t (:foreground ,monokai-cyan-l))))
-   `(nav-face-dir ((t (:foreground ,monokai-green))))
-   `(nav-face-hdir ((t (:foreground ,monokai-red))))
-   `(nav-face-file ((t (:foreground ,monokai-foreground))))
-   `(nav-face-hfile ((t (:foreground ,monokai-red))))
-
-   ;; nav-flash
-   `(nav-flash-face ((t (:background ,monokai-highlight-line))))
-
    ;; neo-tree
    `(neo-banner-face ((t (:foreground ,monokai-blue
                                       :background ,monokai-background))))
@@ -1484,20 +1313,6 @@ Also affects 'linum-mode' background."
                                           :weight normal
                                           :inverse-video t))))
 
-   ;; SLIME
-   `(slime-repl-inputed-output-face ((t (:foreground ,monokai-red))))
-
-   ;; smerge
-   `(smerge-base ((t (:background ,monokai-diff-blue-base))))
-   `(smerge-upper ((t (:background ,monokai-diff-red-base))))
-   `(smerge-lower ((t (:background ,monokai-diff-green-base))))
-   ;; WARNING: defining this face will overwrite the next two when displaying a
-   ;; smerge diff in a file.
-   ;; `(smerge-refined-changed
-   ;;    ((,monokai-class (:background ,monokai-diff-blue-emphasis)) ;;      ))
-   `(smerge-refined-added ((t (:background ,monokai-diff-green-emphasis))))
-   `(smerge-refined-removed ((t (:background ,monokai-diff-red-emphasis))))
-
    ;; speedbar
    `(speedbar-button-face ((t (:inherit ,monokai-pitch :foreground ,monokai-comments))))
    `(speedbar-directory-face ((t (:inherit ,monokai-pitch :foreground ,monokai-blue))))
@@ -1512,59 +1327,6 @@ Also affects 'linum-mode' background."
                                            :overline ,monokai-cyan-lc))))
    `(speedbar-tag-face ((t (:inherit ,monokai-pitch
                                      :foreground ,monokai-green))))
-
-   ;; sunrise commander headings
-   `(sr-active-path-face ((t (:background ,monokai-blue
-                                          :foreground ,monokai-background
-                                          :height ,monokai-height-plus-1))))
-   `(sr-editing-path-face ((t (:background ,monokai-yellow
-                                           :foreground ,monokai-background
-                                           :height ,monokai-height-plus-1))))
-   `(sr-highlight-path-face ((t (:background ,monokai-green
-                                             :foreground ,monokai-background
-                                             :height ,monokai-height-plus-1))))
-   `(sr-passive-path-face ((t (:background ,monokai-comments
-                                           :foreground ,monokai-background
-                                           :height ,monokai-height-plus-1))))
-
-   ;; sunrise commander marked
-   `(sr-marked-dir-face ((t (:inherit dimonokai-red-marked))))
-   `(sr-marked-file-face ((t (:inherit dimonokai-red-marked))))
-   `(sr-alt-marked-dir-face ((t (:background ,monokai-magenta :foreground ,monokai-background))))
-   `(sr-alt-marked-file-face ((t (:background ,monokai-magenta :foreground ,monokai-background))))
-
-   ;; sunrise commander fstat
-   `(sr-directory-face ((t (:inherit dimonokai-red-directory :weight normal))))
-   `(sr-symlink-directory-face ((t (:inherit dimonokai-red-directory
-                                             :slant italic
-                                             :weight normal))))
-   `(sr-symlink-face ((t (:inherit dimonokai-red-symlink
-                                   :slant italic
-                                   :weight normal))))
-   `(sr-broken-link-face ((t (:inherit dimonokai-red-warning
-                                       :slant italic
-                                       :weight normal))))
-
-   ;; sunrise commander file types
-   `(sr-compressed-face ((t (:foreground ,monokai-foreground))))
-   `(sr-encrypted-face ((t (:foreground ,monokai-foreground))))
-   `(sr-log-face ((t (:foreground ,monokai-foreground))))
-   `(sr-packaged-face ((t (:foreground ,monokai-foreground))))
-   `(sr-html-face ((t (:foreground ,monokai-foreground))))
-   `(sr-xml-face ((t (:foreground ,monokai-foreground))))
-
-   ;; sunrise commander misc
-   `(sr-clex-hotchar-face ((t (:background ,monokai-red
-                                           :foreground ,monokai-background))))
-
-   ;; syslog-mode
-   `(syslog-ip-face ((t (:background unspecified :foreground ,monokai-yellow))))
-   `(syslog-hour-face ((t (:background unspecified :foreground ,monokai-green))))
-   `(syslog-error-face ((t (:background unspecified :foreground ,monokai-red))))
-   `(syslog-warn-face ((t (:background unspecified :foreground ,monokai-orange))))
-   `(syslog-info-face ((t (:background unspecified :foreground ,monokai-blue))))
-   `(syslog-debug-face ((t (:background unspecified :foreground ,monokai-cyan-l))))
-   `(syslog-su-face ((t (:background unspecified :foreground ,monokai-magenta))))
 
    ;; table
    `(table-cell ((t (:foreground ,monokai-foreground
@@ -1755,12 +1517,6 @@ Also affects 'linum-mode' background."
 
    ;; window-number-mode
    `(window-number-face ((t (:foreground ,monokai-green))))
-
-   ;; yascroll
-   `(yascroll:thumb-text-area ((t (:foreground ,monokai-comments
-                                               :background ,monokai-comments))))
-   `(yascroll:thumb-fringe ((t (:foreground ,monokai-comments
-                                            :background ,monokai-comments))))
 
    ;; zencoding
    `(zencoding-preview-input ((t (:background ,monokai-highlight-line
