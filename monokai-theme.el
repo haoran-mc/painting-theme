@@ -179,34 +179,7 @@ The theme has to be reloaded after changing anything in this group."
        (monokai-height-plus-4       1.30)
 
        ;; Distinct fringe
-       (monokai-fringe-bg monokai-background)
-
-       ;; Definitions for terminals that do not support 256 colors
-       (monokai-256-class '((class color) (min-colors 89)))
-
-       ;; 256 Primary colors
-       (monokai-256-yellow         "#CDC673")
-       (monokai-256-orange         "#FF8C00")
-       (monokai-256-red            "#FF1493")
-       (monokai-256-blue           "#5FD7FF")
-       (monokai-256-green          "#87D700")
-       (monokai-256-gray           "#3D3D3D")
-       ;; Darker and lighter accented colors
-       (monokai-256-yellow-d       "#878700")
-       (monokai-256-yellow-l       "#FFFF87")
-       (monokai-256-red-d          "#870000")
-       (monokai-256-red-l          "#FF5F87")
-       (monokai-256-green-d        "#5F8700")
-       (monokai-256-green-l        "#AFD700")
-       ;; Adaptive colors
-       (monokai-256-background     "#1B1E1C")
-       ;; High contrast colors
-       (monokai-256-yellow-hc      monokai-256-yellow-d)
-       (monokai-256-yellow-lc      monokai-256-yellow-l)
-       (monokai-256-red-hc         monokai-256-red-d)
-       (monokai-256-red-lc         monokai-256-red-l)
-       (monokai-256-green-hc       monokai-256-green-d)
-       (monokai-256-green-lc       monokai-256-green-l))
+       (monokai-fringe-bg monokai-background))
 
   ;; Define faces
   (custom-theme-set-faces
@@ -571,176 +544,46 @@ The theme has to be reloaded after changing anything in this group."
    `(eshell-ls-symlink ((t (:foreground ,monokai-cyan-l :inherit bold))))
 
    ;; erm-syn
-   `(erm-syn-errline
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-red)
-                   :inherit unspecified))
-      (,monokai-class (:foreground ,monokai-red-hc
-                                   :background ,monokai-red-lc
-                                   :weight bold
-                                   :underline t))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-red)
-                   :inherit unspecified))
-      (,monokai-256-class (:foreground ,monokai-256-red-hc
-                                       :background ,monokai-256-red-lc
+   `(erm-syn-errline ((t (:foreground ,monokai-red-hc
+                                      :background ,monokai-red-lc
+                                      :weight bold
+                                      :underline (:style wave :color ,monokai-red)))))
+   `(erm-syn-warnline ((t (:foreground ,monokai-orange-hc
+                                       :background ,monokai-orange-lc
                                        :weight bold
-                                       :underline t))))
-
-   ;; `(erm-syn-warnline
-   ;;   ((,(append '((supports :underline (:style wave))) monokai-class)
-   ;;     (:underline (:style wave :color ,monokai-orange)
-   ;;                 :inherit unspecified))
-   ;;    (,monokai-class (:foreground ,monokai-orange-hc
-   ;;                                 :background ,monokai-orange-lc
-   ;;                                 :weight bold
-   ;;                                 :underline t))
-   ;;    (,(append '((supports :underline (:style wave))) monokai-256-class )
-   ;;     (:underline (:style wave :color ,monokai-256-orange)
-   ;;                 :inherit unspecified))
-   ;;    (,monokai-256-class (:foreground ,monokai-256-orange-hc
-   ;;                                     :background ,monokai-256-orange-lc
-   ;;                                     :weight bold
-   ;;                                     :underline t))))
-
-   ;; `(erm-syn-warnline
-   ;;   ((,(append '((supports :underline (:style wave))) monokai-class)
-   ;;     (:underline (:style wave :color ,monokai-orange)
-   ;;                 :inherit unspecified))
-   ;;    (,monokai-class (:foreground ,monokai-orange-hc
-   ;;                                 :background ,monokai-orange-lc
-   ;;                                 :weight bold
-   ;;                                 :underline t))))
-
-   `(erm-syn-warnline
-     ((t (:foreground ,monokai-orange-hc
-                      :background ,monokai-orange-lc
-                      :weight bold
-                      :underline (:style wave :color ,monokai-orange)))))
+                                       :underline (:style wave :color ,monokai-orange)))))
 
    ;; flymake
-   `(flymake-errline
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-red)
-                   :inherit unspecified
-                   :foreground unspecified
-                   :background unspecified))
-      (,monokai-class (:foreground ,monokai-red-hc
-                                   :background ,monokai-red-lc
-                                   :underline t))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-red)
-                   :inherit unspecified
-                   :foreground unspecified
-                   :background unspecified))
-      (,monokai-256-class (:foreground ,monokai-256-red-hc
-                                       :background ,monokai-256-red-lc
-                                       :underline t))))
-
-   `(flymake-infoline
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-green)
-                   :inherit unspecified
-                   :foreground unspecified
-                   :background unspecified))
-      (,monokai-class (:foreground ,monokai-green-hc
-                                   :background ,monokai-green-lc))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-green)
-                   :inherit unspecified
-                   :foreground unspecified
-                   :background unspecified))
-      (,monokai-256-class (:foreground ,monokai-256-green-hc
-                                       :background ,monokai-256-green-lc))))
-
-   `(flymake-warnline
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-yellow)
-                   :inherit unspecified
-                   :foreground unspecified
-                   :background unspecified))
-      (,monokai-class (:foreground ,monokai-yellow-hc
-                                   :background ,monokai-yellow-lc
-                                   :underline t))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-yellow)
-                   :inherit unspecified
-                   :foreground unspecified
-                   :background unspecified))
-      (,monokai-256-class (:foreground ,monokai-256-yellow-hc
-                                       :background ,monokai-256-yellow-lc
-                                       :underline t))))
+   `(flymake-errline ((t (:foreground ,monokai-red-hc
+                                      :background ,monokai-red-lc
+                                      :underline (:style wave :color ,monokai-red)))))
+   `(flymake-infoline ((t (:foreground ,monokai-green-hc
+                                       :background ,monokai-green-lc
+                                       :underline (:style wave :color ,monokai-green)))))
+   `(flymake-warnline ((t (:foreground ,monokai-yellow-hc
+                                       :background ,monokai-yellow-lc
+                                       :underline (:style wave :color ,monokai-yellow)))))
 
    ;; flycheck
-   `(flycheck-error
-     ((,(append '((supports :underline (:style line))) monokai-class)
-       (:underline (:style line :color ,monokai-red)))
-      (,monokai-class (:foreground ,monokai-red
-                                   :background ,monokai-background
-                                   :underline t))
-      (,(append '((supports :underline (:style line))) monokai-256-class )
-       (:underline (:style line :color ,monokai-256-red)))
-      (,monokai-256-class (:foreground ,monokai-256-red
-                                       :background ,monokai-256-background
-                                       :underline t))))
+   `(flycheck-info ((t (:foreground ,monokai-blue
+                                    :background ,monokai-background
+                                    :underline (:style line :color ,monokai-blue)))))
+   `(flycheck-warning ((t (:foreground ,monokai-orange
+                                       :background ,monokai-background
+                                       :underline (:style line :color ,monokai-orange)))))
+   `(flycheck-error ((t (:foreground ,monokai-red
+                                     :background ,monokai-background
+                                     :underline (:style line :color ,monokai-red)))))
 
-   `(flycheck-warning
-     ((,(append '((supports :underline (:style line))) monokai-class)
-       (:underline (:style line :color ,monokai-orange)))
-      (,monokai-class (:foreground ,monokai-orange
-                                   :background ,monokai-background
-                                   :underline t))
-      (,(append '((supports :underline (:style line))) monokai-256-class )
-       (:underline (:style line :color ,monokai-256-orange)))
-      (,monokai-256-class (:foreground ,monokai-256-orange
-                                       :background ,monokai-256-background
-                                       :underline t))))
-
-   `(flycheck-info
-     ((,(append '((supports :underline (:style line))) monokai-class)
-       (:underline (:style line :color ,monokai-blue)))
-      (,monokai-class (:foreground ,monokai-blue
-                                   :background ,monokai-background
-                                   :underline t))
-      (,(append '((supports :underline (:style line))) monokai-256-class )
-       (:underline (:style line :color ,monokai-256-blue)))
-      (,monokai-256-class (:foreground ,monokai-256-blue
-                                       :background ,monokai-256-background
-                                       :underline t))))
-
-   `(flycheck-fringe-error ((t (:foreground ,monokai-red-l
-                                            :background unspecified))))
-
-   `(flycheck-fringe-warning ((t (:foreground ,monokai-orange-l
-                                              :background unspecified))))
-
-   `(flycheck-fringe-info ((t (:foreground ,monokai-blue-l
-                                           :background unspecified))))
+   `(flycheck-fringe-info ((t (:foreground ,monokai-blue-l :background unspecified))))
+   `(flycheck-fringe-warning ((t (:foreground ,monokai-orange-l :background unspecified))))
+   `(flycheck-fringe-error ((t (:foreground ,monokai-red-l :background unspecified))))
 
    ;; flyspell
-   `(flyspell-duplicate
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-yellow)
-                   :inherit unspecified))
-      (,monokai-class (:foreground ,monokai-yellow
-                                   :underline t))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-yellow)
-                   :inherit unspecified))
-      (,monokai-256-class (:foreground ,monokai-256-yellow
-                                       :underline t))))
-
-   `(flyspell-incorrect
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-red)
-                   :inherit unspecified))
-      (,monokai-class (:foreground ,monokai-red
-                                   :underline t))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-red)
-                   :inherit unspecified))
-      (,monokai-256-class (:foreground ,monokai-256-red
-                                       :underline t))))
+   `(flyspell-duplicate ((t (:foreground ,monokai-yellow
+                                         :underline (:style wave :color ,monokai-yellow)))))
+   `(flyspell-incorrect ((t (:foreground ,monokai-red
+                                         :underline (:style wave :color ,monokai-red)))))
 
    ;; git-timemachine
    `(git-timemachine-minibuffer-detail-face ((t (:foreground ,monokai-blue
