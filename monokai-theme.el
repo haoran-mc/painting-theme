@@ -39,11 +39,6 @@ Also affects 'linum-mode' background."
   :type 'boolean
   :group 'monokai)
 
-(defcustom monokai-use-variable-pitch nil
-  "Use variable pitch face for some headings and titles."
-  :type 'boolean
-  :group 'monokai)
-
 (defcustom monokai-doc-face-as-comment nil
   "Consider `font-lock-doc-face' as comment instead of a string."
   :type 'boolean
@@ -161,12 +156,7 @@ Also affects 'linum-mode' background."
   :type 'string
   :group 'monokai)
 
-(let* (;; Variable pitch
-       (monokai-pitch (if monokai-use-variable-pitch
-                          'variable-pitch
-                        'default))
-
-       ;; Definitions for guis that support 256 colors
+(let* (;; Definitions for guis that support 256 colors
        (monokai-class '((class color) (min-colors 257)))
 
        ;; Functionality specific colors
@@ -421,7 +411,6 @@ Also affects 'linum-mode' background."
    `(isearch ((t (:inherit region
                            :foreground ,monokai-background
                            :background ,monokai-yellow))))
-
    `(isearch-fail ((t (:inherit isearch
                                 :foreground ,monokai-red
                                 :background ,monokai-background
@@ -535,21 +524,11 @@ Also affects 'linum-mode' background."
    `(coffee-mode-function-param ((t (:foreground ,monokai-violet :slant italic))))
 
    ;; custom
-   `(custom-face-tag ((t (:inherit ,monokai-pitch
-                                   :height ,monokai-height-plus-3
-                                   :foreground ,monokai-violet))))
-   `(custom-variable-tag ((t (:inherit ,monokai-pitch
-                                       :foreground ,monokai-cyan-l
-                                       :height ,monokai-height-plus-3))))
-
+   `(custom-face-tag ((t (:height ,monokai-height-plus-3 :foreground ,monokai-violet))))
+   `(custom-variable-tag ((t (:foreground ,monokai-cyan-l :height ,monokai-height-plus-3))))
    `(custom-comment-tag ((t (:foreground ,monokai-comments))))
-   `(custom-group-tag ((t (:inherit ,monokai-pitch
-                                    :foreground ,monokai-blue
-                                    :height ,monokai-height-plus-3))))
-   `(custom-group-tag-1 ((t (:inherit ,monokai-pitch
-                                      :foreground ,monokai-red
-                                      :height ,monokai-height-plus-3))))
-
+   `(custom-group-tag ((t (:foreground ,monokai-blue :height ,monokai-height-plus-3))))
+   `(custom-group-tag-1 ((t (:foreground ,monokai-red :height ,monokai-height-plus-3))))
    `(custom-state ((t (:foreground ,monokai-green))))
 
    ;; diff
@@ -1122,14 +1101,14 @@ Also affects 'linum-mode' background."
    `(org-headline-done ((t (:foreground ,monokai-green))))
    `(org-hide ((t (:foreground ,monokai-background))))
 
-   `(org-level-1 ((t (:inherit ,monokai-pitch :foreground ,monokai-orange))))
-   `(org-level-2 ((t (:inherit ,monokai-pitch :foreground ,monokai-green))))
-   `(org-level-3 ((t (:inherit ,monokai-pitch :foreground ,monokai-blue))))
-   `(org-level-4 ((t (:inherit ,monokai-pitch :foreground ,monokai-yellow))))
-   `(org-level-5 ((t (:inherit ,monokai-pitch :foreground ,monokai-cyan-l))))
-   `(org-level-6 ((t (:inherit ,monokai-pitch :foreground ,monokai-green))))
-   `(org-level-7 ((t (:inherit ,monokai-pitch :foreground ,monokai-red))))
-   `(org-level-8 ((t (:inherit ,monokai-pitch :foreground ,monokai-blue))))
+   `(org-level-1 ((t (:foreground ,monokai-orange))))
+   `(org-level-2 ((t (:foreground ,monokai-green))))
+   `(org-level-3 ((t (:foreground ,monokai-blue))))
+   `(org-level-4 ((t (:foreground ,monokai-yellow))))
+   `(org-level-5 ((t (:foreground ,monokai-cyan-l))))
+   `(org-level-6 ((t (:foreground ,monokai-green))))
+   `(org-level-7 ((t (:foreground ,monokai-red))))
+   `(org-level-8 ((t (:foreground ,monokai-blue))))
 
    `(org-link ((t (:foreground ,monokai-magenta-l :underline t))))
    `(org-list-dt ((t (:bold nil :foreground ,monokai-red))))
@@ -1290,19 +1269,16 @@ Also affects 'linum-mode' background."
                                           :inverse-video t))))
 
    ;; speedbar
-   `(speedbar-button-face ((t (:inherit ,monokai-pitch :foreground ,monokai-comments))))
-   `(speedbar-directory-face ((t (:inherit ,monokai-pitch :foreground ,monokai-blue))))
-   `(speedbar-file-face ((t (:inherit ,monokai-pitch :foreground ,monokai-foreground))))
-   `(speedbar-highlight-face ((t (:inherit ,monokai-pitch :background ,monokai-highlight-line))))
-   `(speedbar-selected-face ((t (:inherit ,monokai-pitch
-                                          :foreground ,monokai-yellow
-                                          :underline t))))
-   `(speedbar-separator-face ((t (:inherit ,monokai-pitch
-                                           :background ,monokai-blue
-                                           :foreground ,monokai-background
-                                           :overline ,monokai-cyan-lc))))
-   `(speedbar-tag-face ((t (:inherit ,monokai-pitch
-                                     :foreground ,monokai-green))))
+   `(speedbar-button-face ((t (:foreground ,monokai-comments))))
+   `(speedbar-directory-face ((t (:foreground ,monokai-blue))))
+   `(speedbar-file-face ((t (:foreground ,monokai-foreground))))
+   `(speedbar-highlight-face ((t (:background ,monokai-highlight-line))))
+   `(speedbar-selected-face ((t (:foreground ,monokai-yellow
+                                             :underline t))))
+   `(speedbar-separator-face ((t (:background ,monokai-blue
+                                              :foreground ,monokai-background
+                                              :overline ,monokai-cyan-lc))))
+   `(speedbar-tag-face ((t (:foreground ,monokai-green))))
 
    ;; table
    `(table-cell ((t (:foreground ,monokai-foreground
@@ -1323,8 +1299,7 @@ Also affects 'linum-mode' background."
    ;; tooltip. (NOTE: This setting has no effect on the os widgets for me
    ;; zencoding uses this)
    `(tooltip ((t (:background ,monokai-background
-                              :foreground ,monokai-foreground
-                              :inherit ,monokai-pitch))))
+                              :foreground ,monokai-foreground))))
 
    ;; treemacs
    `(treemacs-directory-face ((t (:foreground ,monokai-violet
