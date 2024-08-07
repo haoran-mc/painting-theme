@@ -33,43 +33,6 @@
 The theme has to be reloaded after changing anything in this group."
   :group 'faces)
 
-(defcustom monokai-distinct-fringe-background nil
-  "Make the fringe background different from the normal background color.
-Also affects 'linum-mode' background."
-  :type 'boolean
-  :group 'monokai)
-
-(defcustom monokai-doc-face-as-comment nil
-  "Consider `font-lock-doc-face' as comment instead of a string."
-  :type 'boolean
-  :group 'monokai
-  :package-version "3.5.1")
-
-(defcustom monokai-height-minus-1 0.8
-  "Font size -1."
-  :type 'number
-  :group 'monokai)
-
-(defcustom monokai-height-plus-1 1.1
-  "Font size +1."
-  :type 'number
-  :group 'monokai)
-
-(defcustom monokai-height-plus-2 1.15
-  "Font size +2."
-  :type 'number
-  :group 'monokai)
-
-(defcustom monokai-height-plus-3 1.2
-  "Font size +3."
-  :type 'number
-  :group 'monokai)
-
-(defcustom monokai-height-plus-4 1.3
-  "Font size +4."
-  :type 'number
-  :group 'monokai)
-
 ;; Primary colors
 (defcustom monokai-yellow "#E6DB74"
   "Primary colors - yellow"
@@ -209,10 +172,14 @@ Also affects 'linum-mode' background."
        (monokai-green-hc-alt   "#A6E22C")
        (monokai-green-lc       "#679A01")
 
+       (monokai-height-minus-1      0.80)
+       (monokai-height-plus-1       1.10)
+       (monokai-height-plus-2       1.15)
+       (monokai-height-plus-3       1.20)
+       (monokai-height-plus-4       1.30)
+
        ;; Distinct fringe
-       (monokai-fringe-bg (if monokai-distinct-fringe-background
-                              monokai-gray
-                            monokai-background))
+       (monokai-fringe-bg monokai-background)
 
        ;; Definitions for terminals that do not support 256 colors
        (monokai-256-class '((class color) (min-colors 89)))
@@ -239,12 +206,7 @@ Also affects 'linum-mode' background."
        (monokai-256-red-hc         monokai-256-red-d)
        (monokai-256-red-lc         monokai-256-red-l)
        (monokai-256-green-hc       monokai-256-green-d)
-       (monokai-256-green-lc       monokai-256-green-l)
-
-       ;; Distinct fringe
-       (monokai-256-fringe-bg (if monokai-distinct-fringe-background
-                                  monokai-256-gray
-                                monokai-256-background)))
+       (monokai-256-green-lc       monokai-256-green-l))
 
   ;; Define faces
   (custom-theme-set-faces
@@ -255,9 +217,7 @@ Also affects 'linum-mode' background."
    `(font-lock-comment-delimiter-face ((t (:foreground ,monokai-comments))))
    `(font-lock-comment-face           ((t (:foreground ,monokai-comments))))
    `(font-lock-constant-face          ((t (:foreground ,monokai-violet))))
-   `(font-lock-doc-face               ((t (:foreground ,(if monokai-doc-face-as-comment
-                                                            monokai-comments
-                                                          monokai-cyan)))))
+   `(font-lock-doc-face               ((t (:foreground ,monokai-cyan))))
 
    `(font-lock-function-name-face ((t (:foreground ,monokai-green))))
    `(font-lock-keyword-face       ((t (:foreground ,monokai-red :weight normal))))
