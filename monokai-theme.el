@@ -610,6 +610,39 @@ Also affects 'linum-mode' background."
    `(eshell-ls-special ((t (:foreground ,monokai-yellow :inherit bold))))
    `(eshell-ls-symlink ((t (:foreground ,monokai-cyan-l :inherit bold))))
 
+   ;; erm-syn
+   `(erm-syn-errline
+     ((,(append '((supports :underline (:style wave))) monokai-class)
+       (:underline (:style wave :color ,monokai-red)
+                   :inherit unspecified))
+      (,monokai-class (:foreground ,monokai-red-hc
+                                   :background ,monokai-red-lc
+                                   :weight bold
+                                   :underline t))
+      (,(append '((supports :underline (:style wave))) monokai-256-class )
+       (:underline (:style wave :color ,monokai-256-red)
+                   :inherit unspecified))
+      (,monokai-256-class (:foreground ,monokai-256-red-hc
+                                       :background ,monokai-256-red-lc
+                                       :weight bold
+                                       :underline t))))
+
+   `(erm-syn-warnline
+     ((,(append '((supports :underline (:style wave))) monokai-class)
+       (:underline (:style wave :color ,monokai-orange)
+                   :inherit unspecified))
+      (,monokai-class (:foreground ,monokai-orange-hc
+                                   :background ,monokai-orange-lc
+                                   :weight bold
+                                   :underline t))
+      (,(append '((supports :underline (:style wave))) monokai-256-class )
+       (:underline (:style wave :color ,monokai-256-orange)
+                   :inherit unspecified))
+      (,monokai-256-class (:foreground ,monokai-256-orange-hc
+                                       :background ,monokai-256-orange-lc
+                                       :weight bold
+                                       :underline t))))
+
    ;; flymake
    `(flymake-errline
      ((,(append '((supports :underline (:style wave))) monokai-class)
