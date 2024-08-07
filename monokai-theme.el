@@ -587,21 +587,36 @@ The theme has to be reloaded after changing anything in this group."
                                        :weight bold
                                        :underline t))))
 
+   ;; `(erm-syn-warnline
+   ;;   ((,(append '((supports :underline (:style wave))) monokai-class)
+   ;;     (:underline (:style wave :color ,monokai-orange)
+   ;;                 :inherit unspecified))
+   ;;    (,monokai-class (:foreground ,monokai-orange-hc
+   ;;                                 :background ,monokai-orange-lc
+   ;;                                 :weight bold
+   ;;                                 :underline t))
+   ;;    (,(append '((supports :underline (:style wave))) monokai-256-class )
+   ;;     (:underline (:style wave :color ,monokai-256-orange)
+   ;;                 :inherit unspecified))
+   ;;    (,monokai-256-class (:foreground ,monokai-256-orange-hc
+   ;;                                     :background ,monokai-256-orange-lc
+   ;;                                     :weight bold
+   ;;                                     :underline t))))
+
+   ;; `(erm-syn-warnline
+   ;;   ((,(append '((supports :underline (:style wave))) monokai-class)
+   ;;     (:underline (:style wave :color ,monokai-orange)
+   ;;                 :inherit unspecified))
+   ;;    (,monokai-class (:foreground ,monokai-orange-hc
+   ;;                                 :background ,monokai-orange-lc
+   ;;                                 :weight bold
+   ;;                                 :underline t))))
+
    `(erm-syn-warnline
-     ((,(append '((supports :underline (:style wave))) monokai-class)
-       (:underline (:style wave :color ,monokai-orange)
-                   :inherit unspecified))
-      (,monokai-class (:foreground ,monokai-orange-hc
-                                   :background ,monokai-orange-lc
-                                   :weight bold
-                                   :underline t))
-      (,(append '((supports :underline (:style wave))) monokai-256-class )
-       (:underline (:style wave :color ,monokai-256-orange)
-                   :inherit unspecified))
-      (,monokai-256-class (:foreground ,monokai-256-orange-hc
-                                       :background ,monokai-256-orange-lc
-                                       :weight bold
-                                       :underline t))))
+     ((t (:foreground ,monokai-orange-hc
+                      :background ,monokai-orange-lc
+                      :weight bold
+                      :underline (:style wave :color ,monokai-orange)))))
 
    ;; flymake
    `(flymake-errline
