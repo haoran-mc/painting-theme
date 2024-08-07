@@ -223,9 +223,7 @@ The theme has to be reloaded after changing anything in this group."
    `(warning        ((t (:foreground ,monokai-yellow))))
    `(error          ((t (:foreground ,monokai-red))))
    `(link           ((t (:foreground ,monokai-blue :underline t))))
-   `(link-visited   ((t (:foreground ,monokai-violet
-                                     :underline t
-                                     :weight normal))))
+   `(link-visited   ((t (:foreground ,monokai-violet :underline t :weight normal))))
 
    `(secondary-selection ((t (:inherit region :background ,monokai-highlight-alt))))
    `(cursor ((t (:foreground ,monokai-background
@@ -239,11 +237,8 @@ The theme has to be reloaded after changing anything in this group."
    `(escape-glyph ((t (:foreground ,monokai-comments))))
    `(escape-glyph-face ((t (:foreground ,monokai-comments))))
 
-   `(eval-sexp-fu-flash ((t (:foreground ,monokai-background
-                                         :background ,monokai-green))))
-
-   `(eval-sexp-fu-flash-error ((t (:foreground ,monokai-background
-                                               :background ,monokai-red))))
+   `(eval-sexp-fu-flash ((t (:foreground ,monokai-background :background ,monokai-green))))
+   `(eval-sexp-fu-flash-error ((t (:foreground ,monokai-background :background ,monokai-red))))
 
    `(trailing-whitespace ((t (:background ,monokai-red))))
    `(vertical-border ((t (:foreground ,monokai-gray))))
@@ -380,12 +375,9 @@ The theme has to be reloaded after changing anything in this group."
    `(cider-result-overlay-face ((t (:foreground ,monokai-blue
                                                 :background unspecified
                                                 :box (:color ,monokai-blue :line-width -1 :style nil)))))
-   `(cider-test-error-face ((t (:foreground ,monokai-background
-                                            :background ,monokai-orange))))
-   `(cider-test-failure-face ((t (:foreground ,monokai-background
-                                              :background ,monokai-red))))
-   `(cider-test-success-face ((t (:foreground ,monokai-background
-                                              :background ,monokai-green))))
+   `(cider-test-error-face ((t (:foreground ,monokai-background :background ,monokai-orange))))
+   `(cider-test-failure-face ((t (:foreground ,monokai-background :background ,monokai-red))))
+   `(cider-test-success-face ((t (:foreground ,monokai-background :background ,monokai-green))))
 
    `(cider-traced-face ((t :box (:color ,monokai-blue :line-width -1 :style nil))))
 
@@ -465,22 +457,15 @@ The theme has to be reloaded after changing anything in this group."
    `(custom-state ((t (:foreground ,monokai-green))))
 
    ;; diff
-   `(diff-added ((t (:foreground ,monokai-green
-                                 :background ,monokai-background))))
-   `(diff-changed ((t (:foreground ,monokai-blue
-                                   :background ,monokai-background))))
-   `(diff-removed ((t (:foreground ,monokai-red
-                                   :background ,monokai-background))))
+   `(diff-added ((t (:foreground ,monokai-green :background ,monokai-background))))
+   `(diff-changed ((t (:foreground ,monokai-blue :background ,monokai-background))))
+   `(diff-removed ((t (:foreground ,monokai-red :background ,monokai-background))))
 
    `(diff-header ((t (:background ,monokai-background))))
-   `(diff-file-header ((t (:background ,monokai-background
-                                       :foreground ,monokai-foreground))))
-   `(diff-refine-added ((t (:foreground ,monokai-background
-                                        :background ,monokai-green))))
-   `(diff-refine-change ((t (:foreground ,monokai-background
-                                         :background ,monokai-blue))))
-   `(diff-refine-removed ((t (:foreground ,monokai-background
-                                          :background ,monokai-red))))
+   `(diff-file-header ((t (:background ,monokai-background :foreground ,monokai-foreground))))
+   `(diff-refine-added ((t (:foreground ,monokai-background :background ,monokai-green))))
+   `(diff-refine-change ((t (:foreground ,monokai-background :background ,monokai-blue))))
+   `(diff-refine-removed ((t (:foreground ,monokai-background :background ,monokai-red))))
 
    ;; diff-hl
    `(diff-hl-change ((t (:background ,monokai-yellow-hc-alt
@@ -502,21 +487,21 @@ The theme has to be reloaded after changing anything in this group."
    `(ediff-current-diff-C ((t (:background ,monokai-diff-blue-base))))
 
    `(ediff-even-diff-A ((t (:background ,monokai-comments
-                                        :foreground ,monokai-foreground-lc ))))
+                                        :foreground ,monokai-foreground-lc))))
    `(ediff-odd-diff-A  ((t (:background ,monokai-comments
-                                        :foreground ,monokai-foreground-hc ))))
+                                        :foreground ,monokai-foreground-hc))))
    `(ediff-even-diff-B ((t (:background ,monokai-comments
-                                        :foreground ,monokai-foreground-hc ))))
+                                        :foreground ,monokai-foreground-hc))))
    `(ediff-odd-diff-B  ((t (:background ,monokai-comments
-                                        :foreground ,monokai-foreground-lc ))))
+                                        :foreground ,monokai-foreground-lc))))
    `(ediff-even-diff-C ((t (:background ,monokai-comments
-                                        :foreground ,monokai-foreground ))))
+                                        :foreground ,monokai-foreground))))
    `(ediff-odd-diff-C  ((t (:background ,monokai-comments
-                                        :foreground ,monokai-background ))))
+                                        :foreground ,monokai-background))))
 
    ;; elixir
    `(elixir-attribute-face ((t (:foreground ,monokai-orange))))
-   `(elixir-atom-face      ((t (:foreground ,monokai-violet))))
+   `(elixir-atom-face ((t (:foreground ,monokai-violet))))
 
    ;; enhanced ruby mode
    `(enh-ruby-string-delimiter-face ((t (:inherit font-lock-string-face))))
@@ -531,11 +516,11 @@ The theme has to be reloaded after changing anything in this group."
                                      :underline nil))))
 
    ;; eshell
-   `(eshell-prompt        ((t (:foreground ,monokai-blue :inherit bold))))
-   `(eshell-ls-archive    ((t (:foreground ,monokai-red))))
-   `(eshell-ls-backup     ((t (:inherit font-lock-comment-face))))
-   `(eshell-ls-clutter    ((t (:inherit font-lock-comment-face))))
-   `(eshell-ls-directory  ((t (:foreground ,monokai-blue :inherit bold))))
+   `(eshell-prompt ((t (:foreground ,monokai-blue :inherit bold))))
+   `(eshell-ls-archive ((t (:foreground ,monokai-red))))
+   `(eshell-ls-backup ((t (:inherit font-lock-comment-face))))
+   `(eshell-ls-clutter ((t (:inherit font-lock-comment-face))))
+   `(eshell-ls-directory ((t (:foreground ,monokai-blue :inherit bold))))
    `(eshell-ls-executable ((t (:foreground ,monokai-green :inherit bold))))
    `(eshell-ls-unreadable ((t (:foreground ,monokai-foreground))))
    `(eshell-ls-missing ((t (:inherit font-lock-warning-face))))
@@ -596,22 +581,15 @@ The theme has to be reloaded after changing anything in this group."
    `(guide-key/prefix-command-face ((t (:foreground ,monokai-violet))))
 
    ;; hi-lock-mode
-   `(hi-yellow ((t (:foreground ,monokai-yellow-lc
-                                :background ,monokai-yellow-hc))))
-   `(hi-pink ((t (:foreground ,monokai-magenta-lc
-                              :background ,monokai-magenta-hc))))
-   `(hi-green ((t (:foreground ,monokai-green-lc
-                               :background ,monokai-green-hc))))
-   `(hi-blue ((t (:foreground ,monokai-blue-lc
-                              :background ,monokai-blue-hc))))
-   `(hi-black-b ((t (:foreground ,monokai-emphasis
-                                 :background ,monokai-background))))
-
+   `(hi-yellow ((t (:foreground ,monokai-yellow-lc :background ,monokai-yellow-hc))))
+   `(hi-pink ((t (:foreground ,monokai-magenta-lc :background ,monokai-magenta-hc))))
+   `(hi-green ((t (:foreground ,monokai-green-lc :background ,monokai-green-hc))))
+   `(hi-blue ((t (:foreground ,monokai-blue-lc :background ,monokai-blue-hc))))
+   `(hi-black-b ((t (:foreground ,monokai-emphasis :background ,monokai-background))))
    `(hi-blue-b ((t (:foreground ,monokai-blue-lc))))
    `(hi-green-b ((t (:foreground ,monokai-green-lc))))
    `(hi-red-b ((t (:foreground ,monokai-red))))
-   `(hi-black-hb ((t (:foreground ,monokai-emphasis
-                                  :background ,monokai-background))))
+   `(hi-black-hb ((t (:foreground ,monokai-emphasis :background ,monokai-background))))
 
    ;; highlight-changes
    `(highlight-changes ((t (:foreground ,monokai-orange))))
@@ -704,7 +682,6 @@ The theme has to be reloaded after changing anything in this group."
 
    ;; lsp-mode
    `(lsp-ui-doc-header ((t (:inherit org-document-title))))
-
    `(lsp-ui-doc-background ((t (:background ,monokai-highlight-line))))
 
    ;; magit
