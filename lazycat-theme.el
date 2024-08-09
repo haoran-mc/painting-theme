@@ -10,12 +10,12 @@
   :type '(choice integer boolean))
 
 ;;
-(defcustom lazycat-themes-enable-bold t
+(defcustom lazycat-themes-enable-bold nil
   "If nil, bold will be disabled across all faces."
   :group 'lazycat-themes
   :type 'boolean)
 
-(defcustom lazycat-themes-enable-italic t
+(defcustom lazycat-themes-enable-italic nil
   "If nil, italics will be disabled across all faces."
   :group 'lazycat-themes
   :type 'boolean)
@@ -259,29 +259,6 @@ Variables in EXTRA-VARS override the default ones."
   (declare (pure t) (side-effect-free t))
   (cl-loop for (var val) in (append lazycat-themes-base-vars vars)
            collect `(list ',var ,val)))
-
-;;;###autoload
-(defun lazycat-themes-set-faces (theme &rest faces)
-  "Customize THEME (a symbol) with FACES.
-
-If THEME is nil, it applies to all themes you load. FACES is a list of Lazycat
-theme face specs. These is a simplified spec. For example:
-
-  (lazycat-themes-set-faces 'user
-    '(default :background red :foreground blue)
-    '(lazycat-modeline-bar :background (if -modeline-bright modeline-bg highlight))
-    '(lazycat-modeline-buffer-file :inherit 'mode-line-buffer-id :weight 'bold)
-    '(lazycat-modeline-buffer-path :inherit 'mode-line-emphasis :weight 'bold)
-    '(lazycat-modeline-buffer-project-root :foreground green :weight 'bold))"
-  (declare (indent defun))
-  (apply #'custom-theme-set-faces
-         (or theme 'user)
-         (eval
-          `(let* ((bold   ,lazycat-themes-enable-bold)
-                  (italic ,lazycat-themes-enable-italic)
-                  ,@(cl-loop for (var . val) in lazycat-themes--colors
-                             collect `(,var ',val)))
-             (list ,@(mapcar #'lazycat-themes--build-face faces))))))
 
 (defmacro def-lazycat-theme (name docstring defs &optional extra-faces extra-vars)
   "Define a LAZYCAT theme, named NAME (a symbol)."
@@ -1695,40 +1672,5 @@ theme face specs. These is a simplified spec. For example:
     (vc-annotate-background (lazycat-color 'bg)))
   "TODO")
 
-(defvar lazycat-theme-status "init")
-
-(defun lazycat-theme-load-light ()
-  (mapc #'disable-theme custom-enabled-themes)
-  (load-theme 'lazycat-light t)
-  (setq lazycat-theme-status "light"))
-
-(defun lazycat-theme-load-dark ()
-  (mapc #'disable-theme custom-enabled-themes)
-  (load-theme 'lazycat-dark t)
-  (setq lazycat-theme-status "dark"))
-
-(defun lazycat-theme-toggle ()
-  (interactive)
-  (let ((bg-mode (frame-parameter nil 'background-mode)))
-    (if (eq bg-mode 'dark)
-        (lazycat-theme-load-light)
-      (lazycat-theme-load-dark))))
-
-(defun lazycat-theme-is-day ()
-  (let ((current-hour (string-to-number (format-time-string "%H"))))
-    (and (> current-hour 7)
-         (< current-hour 18))))
-
-(defun lazycat-theme-load ()
-  (if (lazycat-theme-is-day)
-      (when (or (string-equal lazycat-theme-status "init")
-                (string-equal lazycat-theme-status "dark"))
-        (lazycat-theme-load-light))
-    (when (or (string-equal lazycat-theme-status "init")
-              (string-equal lazycat-theme-status "light"))
-      (lazycat-theme-load-dark))))
-
-(defun lazycat-theme-load-with-sunrise ()
-  (run-with-timer 0 (* 60 60) 'lazycat-theme-load))
 
 (provide 'lazycat-theme)
