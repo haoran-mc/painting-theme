@@ -1074,9 +1074,8 @@ The theme has to be reloaded after changing anything in this group."
 
    ;; show-paren
    `(show-paren-match ((t (:foreground ,monokai-green
-                                       :background ,monokai-background
                                        :weight normal
-                                       :inverse-video t))))
+                                       :underline t))))
    `(show-paren-mismatch ((t (:foreground ,monokai-red
                                           :background ,monokai-background
                                           :weight normal
