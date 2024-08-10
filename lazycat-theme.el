@@ -9,7 +9,6 @@
   :group 'lazycat-themes
   :type '(choice integer boolean))
 
-;;
 (defcustom lazycat-themes-enable-bold nil
   "If nil, bold will be disabled across all faces."
   :group 'lazycat-themes
@@ -440,19 +439,6 @@ Variables in EXTRA-VARS override the default ones."
     (ediff-odd-diff-B     :inherit 'ediff-odd-diff-A)
     (ediff-odd-diff-C     :inherit 'ediff-odd-diff-A)
 
-    ;; elfeed
-    (elfeed-log-debug-level-face :foreground comments)
-    (elfeed-log-error-level-face :inherit 'error)
-    (elfeed-log-info-level-face  :inherit 'success)
-    (elfeed-log-warn-level-face  :inherit 'warning)
-    (elfeed-search-date-face     :foreground violet)
-    (elfeed-search-feed-face     :foreground blue)
-    (elfeed-search-tag-face      :foreground comments)
-    (elfeed-search-title-face    :foreground comments)
-    (elfeed-search-filter-face   :foreground violet)
-    (elfeed-search-unread-count-face :foreground yellow)
-    (elfeed-search-unread-title-face :foreground fg :weight 'bold)
-
     ;; eshell
     (eshell-prompt        :foreground highlight :weight 'bold)
     (eshell-ls-archive    :foreground magenta)
@@ -635,26 +621,6 @@ Variables in EXTRA-VARS override the default ones."
     (bmkp-url :foreground blue :underline t)
     (bmkp-variable-list :foreground green)
 
-    ;; calfw
-    (cfw:face-title              :foreground blue                     :weight 'bold :height 2.0 :inherit 'variable-pitch)
-    (cfw:face-header             :foreground (lazycat-blend blue bg 0.8) :weight 'bold)
-    (cfw:face-sunday             :foreground (lazycat-blend red bg 0.8)  :weight 'bold)
-    (cfw:face-saturday           :foreground (lazycat-blend red bg 0.8)  :weight 'bold)
-    (cfw:face-holiday            :foreground nil :background bg-alt   :weight 'bold)
-    (cfw:face-grid               :foreground vertical-bar)
-    (cfw:face-periods            :foreground yellow)
-    (cfw:face-toolbar            :foreground nil :background nil)
-    (cfw:face-toolbar-button-off :foreground base6                    :weight 'bold             :inherit 'variable-pitch)
-    (cfw:face-toolbar-button-on  :foreground blue                     :weight 'bold             :inherit 'variable-pitch)
-    (cfw:face-default-content    :foreground fg)
-    (cfw:face-day-title          :foreground fg                       :weight 'bold)
-    (cfw:face-today-title        :foreground bg  :background blue     :weight 'bold)
-    (cfw:face-default-day                                             :weight 'bold)
-    (cfw:face-today              :foreground nil :background nil      :weight 'bold)
-    (cfw:face-annotation         :foreground violet)
-    (cfw:face-disable            :foreground grey)
-    (cfw:face-select             :background region)
-
     ;; company
     (company-tooltip            :inherit 'tooltip)
     (company-tooltip-common                           :foreground highlight :distant-foreground base0 :weight 'bold)
@@ -672,13 +638,6 @@ Variables in EXTRA-VARS override the default ones."
 
     ;; company-box
     (company-box-candidate :foreground fg)
-
-    ;; circe
-    (circe-fool :foreground doc-comments)
-    (circe-highlight-nick-face :weight 'bold :foreground constants)
-    (circe-prompt-face :weight 'bold :foreground highlight)
-    (circe-server-face :foreground comments)
-    (circe-my-message-face :weight 'bold)
 
     ;; diff-hl
     (diff-hl-change :foreground vc-modified :background vc-modified)
@@ -698,115 +657,6 @@ Variables in EXTRA-VARS override the default ones."
     (diff-refine-added   :inherit 'diff-added :inverse-video t)
     (diff-refine-changed :inherit 'diff-changed :inverse-video t)
     (diff-refine-removed :inherit 'diff-removed :inverse-video t)
-
-    ;; dired+
-    (diredp-file-name              :foreground base8)
-    (diredp-dir-name               :foreground base8 :weight 'bold)
-    (diredp-ignored-file-name      :foreground base5)
-    (diredp-compressed-file-suffix :foreground base5)
-    (diredp-symlink                :foreground violet)
-    (diredp-dir-heading            :foreground blue  :weight 'bold)
-    (diredp-file-suffix            :foreground violet)
-    (diredp-read-priv              :foreground magenta)
-    (diredp-write-priv             :foreground green)
-    (diredp-exec-priv              :foreground yellow)
-    (diredp-rare-priv              :foreground red   :weight 'bold)
-    (diredp-dir-priv               :foreground blue  :weight 'bold)
-    (diredp-no-priv                :foreground base5)
-    (diredp-number                 :foreground magenta)
-    (diredp-date-time              :foreground blue)
-
-    ;; dired-k
-    (dired-k-modified :foreground vc-modified :weight 'bold)
-    (dired-k-commited :foreground green :weight 'bold)
-    (dired-k-added :foreground vc-added :weight 'bold)
-    (dired-k-untracked :foreground teal :weight 'bold)
-    (dired-k-ignored :foreground base5 :weight 'bold)
-    (dired-k-directory :foreground blue :weight 'bold)
-
-    ;; dired-subtree
-    (dired-subtree-depth-1-face :background (lazycat-darken bg-alt 0.02))
-    (dired-subtree-depth-2-face :background (lazycat-darken bg-alt 0.04))
-    (dired-subtree-depth-3-face :background (lazycat-darken bg-alt 0.06))
-    (dired-subtree-depth-4-face :background (lazycat-darken bg-alt 0.08))
-    (dired-subtree-depth-5-face :background (lazycat-darken bg-alt 0.10))
-    (dired-subtree-depth-6-face :background (lazycat-darken bg-alt 0.12))
-
-    ;; diredfl
-    (diredfl-autofile-name          :foreground base4)
-    (diredfl-compressed-file-name   :foreground yellow)
-    (diredfl-compressed-file-suffix :foreground (lazycat-blend orange bg 0.6))
-    (diredfl-date-time              :foreground cyan :weight 'light)
-    (diredfl-deletion               :foreground red :background (lazycat-blend red bg 0.2) :weight 'bold)
-    (diredfl-deletion-file-name     :foreground red :background (lazycat-blend red bg 0.2))
-    (diredfl-dir-heading            :foreground blue :weight 'bold)
-    (diredfl-dir-name               :foreground blue)
-    (diredfl-dir-priv               :foreground blue)
-    (diredfl-exec-priv              :foreground green)
-    (diredfl-executable-tag         :foreground green)
-    (diredfl-file-name              :foreground fg)
-    (diredfl-file-suffix            :foreground (lazycat-blend fg bg 0.6))
-    (diredfl-flag-mark              :foreground yellow :background (lazycat-blend yellow bg 0.2) :weight 'bold)
-    (diredfl-flag-mark-line         :background (lazycat-blend yellow bg 0.1))
-    (diredfl-ignored-file-name      :foreground comments)
-    (diredfl-link-priv              :foreground violet)
-    (diredfl-no-priv                :foreground fg)
-    (diredfl-number                 :foreground orange)
-    (diredfl-other-priv             :foreground magenta)
-    (diredfl-rare-priv              :foreground fg)
-    (diredfl-read-priv              :foreground yellow)
-    (diredfl-symlink                :foreground violet)
-    (diredfl-tagged-autofile-name   :foreground base5)
-    (diredfl-write-priv             :foreground red)
-
-    ;; lazycat-modeline
-    (lazycat-modeline-eldoc-bar :background green)
-    (lazycat-modeline-bar-inactive :background nil) ; transparent
-
-    ;; elscreen
-    (elscreen-tab-background-face     :background bg)
-    (elscreen-tab-control-face        :background bg     :foreground bg)
-    (elscreen-tab-current-screen-face :background bg-alt :foreground fg)
-    (elscreen-tab-other-screen-face   :background bg     :foreground fg-alt)
-
-    ;; erc
-    (erc-button :weight 'bold :underline t)
-    (erc-default-face :inherit 'default)
-    (erc-action-face  :weight 'bold)
-    (erc-command-indicator-face :weight 'bold)
-    (erc-direct-msg-face :foreground magenta)
-    (erc-error-face :inherit 'error)
-    (erc-header-line :background (lazycat-darken bg-alt 0.15) :foreground highlight)
-    (erc-input-face :foreground green)
-    (erc-current-nick-face :foreground green :weight 'bold)
-    (erc-timestamp-face :foreground blue :weight 'bold)
-    (erc-nick-default-face :weight 'bold)
-    (erc-nick-msg-face :foreground magenta)
-    (erc-nick-prefix-face :inherit 'erc-nick-default-face)
-    (erc-my-nick-face :foreground green :weight 'bold)
-    (erc-my-nick-prefix-face :inherit 'erc-my-nick-face)
-    (erc-notice-face :foreground comments)
-    (erc-prompt-face :foreground highlight :weight 'bold)
-
-    ;; evil
-    (evil-ex-info                   :foreground error :slant 'italic)
-    (evil-ex-search                 :background highlight :foreground base0 :weight 'bold)
-    (evil-ex-substitute-matches     :background base0 :foreground red   :strike-through t :weight 'bold)
-    (evil-ex-substitute-replacement :background base0 :foreground green :weight 'bold)
-    (evil-search-highlight-persist-highlight-face :inherit 'lazy-highlight)
-
-    ;; evil-mc
-    (evil-mc-cursor-default-face :background magenta :foreground base0 :inverse-video nil)
-    (evil-mc-region-face :inherit 'region)
-    (evil-mc-cursor-bar-face :height 1 :background magenta :foreground base0)
-    (evil-mc-cursor-hbar-face :underline `(:color ,highlight))
-
-    ;; evil-snipe
-    (evil-snipe-first-match-face :foreground highlight :background dark-blue :weight 'bold)
-    (evil-snipe-matches-face     :foreground highlight :underline t :weight 'bold)
-
-    ;; evil-googles
-    (evil-goggles-default-face :inherit 'region)
 
     ;; flycheck
     (flycheck-error     :underline `(:style wave :color ,red))
@@ -829,128 +679,8 @@ Variables in EXTRA-VARS override the default ones."
     (flyspell-incorrect :underline `(:style wave :color ,error) :inherit 'unspecified)
     (flyspell-duplicate :underline `(:style wave :color ,warning) :inherit 'unspecified)
 
-    ;; git-commit
-    (git-commit-summary :foreground strings)
-    (git-commit-overlong-summary :inherit 'error :background base0 :slant 'italic :weight 'bold)
-    (git-commit-nonempty-second-line :inherit 'git-commit-overlong-summary)
-    (git-commit-keyword :foreground cyan :slant 'italic)
-    (git-commit-pseudo-header :foreground doc-comments :slant 'italic)
-    (git-commit-known-pseudo-header :foreground doc-comments :weight 'bold :slant 'italic)
-    (git-commit-comment-branch-local :foreground magenta)
-    (git-commit-comment-branch-remote :foreground green)
-    (git-commit-comment-detached :foreground orange)
-    (git-commit-comment-heading :foreground keywords)
-    (git-commit-comment-file :foreground violet)
-    (git-commit-comment-action)
-
-    ;; git-gutter
-    (git-gutter:modified :foreground cyan)
-    (git-gutter:added    :foreground vc-added)
-    (git-gutter:deleted  :foreground vc-deleted)
-
-    ;; git-gutter+
-    (git-gutter+-modified :foreground cyan :background nil)
-    (git-gutter+-added    :foreground vc-added :background nil)
-    (git-gutter+-deleted  :foreground vc-deleted :background nil)
-
-    ;; git-gutter-fringe
-    ((git-gutter-fr:modified &inherit git-gutter:modified))
-    ((git-gutter-fr:added    &inherit git-gutter:added))
-    ((git-gutter-fr:deleted  &inherit git-gutter:deleted))
-
-    ;; gnus
-    (gnus-group-mail-1           :weight 'bold :foreground fg)
-    (gnus-group-mail-2           :inherit 'gnus-group-mail-1)
-    (gnus-group-mail-3           :inherit 'gnus-group-mail-1)
-    (gnus-group-mail-1-empty     :foreground base5)
-    (gnus-group-mail-2-empty     :inherit 'gnus-group-mail-1-empty)
-    (gnus-group-mail-3-empty     :inherit 'gnus-group-mail-1-empty)
-    (gnus-group-news-1           :inherit 'gnus-group-mail-1)
-    (gnus-group-news-2           :inherit 'gnus-group-news-1)
-    (gnus-group-news-3           :inherit 'gnus-group-news-1)
-    (gnus-group-news-4           :inherit 'gnus-group-news-1)
-    (gnus-group-news-5           :inherit 'gnus-group-news-1)
-    (gnus-group-news-6           :inherit 'gnus-group-news-1)
-    (gnus-group-news-1-empty     :inherit 'gnus-group-mail-1-empty)
-    (gnus-group-news-2-empty     :inherit 'gnus-group-news-1-empty)
-    (gnus-group-news-3-empty     :inherit 'gnus-group-news-1-empty)
-    (gnus-group-news-4-empty     :inherit 'gnus-group-news-1-empty)
-    (gnus-group-news-5-empty     :inherit 'gnus-group-news-1-empty)
-    (gnus-group-news-6-empty     :inherit 'gnus-group-news-1-empty)
-    (gnus-group-mail-low         :inherit 'gnus-group-mail-1 :weight 'normal)
-    (gnus-group-mail-low-empty   :inherit 'gnus-group-mail-1-empty)
-    (gnus-group-news-low         :inherit 'gnus-group-mail-1 :foreground base5)
-    (gnus-group-news-low-empty   :inherit 'gnus-group-news-low :weight 'normal)
-    (gnus-header-content         :inherit 'message-header-other)
-    (gnus-header-from            :inherit 'message-header-other)
-    (gnus-header-name            :inherit 'message-header-name)
-    (gnus-header-newsgroups      :inherit 'message-header-other)
-    (gnus-header-subject         :inherit 'message-header-subject)
-    (gnus-summary-cancelled      :foreground red :strike-through t)
-    (gnus-summary-high-ancient   :foreground (lazycat-lighten base5 0.2) :inherit 'italic)
-    (gnus-summary-high-read      :foreground (lazycat-lighten fg 0.2))
-    (gnus-summary-high-ticked    :foreground (lazycat-lighten magenta 0.2))
-    (gnus-summary-high-unread    :foreground (lazycat-lighten green 0.2))
-    (gnus-summary-low-ancient    :foreground (lazycat-darken base5 0.2) :inherit 'italic)
-    (gnus-summary-low-read       :foreground (lazycat-darken fg 0.2))
-    (gnus-summary-low-ticked     :foreground (lazycat-darken magenta 0.2))
-    (gnus-summary-low-unread     :foreground (lazycat-darken green 0.2))
-    (gnus-summary-normal-ancient :foreground base5 :inherit 'italic)
-    (gnus-summary-normal-read    :foreground fg)
-    (gnus-summary-normal-ticked  :foreground magenta)
-    (gnus-summary-normal-unread  :foreground green :inherit 'bold)
-    (gnus-summary-selected       :foreground blue :weight 'bold)
-    (gnus-cite-1                 :foreground violet)
-    (gnus-cite-2                 :foreground violet)
-    (gnus-cite-3                 :foreground violet)
-    (gnus-cite-4                 :foreground green)
-    (gnus-cite-5                 :foreground green)
-    (gnus-cite-6                 :foreground green)
-    (gnus-cite-7                 :foreground magenta)
-    (gnus-cite-8                 :foreground magenta)
-    (gnus-cite-9                 :foreground magenta)
-    (gnus-cite-10                :foreground yellow)
-    (gnus-cite-11                :foreground yellow)
-    (gnus-signature              :foreground yellow)
-    (gnus-x-face                 :background base5 :foreground fg)
-
-    ;; helm
-    (helm-selection
-     (&all :inherit 'bold :background selection :extend t)
-     (&dark  :distant-foreground highlight)
-     (&light :distant-foreground base0))
-    (helm-match :inherit 'bold :foreground highlight :distant-foreground base8)
-    (helm-source-header          :background base2 :foreground keywords :weight 'bold)
-    (helm-swoop-target-line-face :foreground highlight :inverse-video t)
-    (helm-visible-mark           :inherit '(bold highlight))
-    (helm-moccur-buffer          :inherit 'link)
-    (helm-ff-file                :foreground fg)
-    (helm-ff-prefix              :foreground keywords)
-    (helm-ff-dotted-directory    :foreground grey)
-    (helm-ff-directory           :foreground variables)
-    (helm-ff-executable          :foreground base8 :inherit 'italic)
-    (helm-grep-match             :foreground highlight :distant-foreground red)
-    (helm-grep-file              :foreground methods)
-    (helm-grep-lineno            :foreground base5)
-    (helm-grep-finish            :foreground green)
-    (helm-swoop-target-line-face       :foreground highlight :inverse-video t)
-    (helm-swoop-target-line-block-face :foreground yellow)
-    (helm-swoop-target-word-face       :foreground green :inherit 'bold)
-    (helm-swoop-target-number-face     :foreground base5)
-
     ;; helpful
     (helpful-heading :weight 'bold :height 1.2)
-
-    ;; hideshow
-    (+lazycat-folded-face :inherit 'font-lock-comment-face
-                          :weight 'light
-                          :background (lazycat-darken bg 0.125))
-
-    ;; highlight-indentation-mode
-    (highlight-indentation-face                :inherit 'hl-line)
-    (highlight-indentation-current-column-face :background base1)
-    (highlight-indentation-guides-odd-face     :inherit 'highlight-indentation-face)
-    (highlight-indentation-guides-even-face    :inherit 'highlight-indentation-face)
 
     ;; highlight-quoted-mode
     (highlight-quoted-symbol :foreground type)
@@ -988,50 +718,6 @@ Variables in EXTRA-VARS override the default ones."
     ;; indent-guide
     ((indent-guide-face &inherit highlight-indentation-face))
 
-    ;; ivy
-    (ivy-current-match :background region :distant-foreground nil :extend t)
-    (ivy-minibuffer-match-face-1
-     :background nil
-     :foreground (lazycat-lighten grey 0.14)
-     :weight 'light)
-    (ivy-minibuffer-match-face-2
-     :inherit 'ivy-minibuffer-match-face-1
-     :foreground magenta :background base1 :weight 'semi-bold)
-    (ivy-minibuffer-match-face-3
-     :inherit 'ivy-minibuffer-match-face-2
-     :foreground green :weight 'semi-bold)
-    (ivy-minibuffer-match-face-4
-     :inherit 'ivy-minibuffer-match-face-2
-     :foreground yellow :weight 'semi-bold)
-    (ivy-minibuffer-match-highlight :foreground violet)
-    (ivy-highlight-face :foreground violet)
-    (ivy-confirm-face :foreground success)
-    (ivy-match-required-face :foreground error)
-    (ivy-virtual :inherit 'italic :foreground doc-comments)
-    (ivy-modified-buffer :inherit 'bold :foreground vc-modified)
-
-    ;; ivy-posframe
-    (ivy-posframe :background (lazycat-darken bg-alt 0.2))
-    (ivy-posframe-border :inherit 'internal-border)
-
-    ;; jabber
-    (jabber-activity-face          :foreground red   :weight 'bold)
-    (jabber-activity-personal-face :foreground blue  :weight 'bold)
-    (jabber-chat-error             :foreground red   :weight 'bold)
-    (jabber-chat-prompt-foreign    :foreground red   :weight 'bold)
-    (jabber-chat-prompt-local      :foreground blue  :weight 'bold)
-    (jabber-chat-prompt-system     :foreground green :weight 'bold)
-    (jabber-chat-text-foreign      :foreground fg)
-    (jabber-chat-text-local        :foreground fg)
-    (jabber-rare-time-face         :foreground green)
-    (jabber-roster-user-away       :foreground yellow)
-    (jabber-roster-user-chatty     :foreground green :weight 'bold)
-    (jabber-roster-user-dnd        :foreground red)
-    (jabber-roster-user-error      :foreground red)
-    (jabber-roster-user-offline    :foreground fg)
-    (jabber-roster-user-online     :foreground green :weight 'bold)
-    (jabber-roster-user-xa         :foreground cyan)
-
     ;; linum-relative
     ((linum-relative-current-face &inherit line-number-current-line))
 
@@ -1062,29 +748,6 @@ Variables in EXTRA-VARS override the default ones."
     (lazycat-neotree-text-file-face :foreground fg)
     (lazycat-neotree-data-file-face :foreground violet)
     (lazycat-neotree-media-file-face :inherit 'lazycat-neotree-hidden-file-face)
-
-    ;; nlinum
-    ((nlinum-current-line &inherit line-number-current-line))
-
-    ;; nlinum-hl
-    ((nlinum-hl-face &inherit line-number-current-line))
-
-    ;; nlinum-relative
-    ((nlinum-relative-current-face &inherit line-number-current-line))
-
-    ;; lsp
-    ;; TODO Add light versions
-    (lsp-face-highlight-textual :background dark-blue :foreground base8 :distant-foreground base0 :weight 'bold)
-    (lsp-face-highlight-read    :background dark-blue :foreground base8 :distant-foreground base0 :weight 'bold)
-    (lsp-face-highlight-write   :background dark-blue :foreground base8 :distant-foreground base0 :weight 'bold)
-    (lsp-ui-doc-background :inherit 'tooltip)
-    (lsp-ui-peek-filename :inherit 'mode-line-buffer-id)
-    (lsp-ui-peek-header :foreground fg :background (lazycat-lighten bg 0.1) :bold bold)
-    (lsp-ui-peek-selection :foreground bg :background blue :bold bold)
-    (lsp-ui-peek-list :background (lazycat-darken bg 0.1))
-    (lsp-ui-peek-peek :background (lazycat-darken bg 0.1))
-    (lsp-ui-peek-highlight :inherit 'lsp-ui-peek-header :background region :foreground bg :box t)
-    (lsp-ui-peek-line-number :foreground success)
 
     ;; magit
     (magit-bisect-bad        :foreground red)
@@ -1177,14 +840,6 @@ Variables in EXTRA-VARS override the default ones."
     (popup-tip-face :inherit 'popup-face :foreground violet :background base0)
     (popup-selection-face :background selection)
 
-    ;; power
-    (powerline-active0   :inherit 'mode-line :background bg)
-    (powerline-active1   :inherit 'mode-line :background (lazycat-lighten 'bg 0.025))
-    (powerline-active2   :inherit 'mode-line :foreground base8 :background (lazycat-lighten 'bg 0.08))
-    (powerline-inactive0 :inherit 'mode-line-inactive :background base2)
-    (powerline-inactive1 :inherit 'mode-line-inactive :background (lazycat-lighten 'base2 0.02))
-    (powerline-inactive2 :inherit 'mode-line-inactive :background (lazycat-lighten 'base2 0.04))
-
     ;; rainbow-delimiters
     (rainbow-delimiters-depth-1-face :foreground blue)
     (rainbow-delimiters-depth-2-face :foreground magenta)
@@ -1208,8 +863,6 @@ Variables in EXTRA-VARS override the default ones."
 
     ;; smartparens
     (sp-pair-overlay-face :background region)
-
-    ;; smartparens
     ((sp-show-pair-match-face    &inherit show-paren-match))
     ((sp-show-pair-mismatch-face &inherit show-paren-mismatch))
 
@@ -1229,32 +882,10 @@ Variables in EXTRA-VARS override the default ones."
     (solaire-hl-line-face  :inherit 'hl-line :background bg :extend t)
     (solaire-org-hide-face :foreground bg-alt)
 
-    ;; spaceline
-    (spaceline-highlight-face :background highlight)
-    (spaceline-modified :background vc-modified)
-    (spaceline-unmodified :background constants)
-    (spaceline-python-venv :foreground magenta :distant-foreground violet)
-    (spaceline-flycheck-error   :inherit 'error   :distant-background base0)
-    (spaceline-flycheck-warning :inherit 'warning :distant-background base0)
-    (spaceline-flycheck-info    :inherit 'success :distant-background base0)
-    (spaceline-evil-normal  :background blue)
-    (spaceline-evil-insert  :background green)
-    (spaceline-evil-emacs   :background cyan)
-    (spaceline-evil-replace :background orange)
-    (spaceline-evil-visual  :background grey)
-    (spaceline-evil-motion  :background magenta)
-
     ;; stripe-buffer
     (stripe-highlight
      (&light :background base5)
      (&dark  :background base3))
-
-    ;; swiper
-    (swiper-line-face    :background blue    :foreground base0)
-    (swiper-match-face-1 :inherit 'unspecified :background base0   :foreground base5)
-    (swiper-match-face-2 :inherit 'unspecified :background orange  :foreground base0 :weight 'bold)
-    (swiper-match-face-3 :inherit 'unspecified :background magenta :foreground base0 :weight 'bold)
-    (swiper-match-face-4 :inherit 'unspecified :background green   :foreground base0 :weight 'bold)
 
     ;; tabbar
     (tabbar-default             :foreground bg :background bg :height 1.0)
@@ -1286,18 +917,6 @@ Variables in EXTRA-VARS override the default ones."
     (treemacs-git-added-face :foreground green)
     (treemacs-git-conflict-face :foreground red)
     (treemacs-git-untracked-face :inherit 'font-lock-doc-face)
-
-    ;; twittering-mode
-    (twitter-divider                    ; custom face in Lazycat Emacs
-     (&light :underline `(:color ,(lazycat-lighten vertical-bar 0.2)))
-     (&dark  :underline `(:color ,(lazycat-darken vertical-bar 0.2))))
-
-    ;; undo-tree
-    (undo-tree-visualizer-default-face :foreground base5)
-    (undo-tree-visualizer-current-face :foreground green :weight 'bold)
-    (undo-tree-visualizer-unmodified-face :foreground base5)
-    (undo-tree-visualizer-active-branch-face :foreground blue)
-    (undo-tree-visualizer-register-face :foreground yellow)
 
     ;; vimish-fold
     (vimish-fold-overlay :inherit 'font-lock-comment-face :background base0 :weight 'light)
@@ -1342,51 +961,6 @@ Variables in EXTRA-VARS override the default ones."
 
 
     ;; --- major-mode faces -------------------
-    ;; agda2-mode
-    (agda2-highlight-keyword-face                 :inherit 'font-lock-keyword-face)
-    (agda2-highlight-string-face                  :inherit 'font-lock-string-face)
-    (agda2-highlight-number-face                  :inherit 'font-lock-string-face)
-    (agda2-highlight-symbol-face                  :inherit 'font-lock-variable-name-face)
-    (agda2-highlight-primitive-type-face          :inherit 'font-lock-type-face)
-    (agda2-highlight-bound-variable-face          :inherit 'font-lock-variable-name-face)
-    (agda2-highlight-inductive-constructor-face   :inherit 'font-lock-type-face)
-    (agda2-highlight-coinductive-constructor-face :inherit 'font-lock-type-face)
-    (agda2-highlight-datatype-face                :inherit 'font-lock-type-face)
-    (agda2-highlight-field-face                   :inherit 'font-lock-type-face)
-    (agda2-highlight-function-face                :inherit 'font-lock-function-name-face)
-    (agda2-highlight-module-face                  :inherit 'font-lock-variable-name-face)
-    (agda2-highlight-postulate-face               :inherit 'font-lock-type-face)
-    (agda2-highlight-primitive-face               :inherit 'font-lock-type-face)
-    (agda2-highlight-macro-face                   :inherit 'font-lock-function-name-face)
-    (agda2-highlight-record-face                  :inherit 'font-lock-type-face)
-    (agda2-highlight-error-face                   :inherit 'font-lock-warning-face)
-    (agda2-highlight-dotted-face                  :inherit 'font-lock-variable-name-face)
-    (agda2-highlight-unsolved-meta-face           :inherit 'font-lock-warning-face)
-    (agda2-highlight-unsolved-constraint-face     :inherit 'font-lock-warning-face)
-    (agda2-highlight-termination-problem-face     :inherit 'font-lock-warning-face)
-    (agda2-highlight-positivity-problem-face      :inherit 'font-lock-warning-face)
-    (agda2-highlight-incomplete-pattern-face      :inherit 'font-lock-warning-face)
-    (agda2-highlight-typechecks-face              :inherit 'font-lock-warning-face)
-
-    ;; auctex (latex-mode)
-    (font-latex-bold-face         :inherit 'bold)
-    (font-latex-italic-face       :inherit 'italic)
-    (font-latex-math-face         :foreground blue)
-    (font-latex-sectioning-0-face :foreground blue    :weight 'ultra-bold)
-    (font-latex-sectioning-1-face :foreground magenta :weight 'semi-bold)
-    (font-latex-sectioning-2-face :foreground violet  :weight 'semi-bold)
-    (font-latex-sectioning-3-face :foreground (lazycat-lighten blue 0.3)    :weight 'semi-bold)
-    (font-latex-sectioning-4-face :foreground (lazycat-lighten magenta 0.3) :weight 'semi-bold)
-    (font-latex-sectioning-5-face :foreground (lazycat-lighten violet 0.3)  :weight 'semi-bold)
-    (font-latex-script-char-face  :foreground dark-blue)
-    (font-latex-string-face       :inherit 'font-lock-string-face)
-    (font-latex-warning-face      :inherit 'font-lock-warning-face)
-    (font-latex-verbatim-face     :inherit 'fixed-pitch :foreground violet :slant 'italic)
-
-    (TeX-error-description-error    :inherit 'error   :weight 'bold)
-    (TeX-error-description-warning  :inherit 'warning :weight 'bold)
-    (TeX-error-description-tex-said :inherit 'success :weight 'bold)
-
     ;; elixir-mode
     (elixir-atom-face (&light :foreground dark-blue)
                       (&dark  :foreground cyan))
@@ -1400,20 +974,6 @@ Variables in EXTRA-VARS override the default ones."
     (enh-ruby-regexp-delimiter-face  :inherit 'enh-ruby-regexp-face)
     (erm-syn-errline  :underline `(:style wave :color ,error))
     (erm-syn-warnline :underline `(:style wave :color ,warning))
-
-    ;; jdee-mode
-    (jdee-font-lock-number-face :foreground numbers)
-    (jdee-font-lock-operator-face :foreground operators)
-    (jdee-font-lock-constant-face :inherit 'font-lock-constant-face)
-    (jdee-font-lock-constructor-face :foreground methods)
-    (jdee-font-lock-public-face :inherit 'font-lock-keyword-face)
-    (jdee-font-lock-protected-face :inherit 'font-lock-keyword-face)
-    (jdee-font-lock-private-face :inherit 'font-lock-keyword-face)
-    (jdee-font-lock-modifier-face :inherit 'font-lock-type-face)
-    (jdee-font-lock-doc-tag-face :foreground violet)
-    (jdee-font-lock-italic-face :inherit 'italic)
-    (jdee-font-lock-bold-face :inherit 'bold)
-    (jdee-font-lock-link-face :foreground blue :italic nil :underline t)
 
     ;; js2-mode
     (js2-function-param    :foreground variables)
@@ -1457,42 +1017,6 @@ Variables in EXTRA-VARS override the default ones."
     (markdown-html-entity-face        :inherit 'font-lock-variable-name-face)
     (markdown-html-tag-delimiter-face :inherit 'markdown-markup-face)
     (markdown-html-tag-name-face      :inherit 'font-lock-keyword-face)
-
-    ;; notmuch
-    ;; (notmuch-crypto-decryption               :foreground blue-l)
-    ;; (notmuch-crypto-part-header              :foreground yellow-l)
-    ;; (notmuch-crypto-signature-bad            :foreground red-l)
-    ;; (notmuch-crypto-signature-good           :foreground base1)
-    ;; (notmuch-crypto-signature-good-key       :foreground aqua-l)
-    ;; (notmuch-crypto-signature-unknown        :foreground yellow)
-    ;; (notmuch-hello-logo-background           :foreground fg)
-    (notmuch-message-summary-face            :foreground grey :background nil)
-    (notmuch-search-count                    :foreground comments)
-    (notmuch-search-date                     :foreground numbers)
-    (notmuch-search-flagged-face             :foreground (lazycat-blend red base4 0.5))
-    (notmuch-search-matching-authors         :foreground blue)
-    (notmuch-search-non-matching-authors     :foreground fg)
-    (notmuch-search-subject                  :foreground fg)
-    (notmuch-search-unread-face              :weight 'bold)
-    (notmuch-tag-added                       :foreground green :weight 'normal)
-    (notmuch-tag-deleted                     :foreground red :weight 'normal)
-    (notmuch-tag-face                        :foreground yellow :weight 'normal)
-    (notmuch-tag-flagged                     :foreground yellow :weight 'normal)
-    (notmuch-tag-unread                      :foreground yellow :weight 'normal)
-    (notmuch-tree-match-author-face          :foreground blue :weight 'bold)
-    (notmuch-tree-match-date-face            :foreground numbers :weight 'bold)
-    (notmuch-tree-match-face                 :foreground fg)
-    (notmuch-tree-match-subject-face         :foreground fg)
-    (notmuch-tree-match-tag-face             :foreground yellow)
-    (notmuch-tree-match-tree-face            :foreground comments)
-    (notmuch-tree-no-match-author-face       :foreground blue)
-    (notmuch-tree-no-match-date-face         :foreground numbers)
-    (notmuch-tree-no-match-face              :foreground base5)
-    (notmuch-tree-no-match-subject-face      :foreground base5)
-    (notmuch-tree-no-match-tag-face          :foreground yellow)
-    (notmuch-tree-no-match-tree-face         :foreground yellow)
-    (notmuch-wash-cited-text                 :foreground base4)
-    (notmuch-wash-toggle-button :foreground fg)
 
     ;; outline
     (outline-1 :foreground blue                        :weight 'bold :extend t)
@@ -1574,20 +1098,6 @@ Variables in EXTRA-VARS override the default ones."
     (org-pomodoro-mode-line :foreground red)
     (org-pomodoro-mode-line-overtime :foreground warning :weight 'bold)
 
-    ;; pkgbuild-mode
-    (pkgbuild-error-face :underline `(:style wave :color ,red))
-
-    ;; rpm-spec-mode
-    (rpm-spec-macro-face        :foreground yellow)
-    (rpm-spec-var-face          :foreground violet)
-    (rpm-spec-tag-face          :foreground blue)
-    (rpm-spec-obsolete-tag-face :foreground red)
-    (rpm-spec-package-face      :foreground orange)
-    (rpm-spec-dir-face          :foreground green)
-    (rpm-spec-doc-face          :foreground orange)
-    (rpm-spec-ghost-face        :foreground comments)
-    (rpm-spec-section-face      :foreground magenta)
-
     ;; rst-mode
     (rst-block :inherit 'font-lock-constant-face)
     (rst-level-1 :inherit 'rst-adornment :weight 'bold)
@@ -1596,19 +1106,6 @@ Variables in EXTRA-VARS override the default ones."
     (rst-level-4 :inherit 'rst-adornment :weight 'bold)
     (rst-level-5 :inherit 'rst-adornment :weight 'bold)
     (rst-level-6 :inherit 'rst-adornment :weight 'bold)
-
-    ;; telephone-line
-    (telephone-line-accent-active :foreground fg :background base4)
-    (telephone-line-accent-inactive :foreground fg :background base2)
-    (telephone-line-projectile :foreground green)
-    (telephone-line-evil :foreground fg :weight 'bold)
-    (telephone-line-evil-insert :background (lazycat-blend green bg 0.5) :weight 'bold)
-    (telephone-line-evil-normal :background (lazycat-blend red bg 0.5) :weight 'bold)
-    (telephone-line-evil-visual :background (lazycat-blend orange bg 0.5) :weight 'bold)
-    (telephone-line-evil-replace :background (lazycat-color bg-alt) :weight 'bold)
-    (telephone-line-evil-motion :background (lazycat-blend blue bg 0.5) :weight 'bold)
-    (telephone-line-evil-operator :background (lazycat-blend violet bg 0.5) :weight 'bold)
-    (telephone-line-evil-emacs :background (lazycat-blend magenta bg 0.5) :weight 'bold)
 
     ;; typescript-mode
     (typescript-jsdoc-tag :foreground doc-comments)
