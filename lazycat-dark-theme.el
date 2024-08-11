@@ -90,29 +90,12 @@
   "Options for lazycat-themes"
   :group 'lazycat-themes)
 
-(defcustom lazycat-dark-brighter-modeline nil
-  "If non-nil, more vivid colors will be used to style the mode-line."
-  :group 'lazycat-dark-theme
-  :type 'boolean)
-
-(defcustom lazycat-dark-brighter-comments nil
-  "If non-nil, comments will be highlighted in more vivid colors."
-  :group 'lazycat-dark-theme
-  :type 'boolean)
-
-(defcustom lazycat-dark-comment-bg lazycat-dark-brighter-comments
+(defcustom lazycat-dark-comment-bg nil
   "If non-nil, comments will have a subtle, darker background. Enhancing their
 legibility."
   :group 'lazycat-dark-theme
   :type 'boolean)
 
-(defcustom lazycat-dark-padded-modeline lazycat-themes-padded-modeline
-  "If non-nil, adds a 4px padding to the mode-line. Can be an integer to
-determine the exact padding."
-  :group 'lazycat-dark-theme
-  :type '(choice integer boolean))
-
-;;
 (def-lazycat-theme lazycat-dark
   "A dark theme inspired by Atom One Dark"
 
@@ -170,33 +153,10 @@ determine the exact padding."
    (vc-deleted     red)
 
    ;; custom categories
-   (hidden     `(,(car bg) "black" "black"))
-   (-modeline-bright lazycat-dark-brighter-modeline)
-   (-modeline-pad
-    (when lazycat-dark-padded-modeline
-      (if (integerp lazycat-dark-padded-modeline) lazycat-dark-padded-modeline 4)))
-
-   (modeline-fg     fg)
-   (modeline-fg-alt base5)
-
-   (modeline-bg
-    (if -modeline-bright
-        (lazycat-darken blue 0.475)
-      `(,(lazycat-darken (car bg-alt) 0.15) ,@(cdr base0))))
-   (modeline-bg-l
-    (if -modeline-bright
-        (lazycat-darken blue 0.45)
-      `(,(lazycat-darken (car bg-alt) 0.1) ,@(cdr base0))))
-   (modeline-bg-inactive   `(,(lazycat-darken (car bg-alt) 0.1) ,@(cdr bg-alt)))
-   (modeline-bg-inactive-l `(,(car bg-alt) ,@(cdr base1))))
-
+   (hidden     `(,(car bg) "black" "black")))
 
   ;; --- extra faces ------------------------
-  ((elscreen-tab-other-screen-face :background "#353a42" :foreground "#1e2022")
-
-   (evil-goggles-default-face :inherit 'region :background (lazycat-blend region bg 0.5))
-
-   ((line-number &override) :foreground fg-alt :background bg)
+  (((line-number &override) :foreground fg-alt :background bg)
    ((line-number-current-line &override) :foreground fg :background bg)
 
    (font-lock-comment-face
@@ -206,33 +166,6 @@ determine the exact padding."
     :inherit 'font-lock-comment-face
     :foreground doc-comments)
 
-   (mode-line
-    :background highlight :foreground highlight     :height 0.1
-    :box nil)
-   (mode-line-inactive
-    :background bg :foreground bg    :height 0.1
-    :box nil)
-   (mode-line-emphasis
-    :foreground (if -modeline-bright base8 highlight)
-    :height 0.1)
-
-   (solaire-mode-line-face
-    :inherit 'mode-line
-    :background modeline-bg-l
-    :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-l)))
-   (solaire-mode-line-inactive-face
-    :inherit 'mode-line-inactive
-    :background modeline-bg-inactive-l
-    :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive-l)))
-
-   ;; Lazycat modeline
-   (lazycat-modeline-bar :background (if -modeline-bright modeline-bg highlight))
-   (lazycat-modeline-buffer-file :inherit 'mode-line-buffer-id :weight 'bold)
-   (lazycat-modeline-buffer-path :inherit 'mode-line-emphasis :weight 'bold)
-   (lazycat-modeline-buffer-project-root :foreground green :weight 'bold)
-
-   ;; ivy-mode
-   (ivy-current-match :background dark-blue :distant-foreground base0 :weight 'normal)
 
    ;; --- major-mode faces -------------------
    ;; css-mode / scss-mode
@@ -250,8 +183,7 @@ determine the exact padding."
    (solaire-org-hide-face :foreground hidden)
 
    ;; secondary region.
-   (secondary-selection :background grey)
-   )
+   (secondary-selection :background grey))
 
 
   ;; --- extra variables ---------------------

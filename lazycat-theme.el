@@ -4,11 +4,6 @@
   "Options for lazycat-themes."
   :group 'faces)
 
-(defcustom lazycat-themes-padded-modeline nil
-  "Default value for padded-modeline setting for themes that support it."
-  :group 'lazycat-themes
-  :type '(choice integer boolean))
-
 (defcustom lazycat-themes-enable-bold nil
   "If nil, bold will be disabled across all faces."
   :group 'lazycat-themes
@@ -288,14 +283,7 @@ Variables in EXTRA-VARS override the default ones."
 
 
 (defvar lazycat-themes-base-faces
-  '(;; --- custom faces -----------------------
-    (lazycat-modeline-error
-     :background (lazycat-darken red 0.25)
-     :foreground base0
-     :distant-foreground base0)
-    (lazycat-visual-bell :background error)
-
-    ;; --- base faces -------------------------
+  '(;; --- base faces -------------------------
     (bold        :weight 'bold :foreground (unless bold base8))
     (italic      :slant  'italic)
     (bold-italic :inherit '(bold italic))
