@@ -189,6 +189,40 @@ legibility."
   ;; --- extra variables ---------------------
   ())
 
+(custom-theme-set-variables
+ 'lazycat-dark
+ `(ansi-color-names-vector
+   (vconcat (mapcar #'lazycat-color '(bg red green yellow blue magenta cyan fg))))
+ `(rustic-ansi-faces
+   (vconcat (mapcar #'lazycat-color '(bg red green yellow blue magenta cyan fg))))
+ `(fci-rule-color ,(lazycat-color 'base5))
+ `(jdee-db-spec-breakpoint-face-colors (cons ,(lazycat-color 'base0) ,(lazycat-color 'grey)))
+ `(jdee-db-requested-breakpoint-face-colors (cons ,(lazycat-color 'base0) ,(lazycat-color 'green)))
+ `(jdee-db-active-breakpoint-face-colors (cons ,(lazycat-color 'base0) ,(lazycat-color 'highlight)))
+ `(objed-cursor-color ,(lazycat-color 'red))
+ `(pdf-view-midnight-colors (cons ,(lazycat-color 'fg) ,(lazycat-color 'bg)))
+ `(vc-annotate-color-map
+   (list (cons 20  ,(lazycat-color 'green))
+         (cons 40  ,(lazycat-blend 'yellow 'green (/ 1.0 3)))
+         (cons 60  ,(lazycat-blend 'yellow 'green (/ 2.0 3)))
+         (cons 80  ,(lazycat-color 'yellow))
+         (cons 100 ,(lazycat-blend 'orange 'yellow (/ 1.0 3)))
+         (cons 120 ,(lazycat-blend 'orange 'yellow (/ 2.0 3)))
+         (cons 140 ,(lazycat-color 'orange))
+         (cons 160 ,(lazycat-blend 'magenta 'orange (/ 1.0 3)))
+         (cons 180 ,(lazycat-blend 'magenta 'orange (/ 2.0 3)))
+         (cons 200 ,(lazycat-color 'magenta))
+         (cons 220 ,(lazycat-blend 'red 'magenta (/ 1.0 3)))
+         (cons 240 ,(lazycat-blend 'red 'magenta (/ 2.0 3)))
+         (cons 260 ,(lazycat-color 'red))
+         (cons 280 ,(lazycat-blend 'grey 'red (/ 1.0 4)))
+         (cons 300 ,(lazycat-blend 'grey 'red (/ 2.0 4)))
+         (cons 320 ,(lazycat-blend 'grey 'red (/ 3.0 4)))
+         (cons 340 ,(lazycat-color 'base5))
+         (cons 360 ,(lazycat-color 'base5))))
+ `(vc-annotate-very-old-color nil)
+ `(vc-annotate-background ,(lazycat-color 'bg)))
+
 (provide 'lazycat-dark-theme)
 
 ;;; lazycat-dark-theme.el ends here
