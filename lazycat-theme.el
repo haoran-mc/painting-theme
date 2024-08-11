@@ -49,10 +49,10 @@ legibility."
                 (not (equal (substring (symbol-name item) 0 1) "-"))
                 (assq item lazycat-themes--colors))))))
 
-(defun lazycat-themes--apply-faces (new-faces &optional default-faces)
+(defun lazycat-themes--apply-faces (new-faces)
   (declare (pure t) (side-effect-free t))
-  (let ((default-faces (or default-faces lazycat-themes-base-faces))
-        (faces (make-hash-table :test #'eq :size (+ (length default-faces) (length new-faces))))
+  (let ((default-faces lazycat-themes-base-faces)
+        (faces (make-hash-table :test #'eq :size (length new-faces)))
         (directives (make-hash-table :test #'eq)))
     (dolist (spec (append (mapcar #'copy-sequence default-faces) new-faces))
       (if (listp (car spec))
@@ -67,9 +67,6 @@ legibility."
              do (error "Invalid operation (%s) for '%s' face" action face)
              if (eq (car spec) 'quote)
              do (error "Can't extend literal face spec (for '%s')" face)
-             ;; TODO Add &all/&light/&dark extension support
-             else if (memq (car spec) '(&all &light &dark))
-             do (error "Can't extend face with &all, &light or &dark specs (for '%s')" face)
              else do
              (puthash face
                       (let ((old-spec (gethash (or target face) faces))
@@ -83,7 +80,6 @@ legibility."
     (let (results)
       (maphash (lambda (face plist)
                  (when (keywordp (car plist))
-                   ;; TODO Clean up duplicates in &all/&light/&dark blocks
                    (dolist (prop (append (unless lazycat-themes-enable-bold   '(:weight normal :bold nil))
                                          (unless lazycat-themes-enable-italic '(:slant normal :italic nil))))
                      (when (and (plist-member plist prop)
@@ -141,24 +137,7 @@ legibility."
                   `(list (list 't (list ,@real-attrs))))))
 
              ((memq (car-safe (car face-body)) '(quote backquote \`))
-              (car face-body))
-
-             ((let (all-attrs defs)
-                (dolist (attrs face-body `(list ,@(nreverse defs)))
-                  (cond ((eq (car attrs) '&all)
-                         (setq all-attrs (append all-attrs (cdr attrs))))
-
-                        ((memq (car attrs) '(&dark &light))
-                         (let ((bg (if (eq (car attrs) '&dark) 'dark 'light))
-                               (real-attrs (append all-attrs (cdr attrs) '())))
-                           (cond ((lazycat-themes--colors-p real-attrs)
-                                  (dolist (cl lazycat--min-colors)
-                                    (push `(list '((class color) (min-colors ,cl) (background ,bg))
-                                                 (list ,@(lazycat-themes--colorize real-attrs cl)))
-                                          defs)))
-
-                                 ((push `(list '((background ,bg)) (list ,@real-attrs))
-                                        defs)))))))))))))
+              (car face-body))))))
 
 ;;;###autoload
 (defun lazycat-name-to-rgb (color)
@@ -557,18 +536,9 @@ Faces in EXTRA-FACES override the default faces."
     ;; avy
     (avy-background-face :foreground comments)
     (avy-lead-face :background highlight :foreground bg :distant-foreground fg :weight 'bold)
-    (avy-lead-face-0
-     (&all   :inherit 'avy-lead-face)
-     (&dark  :background (lazycat-lighten highlight 0.3))
-     (&light :background (lazycat-darken highlight 0.3)))
-    (avy-lead-face-1
-     (&all   :inherit 'avy-lead-face)
-     (&dark  :background (lazycat-lighten highlight 0.6))
-     (&light :background (lazycat-darken highlight 0.6)))
-    (avy-lead-face-2
-     (&all   :inherit 'avy-lead-face)
-     (&dark  :background (lazycat-lighten highlight 0.9))
-     (&light :background (lazycat-darken highlight 0.9)))
+    (avy-lead-face-0 :inherit 'avy-lead-face :background (lazycat-lighten highlight 0.3))
+    (avy-lead-face-1 :inherit 'avy-lead-face :background (lazycat-lighten highlight 0.6))
+    (avy-lead-face-2 :inherit 'avy-lead-face :background (lazycat-lighten highlight 0.9))
 
     ;; bookmark+
     (bmkp-*-mark :foreground bg :background yellow)
@@ -633,9 +603,7 @@ Faces in EXTRA-FACES override the default faces."
     ;; diff-mode
     (diff-added   :inherit 'hl-line :foreground green)
     (diff-changed :foreground violet)
-    (diff-context
-     (&dark  :foreground (lazycat-darken fg 0.12))
-     (&light :foreground (lazycat-lighten fg 0.12)))
+    (diff-context :foreground (lazycat-darken fg 0.12))
     (diff-removed :foreground red :background base3)
     (diff-header  :foreground cyan :background nil)
     (diff-file-header :foreground blue :background nil)
@@ -869,9 +837,7 @@ Faces in EXTRA-FACES override the default faces."
     (solaire-org-hide-face :foreground hidden)
 
     ;; stripe-buffer
-    (stripe-highlight
-     (&light :background base5)
-     (&dark  :background base3))
+    (stripe-highlight :background base3)
 
     ;; tabbar
     (tabbar-default             :foreground bg :background bg :height 1.0)
@@ -948,8 +914,7 @@ Faces in EXTRA-FACES override the default faces."
 
     ;; --- major-mode faces -------------------
     ;; elixir-mode
-    (elixir-atom-face (&light :foreground dark-blue)
-                      (&dark  :foreground cyan))
+    (elixir-atom-face :foreground cyan)
     (elixir-attribute-face :foreground violet)
 
     ;; enh-ruby-mode
