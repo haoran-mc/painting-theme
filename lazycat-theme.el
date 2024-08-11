@@ -49,48 +49,6 @@ legibility."
                 (not (equal (substring (symbol-name item) 0 1) "-"))
                 (assq item lazycat-themes--colors))))))
 
-(defun lazycat-themes--apply-faces (new-faces)
-  (declare (pure t) (side-effect-free t))
-  (let ((default-faces lazycat-themes-base-faces)
-        (faces (make-hash-table :test #'eq :size (length new-faces)))
-        (directives (make-hash-table :test #'eq)))
-    (dolist (spec (append (mapcar #'copy-sequence default-faces) new-faces))
-      (if (listp (car spec))
-          (cl-destructuring-bind (face action &optional arg) (car spec)
-            (unless (assq face new-faces)
-              (puthash face (list action arg (cdr spec))
-                       directives)))
-        (puthash (car spec) (cdr spec) faces)))
-    (cl-loop for face being the hash-keys of directives
-             for (action target spec) = (gethash face directives)
-             unless (memq action '(&inherit &extend &override))
-             do (error "Invalid operation (%s) for '%s' face" action face)
-             if (eq (car spec) 'quote)
-             do (error "Can't extend literal face spec (for '%s')" face)
-             else do
-             (puthash face
-                      (let ((old-spec (gethash (or target face) faces))
-                            (plist spec))
-                        ;; remove duplicates
-                        (while (keywordp (car plist))
-                          (setq old-spec (plist-put old-spec (car plist) (cadr plist))
-                                plist (cddr plist)))
-                        old-spec)
-                      faces))
-    (let (results)
-      (maphash (lambda (face plist)
-                 (when (keywordp (car plist))
-                   (dolist (prop (append (unless lazycat-themes-enable-bold   '(:weight normal :bold nil))
-                                         (unless lazycat-themes-enable-italic '(:slant normal :italic nil))))
-                     (when (and (plist-member plist prop)
-                                (not (eq (plist-get plist prop) 'inherit)))
-                       (plist-put plist prop
-                                  (if (memq prop '(:weight :slant))
-                                      (quote 'normal))))))
-                 (push (cons face plist) results))
-               faces)
-      (nreverse results))))
-
 (defun lazycat-themes--colorize (item type)
   (declare (pure t) (side-effect-free t))
   (when item
@@ -228,7 +186,7 @@ between 0 and 1)."
 
 Faces in EXTRA-FACES override the default faces."
   (declare (pure t) (side-effect-free t))
-  (setq lazycat-themes--faces (lazycat-themes--apply-faces '()))
+  (setq lazycat-themes--faces lazycat-themes-base-faces)
   (mapcar #'lazycat-themes--build-face lazycat-themes--faces))
 
 (defmacro def-lazycat-theme (name docstring defs)
@@ -446,8 +404,10 @@ Faces in EXTRA-FACES override the default faces."
     (isearch :inherit 'lazy-highlight :weight 'bold)
     (isearch-fail :background error :foreground base0 :weight 'bold)
 
-    ;; linum
-    ((linum &inherit line-number))
+    ;; linum totally inherit line-number
+    (linum :inherit 'default
+           :foreground base5 :distant-foreground nil
+           :weight 'normal :italic nil :underline nil :strike-through nil)
 
     ;; message
     (message-header-name       :foreground green)
@@ -669,12 +629,6 @@ Faces in EXTRA-FACES override the default faces."
     (imenu-list-entry-face-2 :foreground yellow)
     (imenu-list-entry-subalist-face-2 :inherit 'imenu-list-entry-face-2 :weight 'bold)
 
-    ;; indent-guide
-    ((indent-guide-face &inherit highlight-indentation-face))
-
-    ;; linum-relative
-    ((linum-relative-current-face &inherit line-number-current-line))
-
     ;; lui
     (lui-time-stamp-face :foreground violet)
     (lui-highlight-face :foreground highlight)
@@ -812,13 +766,13 @@ Faces in EXTRA-FACES override the default faces."
     (reb-match-3 :foreground yellow  :inverse-video t)
 
     ;; show-paren
-    ((show-paren-match &inherit paren-face-match))
-    ((show-paren-mismatch &inherit paren-face-mismatch))
+    (show-paren-match :foreground red :background base0 :weight 'ultra-bold)
+    (show-paren-mismatch :foreground base0 :background red   :weight 'ultra-bold)
 
     ;; smartparens
     (sp-pair-overlay-face :background region)
-    ((sp-show-pair-match-face    &inherit show-paren-match))
-    ((sp-show-pair-mismatch-face &inherit show-paren-mismatch))
+    (sp-show-pair-match-face    :foreground red :background base0 :weight 'ultra-bold)
+    (sp-show-pair-mismatch-face :foreground base0 :background red   :weight 'ultra-bold)
 
     ;; smerge-tool
     (smerge-lower :background (lazycat-blend green bg 0.2))
@@ -827,9 +781,6 @@ Faces in EXTRA-FACES override the default faces."
     (smerge-markers :background comments :foreground bg :distant-foreground fg :weight 'bold)
     (smerge-refined-added   :inherit 'diff-added :inverse-video t)
     (smerge-refined-removed :inherit 'diff-removed :inverse-video t)
-    ;; Emacs <25 compatibility
-    ((smerge-mine  &inherit smerge-upper))
-    ((smerge-other &inherit smerge-lower))
 
     ;; solaire-mode
     (solaire-default-face  :inherit 'default :background bg-alt)
