@@ -90,12 +90,6 @@
   "Options for lazycat-themes"
   :group 'lazycat-themes)
 
-(defcustom lazycat-dark-comment-bg nil
-  "If non-nil, comments will have a subtle, darker background. Enhancing their
-legibility."
-  :group 'lazycat-dark-theme
-  :type 'boolean)
-
 (def-lazycat-theme lazycat-dark
   "A dark theme inspired by Atom One Dark"
 
@@ -153,41 +147,7 @@ legibility."
    (vc-deleted     red)
 
    ;; custom categories
-   (hidden     `(,(car bg) "black" "black")))
-
-  ;; --- extra faces ------------------------
-  (((line-number &override) :foreground fg-alt :background bg)
-   ((line-number-current-line &override) :foreground fg :background bg)
-
-   (font-lock-comment-face
-    :foreground comments
-    :background (if lazycat-dark-comment-bg (lazycat-lighten bg 0.05)))
-   (font-lock-doc-face
-    :inherit 'font-lock-comment-face
-    :foreground doc-comments)
-
-
-   ;; --- major-mode faces -------------------
-   ;; css-mode / scss-mode
-   (css-proprietary-property :foreground orange)
-   (css-property             :foreground green)
-   (css-selector             :foreground blue)
-
-   ;; markdown-mode
-   (markdown-markup-face :foreground base5)
-   (markdown-header-face :inherit 'bold :foreground red)
-   ((markdown-code-face &override) :background (lazycat-lighten base3 0.05))
-
-   ;; org-mode
-   (org-hide :foreground hidden)
-   (solaire-org-hide-face :foreground hidden)
-
-   ;; secondary region.
-   (secondary-selection :background grey))
-
-
-  ;; --- extra variables ---------------------
-  ())
+   (hidden     `(,(car bg) "black" "black"))))
 
 (custom-theme-set-variables
  'lazycat-dark

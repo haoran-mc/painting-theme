@@ -14,6 +14,12 @@
   :group 'lazycat-themes
   :type 'boolean)
 
+(defcustom lazycat-dark-comment-bg nil
+  "If non-nil, comments will have a subtle, darker background. Enhancing their
+legibility."
+  :group 'lazycat-themes
+  :type 'boolean)
+
 (defvar lazycat-themes--colors nil)
 (defvar lazycat--min-colors '(257 256 16))
 (defvar lazycat--quoted-p nil)
@@ -238,15 +244,15 @@ between 0 and 1)."
              prop face (if class (format "'s '%s' class" class) "")))
     (plist-get spec prop)))
 
-(defun lazycat-themes-prepare-facelist (custom-faces)
+(defun lazycat-themes-prepare-facelist ()
   "Return an alist of face definitions for `custom-theme-set-faces'.
 
 Faces in EXTRA-FACES override the default faces."
   (declare (pure t) (side-effect-free t))
-  (setq lazycat-themes--faces (lazycat-themes--apply-faces custom-faces))
+  (setq lazycat-themes--faces (lazycat-themes--apply-faces '()))
   (mapcar #'lazycat-themes--build-face lazycat-themes--faces))
 
-(defmacro def-lazycat-theme (name docstring defs &optional extra-faces extra-vars)
+(defmacro def-lazycat-theme (name docstring defs)
   "Define a LAZYCAT theme, named NAME (a symbol)."
   (declare (doc-string 2))
   (let ((lazycat-themes--colors defs))
@@ -258,7 +264,7 @@ Faces in EXTRA-FACES override the default faces."
                               collect `(cons ',var ,val))))
        (deftheme ,name ,docstring)
        (custom-theme-set-faces
-        ',name ,@(lazycat-themes-prepare-facelist extra-faces))
+        ',name ,@(lazycat-themes-prepare-facelist))
        (unless bold (set-face-bold 'bold nil))
        (unless italic (set-face-italic 'italic nil))
        (provide-theme ',name))))
@@ -299,7 +305,9 @@ Faces in EXTRA-FACES override the default faces."
     (success :foreground success)
 
     (font-lock-builtin-face              :foreground builtin)
-    (font-lock-comment-face              :foreground comments)
+    (font-lock-comment-face
+     :foreground comments
+     :background (if lazycat-dark-comment-bg (lazycat-lighten bg 0.05)))
     (font-lock-comment-delimiter-face    :inherit 'font-lock-comment-face)
     (font-lock-doc-face                  :inherit 'font-lock-comment-face :foreground doc-comments)
     (font-lock-constant-face             :foreground constants)
@@ -316,8 +324,8 @@ Faces in EXTRA-FACES override the default faces."
     (font-lock-regexp-grouping-construct :inherit 'bold :foreground operators)
 
     ;; mode-line
-    (mode-line           :background bg     :foreground fg     :distant-foreground bg       :height 0.1)
-    (mode-line-inactive  :background bg-alt :foreground fg-alt :distant-foreground bg-alt   :height 0.1)
+    (mode-line           :background bg     :foreground bg-alt)
+    (mode-line-inactive  :background bg     :foreground fg)
     (mode-line-emphasis  :foreground highlight :distant-foreground bg   :height 0.1)
     (mode-line-highlight :inherit 'highlight :distant-foreground bg     :height 0.1)
     (mode-line-buffer-id :weight 'bold  :height 0.1)
@@ -858,7 +866,7 @@ Faces in EXTRA-FACES override the default faces."
     ;; solaire-mode
     (solaire-default-face  :inherit 'default :background bg-alt)
     (solaire-hl-line-face  :inherit 'hl-line :background bg :extend t)
-    (solaire-org-hide-face :foreground bg-alt)
+    (solaire-org-hide-face :foreground hidden)
 
     ;; stripe-buffer
     (stripe-highlight
@@ -976,7 +984,7 @@ Faces in EXTRA-FACES override the default faces."
     (Man-underline :inherit 'underline :foreground keywords)
 
     ;; markdown-mode
-    (markdown-header-face           :inherit 'bold :foreground highlight)
+    (markdown-header-face           :inherit 'bold :foreground red)
     (markdown-header-delimiter-face :inherit 'markdown-header-face)
     (markdown-metadata-key-face     :foreground red)
     (markdown-list-face             :foreground red)
@@ -984,10 +992,10 @@ Faces in EXTRA-FACES override the default faces."
     (markdown-url-face              :foreground magenta :weight 'normal)
     (markdown-italic-face           :inherit 'italic :foreground violet)
     (markdown-bold-face             :inherit 'bold   :foreground orange)
-    (markdown-markup-face           :foreground operators)
+    (markdown-markup-face           :foreground base5)
     (markdown-blockquote-face       :inherit 'italic :foreground doc-comments)
     (markdown-pre-face              :foreground strings)
-    (markdown-code-face             :background base3 :extend t)
+    (markdown-code-face             :background (lazycat-lighten base3 0.05) :extend t)
     (markdown-reference-face        :foreground doc-comments)
     (markdown-inline-code-face      :inherit '(markdown-code-face markdown-pre-face) :extend nil)
     (markdown-html-attr-name-face     :inherit 'font-lock-variable-name-face)
@@ -995,6 +1003,11 @@ Faces in EXTRA-FACES override the default faces."
     (markdown-html-entity-face        :inherit 'font-lock-variable-name-face)
     (markdown-html-tag-delimiter-face :inherit 'markdown-markup-face)
     (markdown-html-tag-name-face      :inherit 'font-lock-keyword-face)
+
+    ;; css-mode / scss-mode
+    (css-proprietary-property :foreground orange)
+    (css-property             :foreground green)
+    (css-selector             :foreground blue)
 
     ;; outline
     (outline-1 :foreground blue                        :weight 'bold :extend t)
@@ -1025,7 +1038,7 @@ Faces in EXTRA-FACES override the default faces."
     (org-footnote                 :foreground orange)
     (org-formula                  :foreground cyan)
     (org-headline-done            :foreground base5)
-    (org-hide                     :foreground bg)
+    (org-hide                     :foreground hidden)
 
     (org-list-dt         :foreground highlight)
     (org-meta-line       :foreground doc-comments)
