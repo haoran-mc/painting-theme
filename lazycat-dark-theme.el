@@ -151,16 +151,17 @@
 
 (custom-theme-set-variables
  'lazycat-dark
+
  `(ansi-color-names-vector
    (vconcat (mapcar #'lazycat-color '(bg red green yellow blue magenta cyan fg))))
+
  `(rustic-ansi-faces
    (vconcat (mapcar #'lazycat-color '(bg red green yellow blue magenta cyan fg))))
+
  `(fci-rule-color ,(lazycat-color 'base5))
- `(jdee-db-spec-breakpoint-face-colors (cons ,(lazycat-color 'base0) ,(lazycat-color 'grey)))
- `(jdee-db-requested-breakpoint-face-colors (cons ,(lazycat-color 'base0) ,(lazycat-color 'green)))
- `(jdee-db-active-breakpoint-face-colors (cons ,(lazycat-color 'base0) ,(lazycat-color 'highlight)))
  `(objed-cursor-color ,(lazycat-color 'red))
  `(pdf-view-midnight-colors (cons ,(lazycat-color 'fg) ,(lazycat-color 'bg)))
+
  `(vc-annotate-color-map
    (list (cons 20  ,(lazycat-color 'green))
          (cons 40  ,(lazycat-blend 'yellow 'green (/ 1.0 3)))
