@@ -16,6 +16,30 @@
 
 (defvar lazycat-themes--colors nil)
 
+(defun lazycat-themes-prepare-facelist ()
+  "Return an alist of face definitions for `custom-theme-set-faces'.
+
+Faces in EXTRA-FACES override the default faces."
+  (declare (pure t) (side-effect-free t))
+  (mapcar #'lazycat-themes--build-face lazycat-themes-base-faces))
+
+(defmacro def-lazycat-theme (name docstring defs)
+  "Define a LAZYCAT theme, named NAME (a symbol)."
+  (declare (doc-string 2))
+  (let ((lazycat-themes--colors defs))
+    `(let* ((bold   lazycat-themes-enable-bold)
+            (italic lazycat-themes-enable-italic)
+            ,@defs)
+       (setq lazycat-themes--colors
+             (list ,@(cl-loop for (var val) in defs
+                              collect `(cons ',var ,val))))
+       (deftheme ,name ,docstring)
+       (custom-theme-set-faces
+        ',name ,@(lazycat-themes-prepare-facelist))
+       (unless bold (set-face-bold 'bold nil))
+       (unless italic (set-face-italic 'italic nil))
+       (provide-theme ',name))))
+
 (defun lazycat-themes--build-face (face)
   (declare (pure t) (side-effect-free t))
   `(list
@@ -95,30 +119,6 @@ between 0 and 1)."
                       (car (last colors))
                     (nth i colors))))
                (t colors)))))
-
-(defun lazycat-themes-prepare-facelist ()
-  "Return an alist of face definitions for `custom-theme-set-faces'.
-
-Faces in EXTRA-FACES override the default faces."
-  (declare (pure t) (side-effect-free t))
-  (mapcar #'lazycat-themes--build-face lazycat-themes-base-faces))
-
-(defmacro def-lazycat-theme (name docstring defs)
-  "Define a LAZYCAT theme, named NAME (a symbol)."
-  (declare (doc-string 2))
-  (let ((lazycat-themes--colors defs))
-    `(let* ((bold   lazycat-themes-enable-bold)
-            (italic lazycat-themes-enable-italic)
-            ,@defs)
-       (setq lazycat-themes--colors
-             (list ,@(cl-loop for (var val) in defs
-                              collect `(cons ',var ,val))))
-       (deftheme ,name ,docstring)
-       (custom-theme-set-faces
-        ',name ,@(lazycat-themes-prepare-facelist))
-       (unless bold (set-face-bold 'bold nil))
-       (unless italic (set-face-italic 'italic nil))
-       (provide-theme ',name))))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
