@@ -14,12 +14,6 @@
   :group 'lazycat-themes
   :type 'boolean)
 
-(defcustom lazycat-dark-comment-bg nil
-  "If non-nil, comments will have a subtle, darker background. Enhancing their
-legibility."
-  :group 'lazycat-themes
-  :type 'boolean)
-
 (defvar lazycat-themes--colors nil)
 
 (defun lazycat-themes--build-face (face)
@@ -162,9 +156,7 @@ Faces in EXTRA-FACES override the default faces."
     (success :foreground success)
 
     (font-lock-builtin-face              :foreground builtin)
-    (font-lock-comment-face
-     :foreground comments
-     :background (if lazycat-dark-comment-bg (lazycat-lighten bg 0.05)))
+    (font-lock-comment-face              :foreground comments)
     (font-lock-comment-delimiter-face    :inherit 'font-lock-comment-face)
     (font-lock-doc-face                  :inherit 'font-lock-comment-face :foreground doc-comments)
     (font-lock-constant-face             :foreground constants)
