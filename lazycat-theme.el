@@ -21,63 +21,6 @@ legibility."
   :type 'boolean)
 
 (defvar lazycat-themes--colors nil)
-(defvar lazycat--min-colors '(257 256 16))
-(defvar lazycat--quoted-p nil)
-(defvar lazycat-themes--faces nil)
-
-(defun lazycat-themes--colors-p (item)
-  (declare (pure t) (side-effect-free t))
-  (when item
-    (cond ((listp item)
-           (let ((car (car item)))
-             (cond ((memq car '(quote lazycat-color)) nil)
-
-                   ((memq car '(backquote \`))
-                    (let ((lazycat--quoted-p t))
-                      (lazycat-themes--colors-p (cdr item))))
-
-                   ((eq car '\,)
-                    (let (lazycat--quoted-p)
-                      (lazycat-themes--colors-p (cdr item))))
-
-                   ((or (lazycat-themes--colors-p car)
-                        (lazycat-themes--colors-p (cdr-safe item)))))))
-
-          ((and (symbolp item)
-                (not (keywordp item))
-                (not lazycat--quoted-p)
-                (not (equal (substring (symbol-name item) 0 1) "-"))
-                (assq item lazycat-themes--colors))))))
-
-(defun lazycat-themes--colorize (item type)
-  (declare (pure t) (side-effect-free t))
-  (when item
-    (let ((lazycat--quoted-p lazycat--quoted-p))
-      (cond ((listp item)
-             (cond ((memq (car item) '(quote lazycat-color))
-                    item)
-                   ((eq (car item) 'lazycat-ref)
-                    (lazycat-themes--colorize
-                     (apply #'lazycat-ref (cdr item)) type))
-                   ((let* ((item (append item nil))
-                           (car (car item))
-                           (lazycat--quoted-p
-                            (cond ((memq car '(backquote \`)) t)
-                                  ((eq car '\,) nil)
-                                  (t lazycat--quoted-p))))
-                      (cons car
-                            (cl-loop
-                             for i in (cdr item)
-                             collect (lazycat-themes--colorize i type)))))))
-
-            ((and (symbolp item)
-                  (not (keywordp item))
-                  (not lazycat--quoted-p)
-                  (not (equal (substring (symbol-name item) 0 1) "-"))
-                  (assq item lazycat-themes--colors))
-             `(lazycat-color ',item ',type))
-
-            (item)))))
 
 (defun lazycat-themes--build-face (face)
   (declare (pure t) (side-effect-free t))
@@ -87,14 +30,7 @@ legibility."
        (cond ((keywordp (car face-body))
               (let ((real-attrs face-body)
                     defs)
-                ;; (if (lazycat-themes--colors-p real-attrs)
-                ;;     (dolist (cl lazycat--min-colors `(list ,@(nreverse defs)))
-                ;;       (push `(list '((class color) (min-colors ,cl))
-                ;;                    (list ,@(lazycat-themes--colorize real-attrs cl)))
-                ;;             defs))
-                `(list (list 't (list ,@real-attrs)))
-                ;; )
-                ))
+                `(list (list 't (list ,@real-attrs)))))
 
              ((memq (car-safe (car face-body)) '(quote backquote \`))
               (car face-body))))))
@@ -166,30 +102,12 @@ between 0 and 1)."
                     (nth i colors))))
                (t colors)))))
 
-;;;###autoload
-(defun lazycat-ref (face prop &optional class)
-  "TODO"
-  (let ((spec (or (cdr (assq face lazycat-themes--faces))
-                  (error "Couldn't find the '%s' face" face))))
-    (when (memq (car spec) '(quote backquote \`))
-      (user-error "Can't fetch the literal spec for '%s'" face))
-    (when class
-      (setq spec (cdr (assq class spec)))
-      (unless spec
-        (error "Couldn't find the '%s' class in the '%s' face"
-               class face)))
-    (unless (plist-member spec prop)
-      (error "Couldn't find the '%s' property in the '%s' face%s"
-             prop face (if class (format "'s '%s' class" class) "")))
-    (plist-get spec prop)))
-
 (defun lazycat-themes-prepare-facelist ()
   "Return an alist of face definitions for `custom-theme-set-faces'.
 
 Faces in EXTRA-FACES override the default faces."
   (declare (pure t) (side-effect-free t))
-  (setq lazycat-themes--faces lazycat-themes-base-faces)
-  (mapcar #'lazycat-themes--build-face lazycat-themes--faces))
+  (mapcar #'lazycat-themes--build-face lazycat-themes-base-faces))
 
 (defmacro def-lazycat-theme (name docstring defs)
   "Define a LAZYCAT theme, named NAME (a symbol)."
