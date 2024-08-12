@@ -663,8 +663,8 @@ between 0 and 1)."
     (reb-match-3 :foreground yellow  :inverse-video t)
 
     ;; show-paren
-    (show-paren-match :foreground red :background base0 :weight 'ultra-bold)
-    (show-paren-mismatch :foreground base0 :background red   :weight 'ultra-bold)
+    (show-paren-match    :foreground red   :underline t    :weight 'normal)
+    (show-paren-mismatch :foreground base0 :background red :weight 'normal)
 
     ;; smartparens
     (sp-pair-overlay-face :background region)
