@@ -149,7 +149,7 @@ between 0 and 1)."
     (trailing-whitespace  :background red)
     (nobreak-space        :inherit 'default :underline nil)
     (vertical-border      :background vertical-bar :foreground vertical-bar)
-    (link                 :foreground highlight :underline t :weight 'bold)
+    (link                 :foreground highlight :underline t)
 
     (error   :foreground error)
     (warning :foreground warning)
