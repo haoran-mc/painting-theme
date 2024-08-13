@@ -1,19 +1,18 @@
 (require 'cl-lib)
 
-(defgroup lazycat-dark nil
+(defgroup lazycat nil
   "Options for lazycat-themes."
   :group 'faces)
 
 (defcustom lazycat-themes-enable-bold nil
   "If nil, bold will be disabled across all faces."
-  :group 'lazycat-dark
+  :group 'lazycat
   :type 'boolean)
 
 (defcustom lazycat-themes-enable-italic nil
   "If nil, italics will be disabled across all faces."
-  :group 'lazycat-dark
+  :group 'lazycat
   :type 'boolean)
-
 
 
 (defvar lazycat-themes--colors nil)
@@ -936,7 +935,7 @@ Faces in EXTRA-FACES override the default faces."
        (unless italic (set-face-italic 'italic nil))
        (provide-theme ',name))))
 
-(def-lazycat-theme lazycat-dark
+(def-lazycat-theme lazycat
   "A dark theme inspired by Atom One Dark"
 
   ((bg             "#242525")
@@ -995,7 +994,7 @@ Faces in EXTRA-FACES override the default faces."
    (hidden         bg)))
 
 (custom-theme-set-variables
- 'lazycat-dark
+ 'lazycat
 
  `(ansi-color-names-vector
    (vconcat (mapcar #'lazycat-color '(bg red green yellow blue magenta cyan fg))))
@@ -1030,4 +1029,4 @@ Faces in EXTRA-FACES override the default faces."
  `(vc-annotate-background ,(lazycat-color 'bg)))
 
 
-(provide 'lazycat-dark-theme)
+(provide 'lazycat-theme)
