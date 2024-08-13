@@ -1,5 +1,7 @@
 (require 'cl-lib)
 
+(deftheme lazycat "A dark theme inspired by Atom One Dark")
+
 (defgroup lazycat nil
   "Options for lazycat-themes."
   :group 'faces)
@@ -928,12 +930,10 @@ Faces in EXTRA-FACES override the default faces."
        (setq lazycat-themes--colors
              (list ,@(cl-loop for (var val) in defs
                               collect `(cons ',var ,val))))
-       (deftheme ,name ,docstring)
        (custom-theme-set-faces
         ',name ,@(lazycat-themes-prepare-facelist))
        (unless bold (set-face-bold 'bold nil))
-       (unless italic (set-face-italic 'italic nil))
-       (provide-theme ',name))))
+       (unless italic (set-face-italic 'italic nil)))))
 
 (def-lazycat-theme lazycat
   "A dark theme inspired by Atom One Dark"
@@ -1028,5 +1028,4 @@ Faces in EXTRA-FACES override the default faces."
  `(vc-annotate-very-old-color nil)
  `(vc-annotate-background ,(lazycat-color 'bg)))
 
-
-(provide 'lazycat-theme)
+(provide-theme 'lazycat)
