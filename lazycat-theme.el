@@ -2,8 +2,6 @@
 
 (deftheme lazycat "A dark theme inspired by Atom One Dark")
 
-(defvar lazycat-themes--colors nil)
-
 ;;;###autoload
 (defun lazycat-name-to-rgb (color)
   "Retrieves the hexidecimal string repesented the named COLOR (e.g. \"red\")
@@ -17,10 +15,7 @@ for FRAME (defaults to the current frame)."
   "Blend two colors (hexidecimal strings) together by a coefficient ALPHA (a
 float between 0 and 1)"
   (when (and color1 color2)
-    (cond ((and color1 color2 (symbolp color1) (symbolp color2))
-           (lazycat-blend (lazycat-color color1) (lazycat-color color2) alpha))
-
-          ((or (listp color1) (listp color2))
+    (cond ((or (listp color1) (listp color2))
            (cl-loop for x in color1
                     when (if (listp color2) (pop color2) color2)
                     collect (lazycat-blend x it alpha)))
@@ -37,10 +32,7 @@ float between 0 and 1)"
 (defun lazycat-darken (color alpha)
   "Darken a COLOR (a hexidecimal string) by a coefficient ALPHA (a float between
 0 and 1)."
-  (cond ((and color (symbolp color))
-         (lazycat-darken (lazycat-color color) alpha))
-
-        ((listp color)
+  (cond ((listp color)
          (cl-loop for c in color collect (lazycat-darken c alpha)))
 
         ((lazycat-blend color "#000000" (- 1 alpha)))))
@@ -49,27 +41,10 @@ float between 0 and 1)"
 (defun lazycat-lighten (color alpha)
   "Brighten a COLOR (a hexidecimal string) by a coefficient ALPHA (a float
 between 0 and 1)."
-  (cond ((and color (symbolp color))
-         (lazycat-lighten (lazycat-color color) alpha))
-
-        ((listp color)
+  (cond ((listp color)
          (cl-loop for c in color collect (lazycat-lighten c alpha)))
 
         ((lazycat-blend color "#FFFFFF" (- 1 alpha)))))
-
-;;;###autoload
-(defun lazycat-color (name &optional type)
-  "Retrieve a specific color named NAME (a symbol) from the current theme."
-  (let ((colors (if (listp name)
-                    name
-                  (cdr-safe (assq name lazycat-themes--colors)))))
-    (and colors
-         (cond ((listp colors)
-                (let ((i (or (plist-get '(256 1 16 2 8 3) type) 0)))
-                  (if (> i (1- (length colors)))
-                      (car (last colors))
-                    (nth i colors))))
-               (t colors)))))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
@@ -866,43 +841,40 @@ between 0 and 1)."
 
    ;; woman
    `(woman-bold   ((t (:inherit Man-overstrike))))
-   `(woman-italic ((t (:inherit Man-underline))))))
+   `(woman-italic ((t (:inherit Man-underline)))))
 
+  (custom-theme-set-variables
+   'lazycat
 
-(custom-theme-set-variables
- 'lazycat
+   `(ansi-color-names-vector [,bg ,red ,green ,yellow ,blue ,magenta ,cyan ,fg])
 
- `(ansi-color-names-vector
-   (vconcat (mapcar #'lazycat-color '(bg red green yellow blue magenta cyan fg))))
+   `(rustic-ansi-faces [,bg ,red ,green ,yellow ,blue ,magenta ,cyan ,fg])
 
- `(rustic-ansi-faces
-   (vconcat (mapcar #'lazycat-color '(bg red green yellow blue magenta cyan fg))))
+   `(fci-rule-color ,base5)
+   `(objed-cursor-color ,red)
 
- `(fci-rule-color ,(lazycat-color 'base5))
- `(objed-cursor-color ,(lazycat-color 'red))
- `(pdf-view-midnight-colors (cons ,(lazycat-color 'fg) ,(lazycat-color 'bg)))
+   `(vc-annotate-color-map
+     (list (cons 20  ,green)
+           (cons 40  ,(lazycat-blend yellow green (/ 1.0 3)))
+           (cons 60  ,(lazycat-blend yellow green (/ 2.0 3)))
+           (cons 80  ,yellow)
+           (cons 100 ,(lazycat-blend orange yellow (/ 1.0 3)))
+           (cons 120 ,(lazycat-blend orange yellow (/ 2.0 3)))
+           (cons 140 ,orange)
+           (cons 160 ,(lazycat-blend magenta orange (/ 1.0 3)))
+           (cons 180 ,(lazycat-blend magenta orange (/ 2.0 3)))
+           (cons 200 ,magenta)
+           (cons 220 ,(lazycat-blend red magenta (/ 1.0 3)))
+           (cons 240 ,(lazycat-blend red magenta (/ 2.0 3)))
+           (cons 260 ,red)
+           (cons 280 ,(lazycat-blend grey red (/ 1.0 4)))
+           (cons 300 ,(lazycat-blend grey red (/ 2.0 4)))
+           (cons 320 ,(lazycat-blend grey red (/ 3.0 4)))
+           (cons 340 ,base5)
+           (cons 360 ,base5)))
+   `(vc-annotate-very-old-color nil)
+   `(vc-annotate-background ,bg)))
 
- `(vc-annotate-color-map
-   (list (cons 20  ,(lazycat-color 'green))
-         (cons 40  ,(lazycat-blend 'yellow 'green (/ 1.0 3)))
-         (cons 60  ,(lazycat-blend 'yellow 'green (/ 2.0 3)))
-         (cons 80  ,(lazycat-color 'yellow))
-         (cons 100 ,(lazycat-blend 'orange 'yellow (/ 1.0 3)))
-         (cons 120 ,(lazycat-blend 'orange 'yellow (/ 2.0 3)))
-         (cons 140 ,(lazycat-color 'orange))
-         (cons 160 ,(lazycat-blend 'magenta 'orange (/ 1.0 3)))
-         (cons 180 ,(lazycat-blend 'magenta 'orange (/ 2.0 3)))
-         (cons 200 ,(lazycat-color 'magenta))
-         (cons 220 ,(lazycat-blend 'red 'magenta (/ 1.0 3)))
-         (cons 240 ,(lazycat-blend 'red 'magenta (/ 2.0 3)))
-         (cons 260 ,(lazycat-color 'red))
-         (cons 280 ,(lazycat-blend 'grey 'red (/ 1.0 4)))
-         (cons 300 ,(lazycat-blend 'grey 'red (/ 2.0 4)))
-         (cons 320 ,(lazycat-blend 'grey 'red (/ 3.0 4)))
-         (cons 340 ,(lazycat-color 'base5))
-         (cons 360 ,(lazycat-color 'base5))))
- `(vc-annotate-very-old-color nil)
- `(vc-annotate-background ,(lazycat-color 'bg)))
 
 ;; (set-face-bold 'bold nil)
 ;; (set-face-italic 'italic nil)
