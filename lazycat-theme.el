@@ -2,21 +2,6 @@
 
 (deftheme lazycat "A dark theme inspired by Atom One Dark")
 
-(defgroup lazycat nil
-  "Options for lazycat-themes."
-  :group 'faces)
-
-(defcustom lazycat-themes-enable-bold nil
-  "If nil, bold will be disabled across all faces."
-  :group 'lazycat
-  :type 'boolean)
-
-(defcustom lazycat-themes-enable-italic nil
-  "If nil, italics will be disabled across all faces."
-  :group 'lazycat
-  :type 'boolean)
-
-
 (defvar lazycat-themes--colors nil)
 
 ;;;###autoload
@@ -920,24 +905,18 @@ Faces in EXTRA-FACES override the default faces."
   (declare (pure t) (side-effect-free t))
   (mapcar #'lazycat-themes--build-face lazycat-themes-base-faces))
 
-(defmacro def-lazycat-theme (name docstring defs)
+(defmacro def-lazycat-theme (name defs)
   "Define a LAZYCAT theme, named NAME (a symbol)."
   (declare (doc-string 2))
   (let ((lazycat-themes--colors defs))
-    `(let* ((bold   lazycat-themes-enable-bold)
-            (italic lazycat-themes-enable-italic)
-            ,@defs)
+    `(let* (,@defs)
        (setq lazycat-themes--colors
              (list ,@(cl-loop for (var val) in defs
                               collect `(cons ',var ,val))))
        (custom-theme-set-faces
-        ',name ,@(lazycat-themes-prepare-facelist))
-       (unless bold (set-face-bold 'bold nil))
-       (unless italic (set-face-italic 'italic nil)))))
+        ',name ,@(lazycat-themes-prepare-facelist)))))
 
 (def-lazycat-theme lazycat
-  "A dark theme inspired by Atom One Dark"
-
   ((bg             "#242525")
    (bg-alt         "#333333")
    (base0          "#1B2229")
@@ -991,7 +970,9 @@ Faces in EXTRA-FACES override the default faces."
    (vc-deleted     red)
 
    ;; custom categories
-   (hidden         bg)))
+   (hidden         bg)
+   (bold           nil)
+   (italic         nil)))
 
 (custom-theme-set-variables
  'lazycat
@@ -1027,5 +1008,8 @@ Faces in EXTRA-FACES override the default faces."
          (cons 360 ,(lazycat-color 'base5))))
  `(vc-annotate-very-old-color nil)
  `(vc-annotate-background ,(lazycat-color 'bg)))
+
+;; (set-face-bold 'bold nil)
+;; (set-face-italic 'italic nil)
 
 (provide-theme 'lazycat)
