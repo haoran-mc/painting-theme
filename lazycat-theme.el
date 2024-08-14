@@ -910,9 +910,6 @@ Faces in EXTRA-FACES override the default faces."
   (declare (doc-string 2))
   (let ((lazycat-themes--colors defs))
     `(let* (,@defs)
-       (setq lazycat-themes--colors
-             (list ,@(cl-loop for (var val) in defs
-                              collect `(cons ',var ,val))))
        (custom-theme-set-faces
         ',name ,@(lazycat-themes-prepare-facelist)))))
 
