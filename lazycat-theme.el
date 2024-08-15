@@ -440,18 +440,13 @@ between 0 and 1)."
    `(iedit-occurrence           ((t (:foreground ,magenta :weight bold :inverse-video t))))
    `(iedit-read-only-occurrence ((t (:inherit region))))
 
-   ;;imenu-list
+   ;; imenu-list
    `(imenu-list-entry-face-0 ((t (:foreground ,highlight))))
    `(imenu-list-entry-face-1 ((t (:foreground ,green))))
    `(imenu-list-entry-face-2 ((t (:foreground ,yellow))))
    `(imenu-list-entry-subalist-face-0 ((t (:inherit imenu-list-entry-face-0 :weight bold))))
    `(imenu-list-entry-subalist-face-1 ((t (:inherit imenu-list-entry-face-1 :weight bold))))
    `(imenu-list-entry-subalist-face-2 ((t (:inherit imenu-list-entry-face-2 :weight bold))))
-
-   ;; lui
-   `(lui-time-stamp-face ((t (:foreground ,violet))))
-   `(lui-highlight-face  ((t (:foreground ,highlight))))
-   `(lui-button-face     ((t (:foreground ,builtin :underline t))))
 
    ;; multiple cursors
    `(mc/cursor-face ((t (:inherit cursor))))
@@ -534,10 +529,6 @@ between 0 and 1)."
    `(magit-signature-revoked   ((t (:foreground ,magenta))))
    `(magit-signature-untrusted ((t (:foreground ,yellow))))
 
-   ;; objed
-   `(objed-mode-line ((t (:inherit warning :weight bold))))
-   `(objed-hl        ((t (:inherit region :background ,(lazycat-blend region bg 0.5)))))
-
    ;; mic-paren
    `(paren-face-match    ((t (:foreground ,red :background ,base0 :weight ultra-bold))))
    `(paren-face-mismatch ((t (:foreground ,base0 :background ,red :weight ultra-bold))))
@@ -549,12 +540,6 @@ between 0 and 1)."
    ;; parinfer
    `(parinfer-pretty-parens:dim-paren-face ((t (:foreground ,base5))))
    `(parinfer-smart-tab:indicator-face     ((t (:foreground ,base5))))
-
-   ;; perspective
-   `(persp-selected-face                    ((t (:foreground ,blue :weight bold))))
-   `(persp-face-lighter-default             ((t (:foreground ,highlight :weight bold))))
-   `(persp-face-lighter-buffer-not-in-persp ((t (:foreground ,doc-comments))))
-   `(persp-face-lighter-nil-persp           ((t (:foreground ,comments))))
 
    ;; popup
    `(popup-face           ((t (:inherit tooltip))))
@@ -587,22 +572,6 @@ between 0 and 1)."
    `(sp-show-pair-match-face    ((t (:foreground ,red :background ,base0 :weight ultra-bold))))
    `(sp-show-pair-mismatch-face ((t (:foreground ,base0 :background ,red :weight ultra-bold))))
 
-   ;; smerge-tool
-   `(smerge-lower           ((t (:background ,(lazycat-blend green bg 0.2)))))
-   `(smerge-upper           ((t (:background ,(lazycat-blend red base3 0.2)))))
-   `(smerge-base            ((t (:background ,(lazycat-blend blue bg 0.2)))))
-   `(smerge-markers         ((t (:background ,comments :foreground ,bg :distant-foreground ,fg :weight bold))))
-   `(smerge-refined-added   ((t (:inherit diff-added :inverse-video t))))
-   `(smerge-refined-removed ((t (:inherit diff-removed :inverse-video t))))
-
-   ;; solaire-mode
-   `(solaire-default-face  ((t (:inherit default :background ,bg-alt))))
-   `(solaire-hl-line-face  ((t (:inherit hl-line :background ,bg :extend t))))
-   `(solaire-org-hide-face ((t (:foreground ,hidden))))
-
-   ;; stripe-buffer
-   `(stripe-highlight ((t (:background ,base3))))
-
    ;; tabbar
    `(tabbar-default             ((t (:foreground ,bg :background ,bg :height 1.0))))
    `(tabbar-highlight           ((t (:foreground ,fg :background ,selection :distant-foreground ,bg))))
@@ -613,14 +582,6 @@ between 0 and 1)."
    `(tabbar-unselected-modified ((t (:inherit tabbar-modified))))
    `(tabbar-selected            ((t (:inherit tabbar-default :weight bold :foreground ,fg :background ,bg-alt))))
    `(tabbar-selected-modified   ((t (:inherit tabbar-selected :foreground ,green))))
-
-   ;; tldr
-   `(tldr-command-itself   ((t (:foreground ,bg :background ,green :weight semi-bold))))
-   `(tldr-title            ((t (:foreground ,yellow :bold t :height 1.4))))
-   `(tldr-description      ((t (:foreground ,fg :weight semi-bold))))
-   `(tldr-introduction     ((t (:foreground ,(lazycat-blend blue bg 0.8) :weight semi-bold))))
-   `(tldr-code-block       ((t (:foreground ,green :background ,region :weight semi-bold))))
-   `(tldr-command-argument ((t (:foreground ,fg :background ,region))))
 
    ;; treemacs
    `(treemacs-root-face          ((t (:inherit font-lock-string-face :weight bold :height 1.2))))
@@ -660,12 +621,6 @@ between 0 and 1)."
    `(whitespace-trailing    ((t (:inherit trailing-whitespace))))
    `(whitespace-line        ((t (:background ,base0 :foreground ,red :weight bold))))
 
-   ;; workgroups2
-   `(wg-current-workgroup-face ((t (:foreground ,base0 :background ,highlight))))
-   `(wg-other-workgroup-face   ((t (:foreground ,base5))))
-   `(wg-divider-face           ((t (:foreground ,grey))))
-   `(wg-brace-face             ((t (:foreground ,highlight))))
-
    ;; yasnippet
    `(yas-field-highlight-face ((t (:inherit match))))
 
@@ -690,14 +645,6 @@ between 0 and 1)."
    `(js2-object-property   ((t (:foreground ,violet))))
    `(js2-jsdoc-tag         ((t (:foreground ,doc-comments))))
    `(js2-external-variable ((t (:foreground ,operators))))
-
-   ;; ledger-mode
-   `(ledger-font-posting-date-face    ((t (:foreground ,blue))))
-   `(ledger-font-posting-amount-face  ((t (:foreground ,yellow))))
-   `(ledger-font-posting-account-face ((t (:foreground ,base8))))
-   `(ledger-font-payee-cleared-face   ((t (:foreground ,violet :weight bold))))
-   `(ledger-font-payee-uncleared-face ((t (:foreground ,base5 :weight bold))))
-   `(ledger-font-xact-highlight-face  ((t (:background ,base0))))
 
    ;; makefile-*-mode
    `(makefile-targets ((t (:foreground ,blue))))
@@ -793,34 +740,6 @@ between 0 and 1)."
    `(org-time-grid                 ((t (:foreground ,comments))))
    `(org-sexp-date                 ((t (:foreground ,fg))))
 
-   ;; org-habit
-   `(org-habit-clear-face          ((t (:weight bold :background ,base4))))
-   `(org-habit-clear-future-face   ((t (:weight bold :background ,base3))))
-   `(org-habit-ready-face          ((t (:weight bold :background ,(lazycat-blend blue bg-alt 0.5)))))
-   `(org-habit-ready-future-face   ((t (:weight bold :background ,(lazycat-blend blue bg-alt 0.3)))))
-   `(org-habit-alert-face          ((t (:weight bold :background ,(lazycat-blend yellow bg-alt 0.5)))))
-   `(org-habit-alert-future-face   ((t (:weight bold :background ,(lazycat-blend yellow bg-alt 0.3)))))
-   `(org-habit-overdue-face        ((t (:weight bold :background ,(lazycat-blend red bg-alt 0.5)))))
-   `(org-habit-overdue-future-face ((t (:weight bold :background ,(lazycat-blend red bg-alt 0.3)))))
-
-   ;; org-journal
-   `(org-journal-highlight               ((t (:foreground ,highlight))))
-   `(org-journal-calendar-entry-face     ((t (:foreground ,magenta :slant italic))))
-   `(org-journal-calendar-scheduled-face ((t (:foreground ,red :slant italic))))
-
-   ;; org-pomodoro
-   `(org-pomodoro-mode-line          ((t (:foreground ,red))))
-   `(org-pomodoro-mode-line-overtime ((t (:foreground ,warning :weight bold))))
-
-   ;; rst-mode
-   `(rst-block   ((t (:inherit font-lock-constant-face))))
-   `(rst-level-1 ((t (:inherit rst-adornment :weight bold))))
-   `(rst-level-2 ((t (:inherit rst-adornment :weight bold))))
-   `(rst-level-3 ((t (:inherit rst-adornment :weight bold))))
-   `(rst-level-4 ((t (:inherit rst-adornment :weight bold))))
-   `(rst-level-5 ((t (:inherit rst-adornment :weight bold))))
-   `(rst-level-6 ((t (:inherit rst-adornment :weight bold))))
-
    ;; typescript-mode
    `(typescript-jsdoc-tag   ((t (:foreground ,doc-comments))))
    `(typescript-jsdoc-type  ((t (:foreground ,(lazycat-darken doc-comments 0.15)))))
@@ -845,14 +764,8 @@ between 0 and 1)."
 
   (custom-theme-set-variables
    'lazycat
-
    `(ansi-color-names-vector [,bg ,red ,green ,yellow ,blue ,magenta ,cyan ,fg])
-
    `(rustic-ansi-faces [,bg ,red ,green ,yellow ,blue ,magenta ,cyan ,fg])
-
-   `(fci-rule-color ,base5)
-   `(objed-cursor-color ,red)
-
    `(vc-annotate-color-map
      (list (cons 20  ,green)
            (cons 40  ,(lazycat-blend yellow green (/ 1.0 3)))
