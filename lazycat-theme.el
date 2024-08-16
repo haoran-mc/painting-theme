@@ -32,19 +32,17 @@ float between 0 and 1)"
 (defun lazycat-darken (color alpha)
   "Darken a COLOR (a hexidecimal string) by a coefficient ALPHA (a float between
 0 and 1)."
-  (cond ((listp color)
-         (cl-loop for c in color collect (lazycat-darken c alpha)))
-
-        ((lazycat-blend color "#000000" (- 1 alpha)))))
+  (if (listp color)
+      (cl-loop for c in color collect (lazycat-darken c alpha))
+    (lazycat-blend color "#000000" (- 1 alpha))))
 
 ;;;###autoload
 (defun lazycat-lighten (color alpha)
   "Brighten a COLOR (a hexidecimal string) by a coefficient ALPHA (a float
 between 0 and 1)."
-  (cond ((listp color)
-         (cl-loop for c in color collect (lazycat-lighten c alpha)))
-
-        ((lazycat-blend color "#FFFFFF" (- 1 alpha)))))
+  (if (listp color)
+      (cl-loop for c in color collect (lazycat-lighten c alpha))
+    (lazycat-blend color "#FFFFFF" (- 1 alpha))))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
