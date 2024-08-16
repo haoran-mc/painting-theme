@@ -84,15 +84,15 @@ between 0 and 1)."
        (lazycat-cyan-l          "#00CDCD") ;; cyan3
        (lazycat-gold            "#EEC900") ;; gold2
        (lazycat-white           "#FFFFFF") ;; white
+       ;; face categories
        (lazycat-comments        "#A7A7A7")
        (lazycat-doc-comments    "#AAAAAA")
        (lazycat-highlight       "#00FF00") ;; green
-       ;; face categories
+       (lazycat-keyword         "#165EFF") ;; #004FFF
        (selection               lazycat-blue-d)
        (builtin                 lazycat-blue-l)
        (constants               lazycat-violet-l)
        (functions               lazycat-gold)
-       (keywords                "#004FFF") ;; #0187AF
        (methods                 lazycat-cyan)
        (operators               lazycat-cyan-l)
        (type                    lazycat-blue-l)
@@ -147,7 +147,7 @@ between 0 and 1)."
    `(font-lock-doc-face                  ((t (:inherit font-lock-comment-face :foreground ,lazycat-doc-comments))))
    `(font-lock-constant-face             ((t (:foreground ,constants))))
    `(font-lock-function-name-face        ((t (:foreground ,functions))))
-   `(font-lock-keyword-face              ((t (:foreground ,keywords))))
+   `(font-lock-keyword-face              ((t (:foreground ,lazycat-keyword))))
    `(font-lock-string-face               ((t (:foreground ,strings))))
    `(font-lock-type-face                 ((t (:foreground ,type))))
    `(font-lock-variable-name-face        ((t (:foreground ,variables))))
@@ -654,7 +654,7 @@ between 0 and 1)."
 
    ;; man-mode
    `(Man-overstrike ((t (:inherit bold :foreground ,operators))))
-   `(Man-underline  ((t (:inherit underline :foreground ,keywords))))
+   `(Man-underline  ((t (:inherit underline :foreground ,lazycat-keyword))))
 
    ;; markdown-mode
    `(markdown-header-face             ((t (:inherit bold :foreground ,lazycat-red))))
