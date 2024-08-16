@@ -89,29 +89,28 @@ between 0 and 1)."
        (lazycat-doc-comments    "#AAAAAA")
        (lazycat-highlight       "#00FF00") ;; green
        (lazycat-keyword         "#165EFF") ;; #004FFF
-       (selection               lazycat-blue-d)
-       (builtin                 lazycat-blue-l)
-       (constants               lazycat-violet-l)
-       (functions               lazycat-gold)
-       (methods                 lazycat-cyan)
-       (operators               lazycat-cyan-l)
-       (type                    lazycat-blue-l)
-       (strings                 lazycat-khaki-l)
-       (variables               lazycat-gold)
-       (region                  "#3F90F7")
-       (region-fg               lazycat-white)
-       (success        lazycat-green)
-       (warning        lazycat-yellow)
-       (error          lazycat-red)
+       (lazycat-region          "#3F90F7")
+       (lazycat-region-fg       lazycat-white)
+       (lazycat-selection       lazycat-blue-d)
+       (lazycat-builtin         lazycat-blue-l)
+       (lazycat-constant        lazycat-violet-l)
+       (lazycat-function        lazycat-gold)
+       (lazycat-method          lazycat-cyan)
+       (lazycat-operator        lazycat-cyan-l)
+       (lazycat-type            lazycat-blue-l)
+       (lazycat-string          lazycat-khaki-l)
+       (lazycat-variable        lazycat-gold)
+       (lazycat-success         lazycat-green)
+       (lazycat-warning         lazycat-yellow)
+       (lazycat-error           lazycat-red)
        ;; vc
-       (vc-added       lazycat-green)
-       (vc-modified    lazycat-orange)
-       (vc-deleted     lazycat-red)
-
+       (lazycat-diff-added      lazycat-green)
+       (lazycat-diff-modified   lazycat-orange)
+       (lazycat-diff-deleted    lazycat-red)
        ;; custom categories
-       (hidden         lazycat-background)
-       (bold           nil)
-       (italic         nil))
+       (lazycat-hidden          lazycat-background)
+       (bold                    nil)
+       (italic                  nil))
 
   (custom-theme-set-faces
    'lazycat
@@ -122,7 +121,7 @@ between 0 and 1)."
 
    `(default ((t (:background ,lazycat-background :foreground ,lazycat-foreground))))
    `(fringe  ((t (:inherit default :foreground ,lazycat-base4))))
-   `(region              ((t (:background ,region :foreground ,region-fg))))
+   `(region              ((t (:background ,lazycat-region :foreground ,lazycat-region-fg))))
    `(highlight           ((t (:background ,lazycat-highlight :foreground ,lazycat-base0 :distant-foreground ,lazycat-base8))))
    `(cursor              ((t (:background ,lazycat-highlight))))
    `(shadow              ((t (:foreground ,lazycat-base5))))
@@ -137,26 +136,26 @@ between 0 and 1)."
                                           :foreground ,(lazycat-darken lazycat-base1 0.1)))))
    `(link                ((t (:foreground ,lazycat-highlight :underline t))))
 
-   `(error   ((t (:foreground ,error))))
-   `(warning ((t (:foreground ,warning))))
-   `(success ((t (:foreground ,success))))
+   `(error   ((t (:foreground ,lazycat-error))))
+   `(warning ((t (:foreground ,lazycat-warning))))
+   `(success ((t (:foreground ,lazycat-success))))
 
-   `(font-lock-builtin-face              ((t (:foreground ,builtin))))
+   `(font-lock-builtin-face              ((t (:foreground ,lazycat-builtin))))
    `(font-lock-comment-face              ((t (:foreground ,lazycat-comments))))
    `(font-lock-comment-delimiter-face    ((t (:inherit font-lock-comment-face))))
    `(font-lock-doc-face                  ((t (:inherit font-lock-comment-face :foreground ,lazycat-doc-comments))))
-   `(font-lock-constant-face             ((t (:foreground ,constants))))
-   `(font-lock-function-name-face        ((t (:foreground ,functions))))
+   `(font-lock-constant-face             ((t (:foreground ,lazycat-constant))))
+   `(font-lock-function-name-face        ((t (:foreground ,lazycat-function))))
    `(font-lock-keyword-face              ((t (:foreground ,lazycat-keyword))))
-   `(font-lock-string-face               ((t (:foreground ,strings))))
-   `(font-lock-type-face                 ((t (:foreground ,type))))
-   `(font-lock-variable-name-face        ((t (:foreground ,variables))))
+   `(font-lock-string-face               ((t (:foreground ,lazycat-string))))
+   `(font-lock-type-face                 ((t (:foreground ,lazycat-type))))
+   `(font-lock-variable-name-face        ((t (:foreground ,lazycat-variable))))
    `(font-lock-warning-face              ((t (:inherit warning))))
-   `(font-lock-negation-char-face        ((t (:inherit bold :foreground ,operators))))
-   `(font-lock-preprocessor-face         ((t (:inherit bold :foreground ,operators))))
-   `(font-lock-preprocessor-char-face    ((t (:inherit 'bold :foreground ,operators))))
-   `(font-lock-regexp-grouping-backslash ((t (:inherit bold :foreground ,operators))))
-   `(font-lock-regexp-grouping-construct ((t (:inherit bold :foreground ,operators))))
+   `(font-lock-negation-char-face        ((t (:inherit bold :foreground ,lazycat-operator))))
+   `(font-lock-preprocessor-face         ((t (:inherit bold :foreground ,lazycat-operator))))
+   `(font-lock-preprocessor-char-face    ((t (:inherit 'bold :foreground ,lazycat-operator))))
+   `(font-lock-regexp-grouping-backslash ((t (:inherit bold :foreground ,lazycat-operator))))
+   `(font-lock-regexp-grouping-construct ((t (:inherit bold :foreground ,lazycat-operator))))
 
    ;; mode-line
    `(mode-line           ((t (:background ,lazycat-background :foreground ,lazycat-background-alt))))
@@ -205,7 +204,7 @@ between 0 and 1)."
 
    `(custom-variable-button   ((t (:foreground ,lazycat-green :underline t))))
    `(custom-saved             ((t (:foreground ,lazycat-green :background ,(lazycat-blend lazycat-green lazycat-background 0.2) :bold bold))))
-   `(custom-comment           ((t (:foreground ,lazycat-foreground :background ,region))))
+   `(custom-comment           ((t (:foreground ,lazycat-foreground :background ,lazycat-region))))
    `(custom-comment-tag       ((t (:foreground ,lazycat-grey))))
    `(custom-modified          ((t (:foreground ,lazycat-blue :background ,(lazycat-blend lazycat-blue lazycat-background 0.2)))))
    `(custom-variable-tag      ((t (:foreground ,lazycat-magenta))))
@@ -221,21 +220,21 @@ between 0 and 1)."
    `(custom-changed           ((t (:foreground ,lazycat-blue :background ,lazycat-background))))
 
    ;; dired
-   `(dired-directory  ((t (:foreground ,builtin))))
+   `(dired-directory  ((t (:foreground ,lazycat-builtin))))
    `(dired-ignored    ((t (:foreground ,lazycat-comments))))
    `(dired-flagged    ((t (:foreground ,lazycat-red))))
-   `(dired-header     ((t (:foreground ,variables :weight bold))))
+   `(dired-header     ((t (:foreground ,lazycat-variable :weight bold))))
    `(dired-mark       ((t (:foreground ,lazycat-orange :weight bold))))
    `(dired-marked     ((t (:foreground ,lazycat-magenta :weight bold :inverse-video t))))
    `(dired-perm-write ((t (:foreground ,lazycat-foreground :underline t))))
    `(dired-symlink    ((t (:foreground ,lazycat-cyan :weight bold))))
-   `(dired-warning    ((t (:foreground ,warning))))
+   `(dired-warning    ((t (:foreground ,lazycat-warning))))
 
    ;; ediff
-   `(ediff-fine-diff-A    ((t (:background ,(lazycat-blend selection lazycat-background 0.7) :weight bold :extend t))))
+   `(ediff-fine-diff-A    ((t (:background ,(lazycat-blend lazycat-selection lazycat-background 0.7) :weight bold :extend t))))
    `(ediff-fine-diff-B    ((t (:inherit ediff-fine-diff-A))))
    `(ediff-fine-diff-C    ((t (:inherit ediff-fine-diff-A))))
-   `(ediff-current-diff-A ((t (:background ,(lazycat-blend selection lazycat-background 0.3) :extend t))))
+   `(ediff-current-diff-A ((t (:background ,(lazycat-blend lazycat-selection lazycat-background 0.3) :extend t))))
    `(ediff-current-diff-B ((t (:inherit ediff-current-diff-A))))
    `(ediff-current-diff-C ((t (:inherit ediff-current-diff-A))))
    `(ediff-even-diff-A    ((t (:inherit hl-line))))
@@ -283,7 +282,7 @@ between 0 and 1)."
 
    ;; isearch
    `(isearch      ((t (:inherit lazy-highlight :weight bold))))
-   `(isearch-fail ((t (:background ,error :foreground ,lazycat-base0 :weight bold))))
+   `(isearch-fail ((t (:background ,lazycat-error :foreground ,lazycat-base0 :weight bold))))
 
    ;; linum totally inherit line-number
    `(linum ((t (:inherit default
@@ -383,9 +382,9 @@ between 0 and 1)."
    `(avy-lead-face-2     ((t (:inherit avy-lead-face :background ,(lazycat-lighten lazycat-highlight 0.9)))))
 
    ;; diff-hl
-   `(diff-hl-change      ((t (:foreground ,vc-modified :background ,vc-modified))))
-   `(diff-hl-delete      ((t (:foreground ,vc-deleted :background ,vc-deleted))))
-   `(diff-hl-insert      ((t (:foreground ,vc-added :background ,vc-added))))
+   `(diff-hl-change      ((t (:foreground ,lazycat-diff-modified :background ,lazycat-diff-modified))))
+   `(diff-hl-delete      ((t (:foreground ,lazycat-diff-deleted :background ,lazycat-diff-deleted))))
+   `(diff-hl-insert      ((t (:foreground ,lazycat-diff-added :background ,lazycat-diff-added))))
    `(diff-added          ((t (:inherit hl-line :foreground ,lazycat-green))))
    `(diff-changed        ((t (:foreground ,lazycat-violet))))
    `(diff-context        ((t (:foreground ,(lazycat-darken lazycat-foreground 0.12)))))
@@ -405,9 +404,9 @@ between 0 and 1)."
    ;; flycheck-posframe
    `(flycheck-posframe-face            ((t (:inherit default))))
    `(flycheck-posframe-background-face ((t (:background ,lazycat-background-alt))))
-   `(flycheck-posframe-error-face      ((t (:inherit flycheck-posframe-face :foreground ,error))))
+   `(flycheck-posframe-error-face      ((t (:inherit flycheck-posframe-face :foreground ,lazycat-error))))
    `(flycheck-posframe-info-face       ((t (:inherit flycheck-posframe-face :foreground ,lazycat-foreground))))
-   `(flycheck-posframe-warning-face    ((t (:inherit flycheck-posframe-face :foreground ,warning))))
+   `(flycheck-posframe-warning-face    ((t (:inherit flycheck-posframe-face :foreground ,lazycat-warning))))
 
    ;; flymake
    `(flymake-error   ((t (:underline (:style wave :color ,lazycat-red)))))
@@ -415,15 +414,15 @@ between 0 and 1)."
    `(flymake-warning ((t (:underline (:style wave :color ,lazycat-orange)))))
 
    ;; flyspell
-   `(flyspell-incorrect ((t (:underline (:style wave :color ,error) :inherit 'unspecified))))
-   `(flyspell-duplicate ((t (:underline (:style wave :color ,warning) :inherit 'unspecified))))
+   `(flyspell-incorrect ((t (:underline (:style wave :color ,lazycat-error) :inherit 'unspecified))))
+   `(flyspell-duplicate ((t (:underline (:style wave :color ,lazycat-warning) :inherit 'unspecified))))
 
    ;; helpful
    `(helpful-heading ((t (:weight bold :height 1.2))))
 
    ;; highlight-quoted-mode
-   `(highlight-quoted-symbol  ((t (:foreground ,type))))
-   `(highlight-quoted-quote   ((t (:foreground ,operators))))
+   `(highlight-quoted-symbol  ((t (:foreground ,lazycat-type))))
+   `(highlight-quoted-quote   ((t (:foreground ,lazycat-operator))))
    `(highlight-numbers-number ((t (:inherit bold :foreground ,lazycat-orange))))
 
    ;; hlinum
@@ -453,10 +452,10 @@ between 0 and 1)."
 
    ;; multiple cursors
    `(mc/cursor-face ((t (:inherit cursor))))
-   `(nav-flash-face ((t (:background ,selection :foreground ,lazycat-base8 :weight bold))))
+   `(nav-flash-face ((t (:background ,lazycat-selection :foreground ,lazycat-base8 :weight bold))))
 
    ;; neotree
-   `(neo-root-dir-face    ((t (:foreground ,strings :background ,lazycat-background :box (:line-width 4 :color ,lazycat-background)))))
+   `(neo-root-dir-face    ((t (:foreground ,lazycat-string :background ,lazycat-background :box (:line-width 4 :color ,lazycat-background)))))
    `(neo-file-link-face   ((t (:foreground ,lazycat-foreground))))
    `(neo-dir-link-face    ((t (:foreground ,lazycat-highlight))))
    `(neo-expand-btn-face  ((t (:foreground ,lazycat-highlight))))
@@ -547,7 +546,7 @@ between 0 and 1)."
    ;; popup
    `(popup-face           ((t (:inherit tooltip))))
    `(popup-tip-face       ((t (:inherit popup-face :foreground ,lazycat-violet :background ,lazycat-base0))))
-   `(popup-selection-face ((t (:background ,selection))))
+   `(popup-selection-face ((t (:background ,lazycat-selection))))
 
    ;; rainbow-delimiters
    `(rainbow-delimiters-depth-1-face    ((t (:foreground ,lazycat-blue))))
@@ -571,13 +570,13 @@ between 0 and 1)."
    `(show-paren-mismatch ((t (:foreground ,lazycat-base0 :background ,lazycat-red :weight normal))))
 
    ;; smartparens
-   `(sp-pair-overlay-face       ((t (:background ,region))))
+   `(sp-pair-overlay-face       ((t (:background ,lazycat-region))))
    `(sp-show-pair-match-face    ((t (:foreground ,lazycat-red :background ,lazycat-base0 :weight ultra-bold))))
    `(sp-show-pair-mismatch-face ((t (:foreground ,lazycat-base0 :background ,lazycat-red :weight ultra-bold))))
 
    ;; tabbar
    `(tabbar-default             ((t (:foreground ,lazycat-background :background ,lazycat-background :height 1.0))))
-   `(tabbar-highlight           ((t (:foreground ,lazycat-foreground :background ,selection :distant-foreground ,lazycat-background))))
+   `(tabbar-highlight           ((t (:foreground ,lazycat-foreground :background ,lazycat-selection :distant-foreground ,lazycat-background))))
    `(tabbar-button              ((t (:foreground ,lazycat-foreground :background ,lazycat-background))))
    `(tabbar-button-highlight    ((t (:inherit tabbar-button :inverse-video t))))
    `(tabbar-modified            ((t (:inherit tabbar-default :foreground ,lazycat-red :weight bold))))
@@ -634,26 +633,26 @@ between 0 and 1)."
    `(elixir-attribute-face ((t (:foreground ,lazycat-violet))))
 
    ;; enh-rube-mode
-   `(enh-ruby-op-face                ((t (:foreground ,operators))))
+   `(enh-ruby-op-face                ((t (:foreground ,lazycat-operator))))
    `(enh-ruby-string-delimiter-face  ((t (:inherit font-lock-string-face))))
    `(enh-ruby-heredoc-delimiter-face ((t (:inherit font-lock-string-face))))
-   `(enh-ruby-regexp-face            ((t (:foreground ,constants))))
+   `(enh-ruby-regexp-face            ((t (:foreground ,lazycat-constant))))
    `(enh-ruby-regexp-delimiter-face  ((t (:inherit enh-ruby-regexp-face))))
-   `(erm-syn-errline                 ((t (:underline (:style wave :color ,error)))))
-   `(erm-syn-warnline                ((t (:underline (:style wave :color ,warning)))))
+   `(erm-syn-errline                 ((t (:underline (:style wave :color ,lazycat-error)))))
+   `(erm-syn-warnline                ((t (:underline (:style wave :color ,lazycat-warning)))))
 
    ;; js2-mode
-   `(js2-function-param    ((t (:foreground ,variables))))
-   `(js2-function-call     ((t (:foreground ,functions))))
+   `(js2-function-param    ((t (:foreground ,lazycat-variable))))
+   `(js2-function-call     ((t (:foreground ,lazycat-function))))
    `(js2-object-property   ((t (:foreground ,lazycat-violet))))
    `(js2-jsdoc-tag         ((t (:foreground ,lazycat-doc-comments))))
-   `(js2-external-variable ((t (:foreground ,operators))))
+   `(js2-external-variable ((t (:foreground ,lazycat-operator))))
 
    ;; makefile-*-mode
    `(makefile-targets ((t (:foreground ,lazycat-blue))))
 
    ;; man-mode
-   `(Man-overstrike ((t (:inherit bold :foreground ,operators))))
+   `(Man-overstrike ((t (:inherit bold :foreground ,lazycat-operator))))
    `(Man-underline  ((t (:inherit underline :foreground ,lazycat-keyword))))
 
    ;; markdown-mode
@@ -667,7 +666,7 @@ between 0 and 1)."
    `(markdown-bold-face               ((t (:inherit bold :foreground ,lazycat-orange))))
    `(markdown-markup-face             ((t (:foreground ,lazycat-base5))))
    `(markdown-blockquote-face         ((t (:inherit italic :foreground ,lazycat-doc-comments))))
-   `(markdown-pre-face                ((t (:foreground ,strings))))
+   `(markdown-pre-face                ((t (:foreground ,lazycat-string))))
    `(markdown-code-face               ((t (:background ,(lazycat-lighten lazycat-base3 0.05) :extend t))))
    `(markdown-reference-face          ((t (:foreground ,lazycat-doc-comments))))
    `(markdown-inline-code-face        ((t (:inherit (markdown-code-face markdown-pre-face) :extend nil))))
@@ -704,14 +703,14 @@ between 0 and 1)."
    `(org-code                     ((t (:foreground ,lazycat-orange))))
    `(org-date                     ((t (:foreground ,lazycat-yellow))))
    `(org-default                  ((t (:inherit variable-pitch))))
-   `(org-document-info            ((t (:foreground ,builtin))))
-   `(org-document-title           ((t (:foreground ,builtin :weight bold))))
+   `(org-document-info            ((t (:foreground ,lazycat-builtin))))
+   `(org-document-title           ((t (:foreground ,lazycat-builtin :weight bold))))
    `(org-done                     ((t (:inherit org-headline-done))))
    `(org-ellipsis                 ((t (:underline nil :background nil :foreground ,lazycat-grey))))
    `(org-footnote                 ((t (:foreground ,lazycat-orange))))
    `(org-formula                  ((t (:foreground ,lazycat-cyan))))
    `(org-headline-done            ((t (:foreground ,lazycat-base5))))
-   `(org-hide                     ((t (:foreground ,hidden))))
+   `(org-hide                     ((t (:foreground ,lazycat-hidden))))
 
    `(org-list-dt           ((t (:foreground ,lazycat-highlight))))
    `(org-meta-line         ((t (:foreground ,lazycat-doc-comments))))
@@ -725,7 +724,7 @@ between 0 and 1)."
    `(org-latex-and-related ((t (:foreground ,lazycat-base8 :weight bold))))
    `(org-todo              ((t (:foreground ,lazycat-green))))
    `(org-verbatim          ((t (:foreground ,lazycat-green))))
-   `(org-warning           ((t (:foreground ,warning))))
+   `(org-warning           ((t (:foreground ,lazycat-warning))))
 
    ;; org-agenda
    `(org-agenda-done               ((t (:inherit org-done))))
@@ -754,12 +753,12 @@ between 0 and 1)."
 
    ;; web-mode
    `(web-mode-doctype-face          ((t (:foreground ,lazycat-comments))))
-   `(web-mode-html-tag-face         ((t (:foreground ,methods))))
-   `(web-mode-html-tag-bracket-face ((t (:foreground ,methods))))
-   `(web-mode-html-attr-name-face   ((t (:foreground ,type))))
+   `(web-mode-html-tag-face         ((t (:foreground ,lazycat-method))))
+   `(web-mode-html-tag-bracket-face ((t (:foreground ,lazycat-method))))
+   `(web-mode-html-attr-name-face   ((t (:foreground ,lazycat-type))))
    `(web-mode-html-entity-face      ((t (:foreground ,lazycat-cyan :inherit italic))))
    `(web-mode-block-control-face    ((t (:foreground ,lazycat-orange))))
-   `(web-mode-html-tag-bracket-face ((t (:foreground ,operators))))
+   `(web-mode-html-tag-bracket-face ((t (:foreground ,lazycat-operator))))
 
    ;; woman
    `(woman-bold   ((t (:inherit Man-overstrike))))
