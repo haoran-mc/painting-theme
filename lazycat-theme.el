@@ -358,9 +358,6 @@ between 0 and 1)."
    `(all-the-icons-lsilver  ((t (:foreground ,(lazycat-lighten lazycat-grey 0.7)))))
    `(all-the-icons-dsilver  ((t (:foreground ,(lazycat-lighten lazycat-grey 0.1)))))
 
-   ;; all-the-icons-dired
-   `(all-the-icons-dired-dir-face ((t (:foreground ,lazycat-doc-comments))))
-
    ;; anzu
    `(anzu-replace-highlight ((t (:background ,lazycat-base0 :foreground ,lazycat-red :weight bold :strike-through t))))
    `(anzu-replace-to        ((t (:background ,lazycat-base0 :foreground ,lazycat-green :weight bold))))
