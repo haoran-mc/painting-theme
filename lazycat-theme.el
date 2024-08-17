@@ -196,12 +196,6 @@ between 0 and 1)."
    `(compilation-mode-line-fail ((t (:inherit compilation-error))))
 
    ;; custom
-   `(custom-button                  ((t (:foreground ,lazycat-blue   :background ,lazycat-background     :box (:line-width 1 :style none)))))
-   `(custom-button-unraised         ((t (:foreground ,lazycat-violet :background ,lazycat-background     :box (:line-width 1 :style none)))))
-   `(custom-button-pressed-unraised ((t (:foreground ,lazycat-background     :background ,lazycat-violet :box (:line-width 1 :style none)))))
-   `(custom-button-pressed          ((t (:foreground ,lazycat-background     :background ,lazycat-blue   :box (:line-width 1 :style none)))))
-   `(custom-button-mouse            ((t (:foreground ,lazycat-background     :background ,lazycat-blue   :box (:line-width 1 :style none)))))
-
    `(custom-variable-button   ((t (:foreground ,lazycat-green :underline t))))
    `(custom-saved             ((t (:foreground ,lazycat-green :background ,(lazycat-blend lazycat-green lazycat-background 0.2) :bold bold))))
    `(custom-comment           ((t (:foreground ,lazycat-foreground :background ,lazycat-region))))
