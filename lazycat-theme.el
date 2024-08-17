@@ -67,22 +67,22 @@ between 0 and 1)."
        (lazycat-foreground-alt  "#008B00") ;; green4
        ;; base colors
        (lazycat-grey            lazycat-base4)
-       (lazycat-red             "#FF6C6B")
-       (lazycat-orange          "#DA8548")
-       (lazycat-green           "#98BE65")
-       (lazycat-teal            "#4DB5BD")
-       (lazycat-yellow          "#ECBE7B") ;; 沙黄
-       (lazycat-khaki-l         "#DFD67A") ;; 浅卡其
+       (lazycat-red             "#FF6C6B") ;; 珊瑚红 error,deleted,invalid,removed,mismatch
+       (lazycat-orange          "#DA8548") ;; 焦糖橙 warning,modified,mark
+       (lazycat-green           "#98BE65") ;; 橄榄绿 success,added,executable
+       (lazycat-teal            "#4DB5BD") ;; 浅水鸭
+       (lazycat-yellow          "#ECBE7B") ;; 沙黄 warning
+       (lazycat-khaki-l         "#DFD67A") ;; 浅卡其 string
        (lazycat-blue            "#51AFEF")
-       (lazycat-blue-d          "#2257A0")
+       (lazycat-blue-d          "#2257A0") ;; 皇室蓝 lazy-highlight,magit-header-line
        (lazycat-blue-l          "#00B8FF") ;; builtin, type
        (lazycat-magenta         "#C678DD") ;; 洋红
        (lazycat-violet          "#A9A1E1") ;; 紫罗兰
-       (lazycat-violet-l        "#BD00FF")
-       (lazycat-cyan            "#46D9FF")
+       (lazycat-violet-l        "#BD00FF") ;; constant
+       (lazycat-cyan            "#46D9FF") ;; method,symlink
        (lazycat-cyan-d          "#5699AF")
-       (lazycat-cyan-l          "#00CDCD") ;; cyan3
-       (lazycat-gold            "#EEC900") ;; gold2
+       (lazycat-cyan-l          "#00CDCD") ;; cyan3 operator
+       (lazycat-gold            "#EEC900") ;; gold2 function,variable
        (lazycat-white           "#FFFFFF") ;; white
        ;; face categories
        (lazycat-comments        "#A7A7A7")
