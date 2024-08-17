@@ -72,33 +72,30 @@ between 0 and 1)."
        (lazycat-green           "#98BE65") ;; 橄榄绿 success,added,executable
        (lazycat-teal            "#4DB5BD") ;; 浅水鸭
        (lazycat-yellow          "#ECBE7B") ;; 沙黄 warning
-       (lazycat-khaki-l         "#DFD67A") ;; 浅卡其 string
        (lazycat-blue            "#51AFEF")
-       (lazycat-blue-d          "#2257A0") ;; 皇室蓝 lazy-highlight,magit-header-line
-       (lazycat-blue-l          "#00B8FF") ;; builtin, type
        (lazycat-magenta         "#C678DD") ;; 洋红
        (lazycat-violet          "#A9A1E1") ;; 紫罗兰
-       (lazycat-violet-l        "#BD00FF") ;; constant
        (lazycat-cyan            "#46D9FF") ;; method,symlink
-       (lazycat-cyan-d          "#5699AF")
-       (lazycat-cyan-l          "#00CDCD") ;; cyan3 operator
        (lazycat-gold            "#EEC900") ;; gold2 function,variable
-       (lazycat-white           "#FFFFFF") ;; white
+       ;; special handling colors
+       (lazycat-blue-d          "#2257A0") ;; 皇室蓝 lazy-highlight,magit-header-line
+       (lazycat-blue-l          "#00B8FF") ;; builtin, type
+       (lazycat-cyan-d          "#5699AF")
        ;; face categories
        (lazycat-comments        "#A7A7A7")
        (lazycat-doc-comments    "#AAAAAA")
        (lazycat-highlight       "#00FF00") ;; green
-       (lazycat-keyword         "#165EFF") ;; #004FFF
+       (lazycat-keyword         "#165EFF")
+       (lazycat-string          "#DFD67A")
+       (lazycat-constant        "#BD00FF")
+       (lazycat-operator        "#00CDCD") ;; cyan3
        (lazycat-region          "#3F90F7")
-       (lazycat-region-fg       lazycat-white)
+       (lazycat-region-fg       "#FFFFFF") ;; white
        (lazycat-selection       lazycat-blue-d)
        (lazycat-builtin         lazycat-blue-l)
-       (lazycat-constant        lazycat-violet-l)
        (lazycat-function        lazycat-gold)
        (lazycat-method          lazycat-cyan)
-       (lazycat-operator        lazycat-cyan-l)
        (lazycat-type            lazycat-blue-l)
-       (lazycat-string          lazycat-khaki-l)
        (lazycat-variable        lazycat-gold)
        (lazycat-success         lazycat-green)
        (lazycat-warning         lazycat-yellow)
