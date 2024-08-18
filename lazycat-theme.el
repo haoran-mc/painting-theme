@@ -106,15 +106,13 @@ between 0 and 1)."
        (lazycat-diff-modified   lazycat-orange)
        (lazycat-diff-deleted    lazycat-red)
        ;; custom categories
-       (lazycat-hidden          lazycat-background)
-       (bold                    nil)
-       (italic                  nil))
+       (lazycat-hidden          lazycat-background))
 
   (custom-theme-set-faces
    'lazycat
 
    ;; --- base faces -------------------------
-   `(bold    ((t (:weight bold :foreground ,(unless bold lazycat-base8)))))
+   `(bold    ((t (:weight normal :foreground ,lazycat-base8))))
    '(italic  ((t (:slant italic))))
 
    `(default ((t (:background ,lazycat-background :foreground ,lazycat-foreground))))
@@ -126,7 +124,7 @@ between 0 and 1)."
    `(minibuffer-prompt   ((t (:foreground ,lazycat-highlight))))
    `(tooltip             ((t (:background ,lazycat-base3 :foreground ,lazycat-foreground))))
    `(secondary-selection ((t (:background ,lazycat-grey :extend t))))
-   `(lazy-highlight      ((t (:background ,lazycat-blue-d :foreground ,lazycat-base8 :distant-foreground ,lazycat-base0 :weight bold))))
+   `(lazy-highlight      ((t (:background ,lazycat-blue-d :foreground ,lazycat-base8 :distant-foreground ,lazycat-base0))))
    `(match               ((t (:foreground ,lazycat-blue-l :background ,lazycat-base0))))
    `(trailing-whitespace ((t (:background ,lazycat-red))))
    `(nobreak-space       ((t (:inherit default :underline nil))))
@@ -158,9 +156,8 @@ between 0 and 1)."
    ;; mode-line
    `(mode-line           ((t (:background ,lazycat-background :foreground ,lazycat-background-alt))))
    `(mode-line-inactive  ((t (:background ,lazycat-background :foreground ,lazycat-foreground))))
-   `(mode-line-emphasis  ((t (:foreground ,lazycat-highlight :distant-foreground ,lazycat-background :height 0.1))))
-   `(mode-line-highlight ((t (:inherit highlight :distant-foreground ,lazycat-background :height 0.1))))
-   `(mode-line-buffer-id ((t (:weight bold :height 0.1))))
+   `(mode-line-emphasis  ((t (:foreground ,lazycat-highlight :distant-foreground ,lazycat-background))))
+   `(mode-line-highlight ((t (:inherit highlight :distant-foreground ,lazycat-background))))
 
    ;; header-line
    `(header-line ((t (:inherit default :height ,(face-attribute 'default :height)))))
@@ -215,15 +212,15 @@ between 0 and 1)."
    `(dired-directory  ((t (:foreground ,lazycat-builtin))))
    `(dired-ignored    ((t (:foreground ,lazycat-comments))))
    `(dired-flagged    ((t (:foreground ,lazycat-red))))
-   `(dired-header     ((t (:foreground ,lazycat-variable :weight bold))))
-   `(dired-mark       ((t (:foreground ,lazycat-orange :weight bold))))
-   `(dired-marked     ((t (:foreground ,lazycat-magenta :weight bold :inverse-video t))))
+   `(dired-header     ((t (:foreground ,lazycat-variable))))
+   `(dired-mark       ((t (:foreground ,lazycat-orange))))
+   `(dired-marked     ((t (:foreground ,lazycat-magenta :inverse-video t))))
    `(dired-perm-write ((t (:foreground ,lazycat-foreground :underline t))))
-   `(dired-symlink    ((t (:foreground ,lazycat-cyan :weight bold))))
+   `(dired-symlink    ((t (:foreground ,lazycat-cyan))))
    `(dired-warning    ((t (:foreground ,lazycat-warning))))
 
    ;; ediff
-   `(ediff-fine-diff-A    ((t (:background ,(lazycat-blend lazycat-selection lazycat-background 0.7) :weight bold :extend t))))
+   `(ediff-fine-diff-A    ((t (:background ,(lazycat-blend lazycat-selection lazycat-background 0.7) :extend t))))
    `(ediff-fine-diff-B    ((t (:inherit ediff-fine-diff-A))))
    `(ediff-fine-diff-C    ((t (:inherit ediff-fine-diff-A))))
    `(ediff-current-diff-A ((t (:background ,(lazycat-blend lazycat-selection lazycat-background 0.3) :extend t))))
@@ -237,7 +234,7 @@ between 0 and 1)."
    `(ediff-odd-diff-C     ((t (:inherit ediff-odd-diff-A))))
 
    ;; eshell
-   `(eshell-prompt        ((t (:foreground ,lazycat-highlight :weight bold))))
+   `(eshell-prompt        ((t (:foreground ,lazycat-highlight))))
    `(eshell-ls-archive    ((t (:foreground ,lazycat-magenta))))
    `(eshell-ls-backup     ((t (:foreground ,lazycat-yellow))))
    `(eshell-ls-clutter    ((t (:foreground ,lazycat-red))))
@@ -273,8 +270,8 @@ between 0 and 1)."
    `(ido-virtual     ((t (:foreground ,lazycat-comments))))
 
    ;; isearch
-   `(isearch      ((t (:inherit lazy-highlight :weight bold))))
-   `(isearch-fail ((t (:background ,lazycat-error :foreground ,lazycat-base0 :weight bold))))
+   `(isearch      ((t (:inherit lazy-highlight))))
+   `(isearch-fail ((t (:background ,lazycat-error :foreground ,lazycat-base0))))
 
    ;; linum totally inherit line-number
    `(linum ((t (:inherit default
@@ -284,8 +281,8 @@ between 0 and 1)."
 
    ;; message
    `(message-header-name    ((t (:foreground ,lazycat-green))))
-   `(message-header-subject ((t (:foreground ,lazycat-highlight :weight bold))))
-   `(message-header-to      ((t (:foreground ,lazycat-highlight :weight bold))))
+   `(message-header-subject ((t (:foreground ,lazycat-highlight))))
+   `(message-header-to      ((t (:foreground ,lazycat-highlight))))
    `(message-header-cc      ((t (:inherit message-header-to :foreground ,(lazycat-darken lazycat-highlight 0.15)))))
    `(message-header-other   ((t (:foreground ,lazycat-violet))))
    `(message-header-newsgroups ((t (:foreground ,lazycat-yellow))))
@@ -365,7 +362,7 @@ between 0 and 1)."
 
    ;; avy
    `(avy-background-face ((t (:foreground ,lazycat-comments))))
-   `(avy-lead-face       ((t (:background ,lazycat-highlight :foreground ,lazycat-background :distant-foreground ,lazycat-foreground :weight bold))))
+   `(avy-lead-face       ((t (:background ,lazycat-highlight :foreground ,lazycat-background :distant-foreground ,lazycat-foreground))))
    `(avy-lead-face-0     ((t (:inherit avy-lead-face :background ,(lazycat-lighten lazycat-highlight 0.3)))))
    `(avy-lead-face-1     ((t (:inherit avy-lead-face :background ,(lazycat-lighten lazycat-highlight 0.6)))))
    `(avy-lead-face-2     ((t (:inherit avy-lead-face :background ,(lazycat-lighten lazycat-highlight 0.9)))))
@@ -418,14 +415,14 @@ between 0 and 1)."
    `(linum-highlight-face ((t (:foreground ,lazycat-foreground :distant-foreground nil :weight normal))))
 
    ;; hl-todo
-   `(hl-todo ((t (:foreground ,lazycat-red :weight bold))))
+   `(hl-todo ((t (:foreground ,lazycat-red))))
 
    ;; hydra
-   `(hydra-face-red      ((t (:foreground ,lazycat-red :weight bold))))
-   `(hydra-face-blue     ((t (:foreground ,lazycat-blue :weight bold))))
-   `(hydra-face-amaranth ((t (:foreground ,lazycat-magenta :weight bold))))
-   `(hydra-face-pink     ((t (:foreground ,lazycat-violet :weight bold))))
-   `(hydra-face-teal     ((t (:foreground ,lazycat-teal :weight bold))))
+   `(hydra-face-red      ((t (:foreground ,lazycat-red))))
+   `(hydra-face-blue     ((t (:foreground ,lazycat-blue))))
+   `(hydra-face-amaranth ((t (:foreground ,lazycat-magenta))))
+   `(hydra-face-pink     ((t (:foreground ,lazycat-violet))))
+   `(hydra-face-teal     ((t (:foreground ,lazycat-teal))))
 
    ;; iedit
    `(iedit-occurrence           ((t (:foreground ,lazycat-magenta :weight bold :inverse-video t))))
@@ -454,6 +451,9 @@ between 0 and 1)."
    `(neo-vc-conflict-face ((t (:foreground ,lazycat-magenta :weight bold))))
    `(neo-vc-ignored-face  ((t (:foreground ,lazycat-comments))))
 
+   ;; git-commit
+   `(git-commit-comment-action ((t (:foreground ,lazycat-gold))))
+
    ;; magit
    `(magit-bisect-bad        ((t (:foreground ,lazycat-red))))
    `(magit-bisect-good       ((t (:foreground ,lazycat-green))))
@@ -467,17 +467,17 @@ between 0 and 1)."
    `(magit-cherry-unmatched  ((t (:foreground ,lazycat-cyan))))
 
    `(magit-diff-added                  ((t (:foreground ,(lazycat-darken lazycat-green 0.2) :background ,(lazycat-blend lazycat-green lazycat-background 0.1) :extend t))))
-   `(magit-diff-added-highlight        ((t (:foreground ,lazycat-green :background ,(lazycat-blend lazycat-green lazycat-background 0.2) :weight bold :extend t))))
+   `(magit-diff-added-highlight        ((t (:foreground ,lazycat-green :background ,(lazycat-blend lazycat-green lazycat-background 0.2) :extend t))))
    `(magit-diff-base                   ((t (:foreground ,(lazycat-darken lazycat-orange 0.2) :background ,(lazycat-blend lazycat-orange lazycat-background 0.1) :extend t))))
-   `(magit-diff-base-highlight         ((t (:foreground ,lazycat-orange :background ,(lazycat-blend lazycat-orange lazycat-background 0.2) :weight bold :extend t))))
+   `(magit-diff-base-highlight         ((t (:foreground ,lazycat-orange :background ,(lazycat-blend lazycat-orange lazycat-background 0.2) :extend t))))
    `(magit-diff-context                ((t (:foreground ,(lazycat-darken lazycat-foreground 0.4) :background ,lazycat-background :extend t))))
    `(magit-diff-context-highlight      ((t (:foreground ,lazycat-foreground :background ,lazycat-background-alt :extend t))))
-   `(magit-diff-file-heading           ((t (:foreground ,lazycat-foreground :weight bold :extend t))))
-   `(magit-diff-file-heading-selection ((t (:foreground ,lazycat-magenta :background ,lazycat-blue-d :weight bold :extend t))))
+   `(magit-diff-file-heading           ((t (:foreground ,lazycat-foreground :extend t))))
+   `(magit-diff-file-heading-selection ((t (:foreground ,lazycat-magenta :background ,lazycat-blue-d :extend t))))
    `(magit-diff-hunk-heading           ((t (:foreground ,lazycat-background :background ,(lazycat-blend lazycat-violet lazycat-background 0.3) :extend t))))
-   `(magit-diff-hunk-heading-highlight ((t (:foreground ,lazycat-background :background ,lazycat-violet :weight bold :extend t))))
+   `(magit-diff-hunk-heading-highlight ((t (:foreground ,lazycat-background :background ,lazycat-violet :extend t))))
    `(magit-diff-removed                ((t (:foreground ,(lazycat-darken lazycat-red 0.2) :background ,(lazycat-blend lazycat-red lazycat-base3 0.1) :extend t))))
-   `(magit-diff-removed-highlight      ((t (:foreground ,lazycat-red :background ,(lazycat-blend lazycat-red lazycat-base3 0.2) :weight bold :extend t))))
+   `(magit-diff-removed-highlight      ((t (:foreground ,lazycat-red :background ,(lazycat-blend lazycat-red lazycat-base3 0.2) :extend t))))
    `(magit-diff-lines-heading          ((t (:foreground ,lazycat-yellow :background ,lazycat-red :extend t))))
    `(magit-diffstat-added              ((t (:foreground ,lazycat-green))))
    `(magit-diffstat-removed            ((t (:foreground ,lazycat-red))))
@@ -487,13 +487,13 @@ between 0 and 1)."
    `(magit-tag         ((t (:foreground ,lazycat-yellow))))
    `(magit-filename    ((t (:foreground ,lazycat-violet))))
    `(magit-hash        ((t (:foreground ,lazycat-comments))))
-   `(magit-header-line ((t (:background ,lazycat-blue-d :foreground ,lazycat-base8 :weight bold :box (:line-width 3 :color ,lazycat-blue-d)))))
+   `(magit-header-line ((t (:background ,lazycat-blue-d :foreground ,lazycat-base8 :box (:line-width 3 :color ,lazycat-blue-d)))))
    `(magit-log-author  ((t (:foreground ,lazycat-orange))))
    `(magit-log-date    ((t (:foreground ,lazycat-blue))))
    `(magit-log-graph   ((t (:foreground ,lazycat-comments))))
    `(magit-process-ng  ((t (:inherit error))))
    `(magit-process-ok  ((t (:inherit success))))
-   `(magit-section-secondary-heading ((t (:foreground ,lazycat-violet :weight bold :extend t))))
+   `(magit-section-secondary-heading ((t (:foreground ,lazycat-violet :extend t))))
 
    `(magit-reflog-amend       ((t (:foreground ,lazycat-magenta))))
    `(magit-reflog-checkout    ((t (:foreground ,lazycat-blue))))
@@ -505,8 +505,8 @@ between 0 and 1)."
    `(magit-reflog-remote      ((t (:foreground ,lazycat-cyan))))
    `(magit-reflog-reset       ((t (:inherit error))))
 
-   `(magit-section-heading           ((t (:foreground ,lazycat-blue :weight bold :extend t))))
-   `(magit-section-heading-selection ((t (:foreground ,lazycat-orange :weight bold :extend t))))
+   `(magit-section-heading           ((t (:foreground ,lazycat-blue :extend t))))
+   `(magit-section-heading-selection ((t (:foreground ,lazycat-orange :extend t))))
    `(magit-section-highlight         ((t (:inherit hl-line))))
 
    `(magit-sequence-drop       ((t (:foreground ,lazycat-red))))
@@ -785,8 +785,5 @@ between 0 and 1)."
    `(vc-annotate-very-old-color nil)
    `(vc-annotate-background ,lazycat-background)))
 
-
-;; (set-face-bold 'bold nil)
-;; (set-face-italic 'italic nil)
 
 (provide-theme 'lazycat)
