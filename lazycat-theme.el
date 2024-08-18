@@ -77,6 +77,7 @@ between 0 and 1)."
        (lazycat-violet          "#A9A1E1") ;; 紫罗兰
        (lazycat-cyan            "#46D9FF") ;; method,symlink
        (lazycat-gold            "#EEC900") ;; gold2 function,variable
+       (lazycat-pink            "#ED92F8") ;; orderless-2
        ;; special handling colors
        (lazycat-blue-d          "#2257A0") ;; 皇室蓝 lazy-highlight,magit-header-line
        (lazycat-blue-l          "#00B8FF") ;; builtin, type
@@ -126,7 +127,7 @@ between 0 and 1)."
    `(tooltip             ((t (:background ,lazycat-base3 :foreground ,lazycat-foreground))))
    `(secondary-selection ((t (:background ,lazycat-grey :extend t))))
    `(lazy-highlight      ((t (:background ,lazycat-blue-d :foreground ,lazycat-base8 :distant-foreground ,lazycat-base0 :weight bold))))
-   `(match               ((t (:foreground ,lazycat-green :background ,lazycat-base0 :weight bold))))
+   `(match               ((t (:foreground ,lazycat-blue-l :background ,lazycat-base0))))
    `(trailing-whitespace ((t (:background ,lazycat-red))))
    `(nobreak-space       ((t (:inherit default :underline nil))))
    `(vertical-border     ((t (:background ,(lazycat-darken lazycat-base1 0.1)
@@ -150,7 +151,7 @@ between 0 and 1)."
    `(font-lock-warning-face              ((t (:inherit warning))))
    `(font-lock-negation-char-face        ((t (:inherit bold :foreground ,lazycat-operator))))
    `(font-lock-preprocessor-face         ((t (:inherit bold :foreground ,lazycat-operator))))
-   `(font-lock-preprocessor-char-face    ((t (:inherit 'bold :foreground ,lazycat-operator))))
+   `(font-lock-preprocessor-char-face    ((t (:inherit bold :foreground ,lazycat-operator))))
    `(font-lock-regexp-grouping-backslash ((t (:inherit bold :foreground ,lazycat-operator))))
    `(font-lock-regexp-grouping-construct ((t (:inherit bold :foreground ,lazycat-operator))))
 
@@ -523,6 +524,12 @@ between 0 and 1)."
    `(paren-face-match    ((t (:foreground ,lazycat-red :background ,lazycat-base0 :weight ultra-bold))))
    `(paren-face-mismatch ((t (:foreground ,lazycat-base0 :background ,lazycat-red :weight ultra-bold))))
    `(paren-face-no-match ((t (:inherit paren-face-mismatch :weight ultra-bold))))
+
+   ;; orderless
+   `(orderless-match-face-0 ((t (:background ,lazycat-base0 :foreground ,(lazycat-lighten lazycat-blue 0.3)))))
+   `(orderless-match-face-1 ((t (:background ,lazycat-base0 :foreground ,lazycat-pink))))
+   `(orderless-match-face-2 ((t (:background ,lazycat-base0 :foreground ,lazycat-red))))
+   `(orderless-match-face-3 ((t (:background ,lazycat-base0 :foreground ,lazycat-yellow))))
 
    ;; parenface
    `(paren-face ((t (:foreground ,lazycat-comments))))
