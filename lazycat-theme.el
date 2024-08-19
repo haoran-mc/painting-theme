@@ -576,14 +576,14 @@ between 0 and 1)."
    `(tab-bar-tab-inactive       ((t (:foreground ,lazycat-grey))))
 
    ;; treemacs
-   `(treemacs-root-face          ((t (:inherit font-lock-string-face :weight bold :height 1.2))))
-   `(treemacs-file-face          ((t (:foreground ,lazycat-foreground))))
-   `(treemacs-directory-face     ((t (:foreground ,lazycat-foreground))))
-   `(treemacs-tags-face          ((t (:foreground ,lazycat-highlight))))
-   `(treemacs-git-modified-face  ((t (:foreground ,lazycat-violet))))
-   `(treemacs-git-added-face     ((t (:foreground ,lazycat-green))))
-   `(treemacs-git-conflict-face  ((t (:foreground ,lazycat-red))))
-   `(treemacs-git-untracked-face ((t (:inherit font-lock-doc-face))))
+   `(treemacs-root-face          ((t (:height 1.0 :weight normal :inherit font-lock-string-face))))
+   `(treemacs-file-face          ((t (:height 1.0 :weight normal :foreground ,lazycat-foreground))))
+   `(treemacs-directory-face     ((t (:height 1.0 :weight normal :foreground ,lazycat-foreground))))
+   `(treemacs-tags-face          ((t (:height 1.0 :weight normal :foreground ,lazycat-highlight))))
+   `(treemacs-git-modified-face  ((t (:height 1.0 :weight normal :foreground ,lazycat-violet))))
+   `(treemacs-git-added-face     ((t (:height 1.0 :weight normal :foreground ,lazycat-green))))
+   `(treemacs-git-conflict-face  ((t (:height 1.0 :weight normal :foreground ,lazycat-red))))
+   `(treemacs-git-untracked-face ((t (:height 1.0 :weight normal :inherit font-lock-doc-face))))
 
    ;; vimish-fold
    `(vimish-fold-overlay ((t (:inherit font-lock-comment-face :background ,lazycat-base0 :weight light))))
