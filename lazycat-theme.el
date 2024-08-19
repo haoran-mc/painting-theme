@@ -570,16 +570,10 @@ between 0 and 1)."
    `(sp-show-pair-match-face    ((t (:foreground ,lazycat-red :background ,lazycat-base0 :weight ultra-bold))))
    `(sp-show-pair-mismatch-face ((t (:foreground ,lazycat-base0 :background ,lazycat-red :weight ultra-bold))))
 
-   ;; tabbar
-   `(tabbar-default             ((t (:foreground ,lazycat-background :background ,lazycat-background :height 1.0))))
-   `(tabbar-highlight           ((t (:foreground ,lazycat-foreground :background ,lazycat-selection :distant-foreground ,lazycat-background))))
-   `(tabbar-button              ((t (:foreground ,lazycat-foreground :background ,lazycat-background))))
-   `(tabbar-button-highlight    ((t (:inherit tabbar-button :inverse-video t))))
-   `(tabbar-modified            ((t (:inherit tabbar-default :foreground ,lazycat-red :weight bold))))
-   `(tabbar-unselected          ((t (:inherit tabbar-default :foreground ,lazycat-base5))))
-   `(tabbar-unselected-modified ((t (:inherit tabbar-modified))))
-   `(tabbar-selected            ((t (:inherit tabbar-default :weight bold :foreground ,lazycat-foreground :background ,lazycat-background-alt))))
-   `(tabbar-selected-modified   ((t (:inherit tabbar-selected :foreground ,lazycat-green))))
+   ;; tab-bar
+   `(tab-bar                    ((t (:background ,lazycat-background))))
+   `(tab-bar-tab                ((t (:foreground ,lazycat-foreground :background ,lazycat-background))))
+   `(tab-bar-tab-inactive       ((t (:foreground ,lazycat-grey))))
 
    ;; treemacs
    `(treemacs-root-face          ((t (:inherit font-lock-string-face :weight bold :height 1.2))))
