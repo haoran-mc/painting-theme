@@ -67,6 +67,7 @@ between 0 and 1)."
        (lazycat-foreground-alt  "#008B00") ;; green4
        ;; base colors
        (lazycat-deepgrey        lazycat-base4)
+       (lazycat-grey            "#A7A7A7")
        (lazycat-red             "#FF6C6B") ;; 珊瑚红 error,deleted,invalid,removed,mismatch
        (lazycat-orange          "#DA8548") ;; 焦糖橙 warning,modified,mark
        (lazycat-green           "#98BE65") ;; 橄榄绿 success,added,executable
@@ -83,15 +84,15 @@ between 0 and 1)."
        (lazycat-blue-l          "#00B8FF") ;; builtin, type
        (lazycat-cyan-d          "#5699AF")
        ;; face categories
-       (lazycat-comments        "#A7A7A7")
-       (lazycat-doc-comments    "#AAAAAA")
        (lazycat-highlight       "#00FF00") ;; green
        (lazycat-keyword         "#165EFF")
-       (lazycat-string          "#DFD67A")
+       (lazycat-string          "#DFD67A") ;; 浅卡其
        (lazycat-constant        "#BD00FF")
        (lazycat-operator        "#00CDCD") ;; cyan3
        (lazycat-region          "#3F90F7")
        (lazycat-region-fg       "#FFFFFF") ;; white
+       (lazycat-comments        lazycat-grey)
+       (lazycat-doc-comments    lazycat-grey)
        (lazycat-selection       lazycat-blue-d)
        (lazycat-builtin         lazycat-blue-l)
        (lazycat-function        lazycat-gold)
