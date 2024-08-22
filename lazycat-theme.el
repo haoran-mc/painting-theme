@@ -113,14 +113,14 @@ between 0 and 1)."
    'lazycat
 
    ;; --- base faces -------------------------
-   `(bold    ((t (:weight normal :foreground ,lazycat-base8))))
-   '(italic  ((t (:slant italic))))
+   `(bold                ((t (:weight normal :foreground ,lazycat-blue))))
+   '(italic              ((t (:slant italic))))
 
-   `(default ((t (:background ,lazycat-background :foreground ,lazycat-foreground))))
-   `(fringe  ((t (:inherit default :foreground ,lazycat-base4))))
+   `(default             ((t (:background ,lazycat-background :foreground ,lazycat-foreground))))
+   `(fringe              ((t (:inherit default :foreground ,lazycat-base4))))
    `(region              ((t (:background ,lazycat-region :foreground ,lazycat-region-fg))))
    `(highlight           ((t (:background ,lazycat-highlight :foreground ,lazycat-base0 :distant-foreground ,lazycat-base8))))
-   `(cursor              ((t (:background ,lazycat-highlight))))
+   `(cursor              ((t (:background ,lazycat-highlight)))) ;; #268BD2
    `(shadow              ((t (:foreground ,lazycat-base5))))
    `(minibuffer-prompt   ((t (:foreground ,lazycat-highlight))))
    `(tooltip             ((t (:background ,lazycat-base3 :foreground ,lazycat-foreground))))
@@ -527,7 +527,7 @@ between 0 and 1)."
    `(paren-face-no-match ((t (:inherit paren-face-mismatch :weight ultra-bold))))
 
    ;; orderless
-   `(orderless-match-face-0 ((t (:background ,lazycat-base0 :foreground ,(lazycat-lighten lazycat-blue 0.3)))))
+   `(orderless-match-face-0 ((t (:background ,lazycat-base0 :foreground ,lazycat-blue-l))))
    `(orderless-match-face-1 ((t (:background ,lazycat-base0 :foreground ,lazycat-pink))))
    `(orderless-match-face-2 ((t (:background ,lazycat-base0 :foreground ,lazycat-red))))
    `(orderless-match-face-3 ((t (:background ,lazycat-base0 :foreground ,lazycat-yellow))))
