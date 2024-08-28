@@ -191,6 +191,10 @@ between 0 and 1)."
    `(compilation-mode-line-exit ((t (:inherit compilation-info))))
    `(compilation-mode-line-fail ((t (:inherit compilation-error))))
 
+   ;; completion
+   `(completions-common-part      ((t (:foreground ,lazycat-blue))))
+   `(completions-first-difference ((t (:foreground ,lazycat-foreground))))
+
    ;; custom
    `(custom-variable-button   ((t (:foreground ,lazycat-green :underline t))))
    `(custom-saved             ((t (:foreground ,lazycat-green :background ,(lazycat-blend lazycat-green lazycat-background 0.2) :bold bold))))
@@ -367,6 +371,9 @@ between 0 and 1)."
    `(avy-lead-face-0     ((t (:inherit avy-lead-face :background ,(lazycat-lighten lazycat-highlight 0.3)))))
    `(avy-lead-face-1     ((t (:inherit avy-lead-face :background ,(lazycat-lighten lazycat-highlight 0.6)))))
    `(avy-lead-face-2     ((t (:inherit avy-lead-face :background ,(lazycat-lighten lazycat-highlight 0.9)))))
+
+   ;; corfu
+   `(corfu-current ((t (:foreground ,lazycat-foreground :background ,(lazycat-darken lazycat-region 0.5)))))
 
    ;; diff-hl
    `(diff-hl-change      ((t (:foreground ,lazycat-diff-modified :background ,lazycat-diff-modified))))
