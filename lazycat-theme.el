@@ -85,6 +85,7 @@ between 0 and 1)."
        (lazycat-cyan-d          "#5699AF")
        ;; face categories
        (lazycat-highlight       "#00FF00") ;; green
+       (lazycat-cursor          "#268BD2")
        (lazycat-keyword         "#165EFF")
        (lazycat-string          "#DFD67A") ;; 浅卡其
        (lazycat-constant        "#BD00FF")
@@ -120,7 +121,7 @@ between 0 and 1)."
    `(fringe              ((t (:inherit default :foreground ,lazycat-base4))))
    `(region              ((t (:background ,lazycat-region :foreground ,lazycat-region-fg))))
    `(highlight           ((t (:background ,lazycat-highlight :foreground ,lazycat-base0 :distant-foreground ,lazycat-base8))))
-   `(cursor              ((t (:background ,lazycat-highlight)))) ;; #268BD2
+   `(cursor              ((t (:background ,lazycat-cursor))))
    `(shadow              ((t (:foreground ,lazycat-base5))))
    `(minibuffer-prompt   ((t (:foreground ,lazycat-highlight))))
    `(tooltip             ((t (:background ,lazycat-base3 :foreground ,lazycat-foreground))))
