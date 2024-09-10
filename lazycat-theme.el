@@ -169,11 +169,11 @@ between 0 and 1)."
    ;; 2. All other line number plugin faces should &inherit from these.
    `(line-number
      ((t (:inherit default
-                   :foreground ,lazycat-base5 :distant-foreground nil
+                   :foreground ,lazycat-base5 :distant-foreground unspecified
                    :weight normal :italic nil :underline nil :strike-through nil))))
    `(line-number-current-line
      ((t (:inherit (hl-line default)
-                   :foreground ,lazycat-foreground :distant-foreground nil
+                   :foreground ,lazycat-foreground :distant-foreground unspecified
                    :weight normal :italic nil :underline nil :strike-through nil))))
 
 
@@ -281,7 +281,7 @@ between 0 and 1)."
 
    ;; linum totally inherit line-number
    `(linum ((t (:inherit default
-                         :foreground ,lazycat-base5 :distant-foreground nil
+                         :foreground ,lazycat-base5 :distant-foreground unspecified
                          :weight normal :italic nil
                          :underline nil :strike-through nil))))
 
@@ -384,8 +384,8 @@ between 0 and 1)."
    `(diff-changed        ((t (:foreground ,lazycat-violet))))
    `(diff-context        ((t (:foreground ,(lazycat-darken lazycat-foreground 0.12)))))
    `(diff-removed        ((t (:foreground ,lazycat-red :background ,lazycat-base3))))
-   `(diff-header         ((t (:foreground ,lazycat-cyan :background nil))))
-   `(diff-file-header    ((t (:foreground ,lazycat-blue :background nil))))
+   `(diff-header         ((t (:foreground ,lazycat-cyan :background unspecified))))
+   `(diff-file-header    ((t (:foreground ,lazycat-blue :background unspecified))))
    `(diff-hunk-header    ((t (:foreground ,lazycat-violet))))
    `(diff-refine-added   ((t (:inherit diff-added :inverse-video t))))
    `(diff-refine-changed ((t (:inherit diff-changed :inverse-video t))))
@@ -615,7 +615,7 @@ between 0 and 1)."
    ;; whitespace
    `(whitespace-empty       ((t (:background ,lazycat-base3))))
    `(whitespace-space       ((t (:foreground ,lazycat-base4))))
-   `(whitespace-tab         ((t (:foreground ,lazycat-base4 :background ,(unless (default-value 'indent-tabs-mode) lazycat-base3)))))
+   `(whitespace-tab         ((t (:foreground ,lazycat-base4 :background ,lazycat-base3))))
    `(whitespace-newline     ((t (:foreground ,lazycat-base4))))
    `(whitespace-indentation ((t (:foreground ,lazycat-red :background ,lazycat-yellow))))
    `(whitespace-trailing    ((t (:inherit trailing-whitespace))))
@@ -715,7 +715,7 @@ between 0 and 1)."
    `(org-code                     ((t (:foreground ,lazycat-orange))))
    `(org-date                     ((t (:foreground ,lazycat-yellow))))
    `(org-default                  ((t (:inherit variable-pitch))))
-   `(org-ellipsis                 ((t (:underline nil :background nil :foreground ,lazycat-deepgrey))))
+   `(org-ellipsis                 ((t (:underline nil :background unspecified :foreground ,lazycat-deepgrey))))
    `(org-footnote                 ((t (:foreground ,lazycat-orange))))
    `(org-formula                  ((t (:foreground ,lazycat-cyan))))
    `(org-hide                     ((t (:foreground ,lazycat-hidden))))
