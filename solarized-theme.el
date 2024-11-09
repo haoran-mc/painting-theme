@@ -52,9 +52,7 @@
     (minibuffer-prompt    :foreground highlight)
     (tooltip              :background bg-alt :foreground fg)
     (secondary-selection  :background grey :extend t)
-    (lazy-highlight
-     (&dark  :background (doom-darken highlight 0.3)   :foreground base8 :distant-foreground base0 :weight 'bold)
-     (&light :background (doom-blend bg highlight 0.7) :foreground base0 :distant-foreground base8))
+    (lazy-highlight :background (doom-blend bg highlight 0.7) :foreground base0 :distant-foreground base8)
     (match                :foreground green      :background base0 :weight 'bold)
     (trailing-whitespace  :background red)
     (nobreak-space        :inherit 'escape-glyph :underline t)
@@ -206,9 +204,7 @@
     ;; This color is used effectively as grayed out foreground text.
     ;; base5 and up have too much contrast in light themes;
     ;; base5 and lower have too little contrast in dark themes.
-    (ansi-color-bright-black
-     (&light :foreground base4 :background base4)
-     (&dark  :foreground base6 :background base6))
+    (ansi-color-bright-black :foreground base4 :background base4)
     (ansi-color-bright-red     :foreground (doom-lighten red 0.15)     :background (doom-lighten red 0.15))
     (ansi-color-bright-green   :foreground (doom-lighten green 0.15)   :background (doom-lighten green 0.15))
     (ansi-color-bright-yellow  :foreground (doom-lighten yellow 0.15)  :background (doom-lighten yellow 0.15))
@@ -222,18 +218,9 @@
     ;;;; avy
     (avy-background-face :foreground comments)
     (avy-lead-face :background highlight :foreground bg :distant-foreground fg :weight 'bold)
-    (avy-lead-face-0
-     (&all   :inherit 'avy-lead-face)
-     (&dark  :background (doom-lighten highlight 0.3))
-     (&light :background (doom-darken highlight 0.3)))
-    (avy-lead-face-1
-     (&all   :inherit 'avy-lead-face)
-     (&dark  :background (doom-lighten highlight 0.6))
-     (&light :background (doom-darken highlight 0.6)))
-    (avy-lead-face-2
-     (&all   :inherit 'avy-lead-face)
-     (&dark  :background (doom-lighten highlight 0.9))
-     (&light :background (doom-darken highlight 0.9)))
+    (avy-lead-face-0 :inherit 'avy-lead-face :background (doom-darken highlight 0.3))
+    (avy-lead-face-1 :inherit 'avy-lead-face :background (doom-darken highlight 0.6))
+    (avy-lead-face-2 :inherit 'avy-lead-face :background (doom-darken highlight 0.9))
     ;;;; bookmark
     (bookmark-face :background (doom-blend highlight bg 0.1) :extend t)
     ;;;; bookmark+
@@ -364,9 +351,7 @@
        (t (:inherit font-lock-warning-face :underline (:color ,(car warning))))))
     (cider-test-failure-face :background (doom-blend bg error 0.7))
     (cider-test-error-face   :background orange)
-    (cider-test-success-face
-     (&light :foreground base0 :background green)
-     (&dark  :foreground green :background base0))
+    (cider-test-success-face :foreground base0 :background green)
     ;;;; css-mode <built-in> / scss-mode
     (css-proprietary-property :foreground orange)
     (css-property             :foreground green)
@@ -378,9 +363,7 @@
     ;;;; diff-mode <built-in>
     (diff-added   :inherit 'hl-line :foreground green)
     (diff-changed :foreground violet)
-    (diff-context
-     (&dark  :foreground (doom-darken fg 0.12))
-     (&light :foreground (doom-lighten fg 0.12)))
+    (diff-context :foreground (doom-lighten fg 0.12))
     (diff-removed :foreground red :background base3)
     (diff-header  :foreground cyan)
     (diff-file-header :foreground blue)
@@ -417,8 +400,7 @@
     (ediff-odd-diff-B     :inherit 'ediff-odd-diff-A)
     (ediff-odd-diff-C     :inherit 'ediff-odd-diff-A)
     ;;;; elixir-mode <modes:elixir-mode>
-    (elixir-atom-face (&light :foreground dark-blue)
-                      (&dark  :foreground cyan))
+    (elixir-atom-face      :foreground dark-blue)
     (elixir-attribute-face :foreground violet)
     ;;;; elscreen
     (elscreen-tab-background-face     :background bg)
@@ -526,13 +508,7 @@
     (highlight-quoted-symbol :foreground type)
     (highlight-quoted-quote  :foreground operators)
     ;;;; highlight-symbol
-    (highlight-symbol-face
-     (&dark  :background (doom-lighten region 0.1) :distant-foreground fg-alt)
-     (&light :background (doom-darken region 0.1) :distant-foreground fg-alt))
-    ;;;; highlight-thing
-    (highlight-thing
-     (&dark  :background (doom-lighten region 0.1) :distant-foreground fg-alt)
-     (&light :background (doom-darken region 0.1) :distant-foreground fg-alt))
+    (highlight-symbol-face :background (doom-darken region 0.1) :distant-foreground fg-alt)
     ;;;; hl-fill-column-face
     (hl-fill-column-face :inherit '(hl-line shadow))
     ;;;; hl-line (built-in)
@@ -728,10 +704,7 @@
     ;;;; nlinum-relative
     ((nlinum-relative-current-face &inherit line-number-current-line))
     ;;;; lsp-mode
-    (lsp-face-highlight-textual
-     (&all   :weight 'bold)
-     (&light :background base3 :foreground base0 :distant-foreground base8)
-     (&dark  :background (doom-blend highlight bg 0.3) :foreground base8 :distant-foreground base0))
+    (lsp-face-highlight-textual :background base3 :foreground base0 :distant-foreground base8)
     (lsp-face-highlight-read    :inherit 'lsp-face-highlight-textual)
     (lsp-face-highlight-write   :inherit 'lsp-face-highlight-textual)
     (lsp-headerline-breadcrumb-separator-face :inherit 'shadow)
@@ -931,13 +904,9 @@
         (:underline (:style wave :color ,(car error))))
        (t (:inherit error :underline t))))
     ;;;; stripe-buffer
-    (stripe-highlight
-     (&light :background base5)
-     (&dark  :background base3))
+    (stripe-highlight :background base5)
     ;;;; symbol-overlay
-    (symbol-overlay-default-face
-     (&dark  :background (doom-lighten region 0.1) :distant-foreground fg-alt)
-     (&light :background (doom-darken region 0.1)  :distant-foreground fg-alt))
+    (symbol-overlay-default-face :background (doom-darken region 0.1)  :distant-foreground fg-alt)
     (symbol-overlay-face-1 :background (doom-blend blue bg 0.4)    :distant-foreground fg-alt)
     (symbol-overlay-face-2 :background (doom-blend violet bg 0.4)  :distant-foreground fg-alt)
     (symbol-overlay-face-3 :background (doom-blend yellow bg 0.3)  :distant-foreground fg-alt)
@@ -1142,8 +1111,10 @@
 
 (defun doom-themes--apply-faces (new-faces &optional default-faces)
   (declare (pure t) (side-effect-free t))
-  (let ((default-faces (or default-faces doom-themes-base-faces))
-        (faces (make-hash-table :test #'eq :size (+ (length default-faces) (length new-faces))))
+  ;; (let ((default-faces (or default-faces doom-themes-base-faces))
+  ;; (faces (make-hash-table :test #'eq :size (+ (length default-faces) (length new-faces))))
+  (let ((default-faces doom-themes-base-faces)
+        (faces (make-hash-table :test #'eq :size (length new-faces)))
         (directives (make-hash-table :test #'eq)))
     (dolist (spec (append (mapcar #'copy-sequence default-faces) new-faces))
       (if (listp (car spec))
@@ -1232,24 +1203,7 @@
                   `(list (list 't (list ,@real-attrs))))))
 
              ((memq (car-safe (car face-body)) '(quote backquote \`))
-              (car face-body))
-
-             ((let (all-attrs defs)
-                (dolist (attrs face-body `(list ,@(nreverse defs)))
-                  (cond ((eq (car attrs) '&all)
-                         (setq all-attrs (append all-attrs (cdr attrs))))
-
-                        ((memq (car attrs) '(&dark &light))
-                         (let ((bg (if (eq (car attrs) '&dark) 'dark 'light))
-                               (real-attrs (append all-attrs (cdr attrs) '())))
-                           (cond ((doom-themes--colors-p real-attrs)
-                                  (dolist (cl doom--min-colors)
-                                    (push `(list '((class color) (min-colors ,cl) (background ,bg))
-                                                 (list ,@(doom-themes--colorize real-attrs cl)))
-                                          defs)))
-
-                                 ((push `(list '((background ,bg)) (list ,@real-attrs))
-                                        defs)))))))))))))
+              (car face-body))))))
 
 
 ;;
