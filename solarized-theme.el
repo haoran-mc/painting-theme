@@ -111,11 +111,14 @@
      :foreground base5 :distant-foreground 'unspecified
      :weight 'normal :italic 'unspecified
      :underline 'unspecified :strike-through 'unspecified)
+    ;; ((line-number &override) :foreground base6)
+
     (line-number-current-line
      :inherit '(hl-line default)
      :foreground fg :distant-foreground 'unspecified
      :weight 'normal :italic 'unspecified
      :underline 'unspecified :strike-through 'unspecified)
+    ;; ((line-number-current-line &override) :foreground fg :background region :weight 'bold)
 
     ;;;; --- Package faces ----------------------
     ;; What follows are faces for all the packages doom-themes explicitly
@@ -129,7 +132,7 @@
     (font-latex-bold-face         :inherit 'bold)
     (font-latex-italic-face       :inherit 'italic)
     (font-latex-math-face         :foreground blue)
-    (font-latex-sedate-face       :inherit 'font-lock-keyword-face)
+    (font-latex-sedate-face       :foreground base6)
     (font-latex-sectioning-0-face :foreground blue    :weight 'ultra-bold)
     (font-latex-sectioning-1-face :foreground magenta :weight 'semi-bold)
     (font-latex-sectioning-2-face :foreground violet  :weight 'semi-bold)
@@ -287,7 +290,7 @@
     (company-tooltip-common                           :foreground highlight :distant-foreground base0 :weight 'bold)
     (company-tooltip-search     :background highlight :foreground bg :distant-foreground fg :weight 'bold)
     (company-tooltip-search-selection :background (doom-darken selection 0.25))
-    (company-tooltip-selection  :background selection :weight 'bold)
+    (company-tooltip-selection  :background blue :foreground base3)
     (company-tooltip-mouse      :background magenta   :foreground bg :distant-foreground fg)
     (company-tooltip-annotation                       :foreground violet :distant-foreground bg)
     (company-scrollbar-bg       :inherit 'tooltip)
@@ -382,6 +385,10 @@
     (cider-test-success-face
      (&light :foreground base0 :background green)
      (&dark  :foreground green :background base0))
+    ;;;; css-mode <built-in> / scss-mode
+    (css-proprietary-property :foreground orange)
+    (css-property             :foreground green)
+    (css-selector             :foreground blue)
     ;;;; diff-hl
     (diff-hl-change :foreground vc-modified :background vc-modified)
     (diff-hl-delete :foreground vc-deleted :background vc-deleted)
@@ -493,9 +500,7 @@
     (elscreen-tab-background-face     :background bg)
     (elscreen-tab-control-face        :background bg     :foreground bg)
     (elscreen-tab-current-screen-face :background bg-alt :foreground fg)
-    (elscreen-tab-other-screen-face   :background bg     :foreground fg-alt)
-    ;;;; embark
-    ((embark-target &inherit vertico-current))
+    (elscreen-tab-other-screen-face   :background "#353a42" :foreground "#1e2022")
     ;;;; enh-ruby-mode <modes:enh-ruby-mode>
     (enh-ruby-heredoc-delimiter-face :inherit 'font-lock-string-face)
     (enh-ruby-op-face                :foreground operators)
@@ -607,7 +612,7 @@
     ;;;; hl-fill-column-face
     (hl-fill-column-face :inherit '(hl-line shadow))
     ;;;; hl-line (built-in)
-    (hl-line :background bg-alt :extend t)
+    (hl-line :background base3)
     ;;;; hl-todo
     (hl-todo :foreground red :weight 'bold)
     ;;;; hlinum
@@ -737,7 +742,7 @@
     (Man-overstrike :inherit 'bold :foreground operators)
     (Man-underline :inherit 'underline :foreground keywords)
     ;;;; markdown-mode <modes:markdown-mode,gfm-mode>
-    (markdown-header-face           :inherit 'bold :foreground highlight)
+    (markdown-header-face :inherit 'bold :foreground red)
     (markdown-header-delimiter-face :inherit 'markdown-header-face)
     (markdown-metadata-key-face     :foreground red)
     (markdown-list-face             :foreground red)
@@ -745,10 +750,10 @@
     (markdown-url-face              :foreground magenta :weight 'normal)
     (markdown-italic-face           :inherit 'italic :foreground violet)
     (markdown-bold-face             :inherit 'bold   :foreground orange)
-    (markdown-markup-face           :foreground operators)
+    (markdown-markup-face           :foreground base5)
     (markdown-blockquote-face       :inherit 'italic :foreground doc-comments)
     (markdown-pre-face              :foreground strings)
-    (markdown-code-face             :background base3 :extend t)
+    (markdown-code-face             :background (doom-lighten base3 0.05) :extend t)
     (markdown-reference-face        :foreground doc-comments)
     (markdown-inline-code-face      :inherit '(markdown-code-face markdown-pre-face) :extend nil)
     (markdown-html-attr-name-face     :inherit 'font-lock-variable-name-face)
@@ -865,7 +870,7 @@
     (lsp-ui-peek-peek :background (doom-darken bg 0.1))
     (lsp-ui-peek-highlight :inherit 'isearch :box t)
     (lsp-ui-peek-line-number :foreground success)
-    (lsp-ui-sideline-code-action :foreground (doom-blend highlight bg 0.85))
+    (lsp-ui-sideline-code-action :foreground blue)
     (lsp-ui-sideline-current-symbol :inherit 'highlight)
     (lsp-ui-sideline-symbol-info :foreground (doom-blend comments bg 0.85)
                                  :background bg-alt :extend t)
@@ -879,10 +884,10 @@
     (orderless-match-face-3 :weight 'bold :foreground (doom-blend yellow  fg 0.6) :background (doom-blend yellow  bg 0.1))
     ;;;; org <built-in> <modes:org-mode>
     (org-archived                 :foreground doc-comments)
-    (org-block                    :background base3    :extend t)
-    (org-block-background         :background base3    :extend t)
-    (org-block-begin-line         :inherit 'org-block  :foreground comments)
-    (org-block-end-line           :inherit 'org-block-begin-line)
+    (org-block :background (doom-blend yellow bg 0.04) :extend t)
+    (org-block-background :background (doom-blend yellow bg 0.04))
+    (org-block-begin-line :background (doom-blend yellow bg 0.08) :extend t)
+    (org-block-end-line :background (doom-blend yellow bg 0.08) :extend t)
     (org-checkbox                 :inherit 'org-todo)
     (org-checkbox-statistics-done :inherit 'org-done)
     (org-checkbox-statistics-todo :inherit 'org-todo)
@@ -1525,7 +1530,7 @@ Faces in EXTRA-FACES override the default faces."
   (setq doom-themes--faces (doom-themes--apply-faces custom-faces))
   (mapcar #'doom-themes--build-face doom-themes--faces))
 
-(defmacro def-doom-theme (name docstring defs &optional extra-faces extra-vars)
+(defmacro def-doom-theme (name docstring defs &optional extra-faces)
   "Define a DOOM theme, named NAME (a symbol)."
   (declare (doc-string 2))
   (let ((doom-themes--colors defs))
@@ -1629,68 +1634,7 @@ Faces in EXTRA-FACES override the default faces."
                  (success        green)
                  (vc-modified    orange)
                  (vc-added       green)
-                 (vc-deleted     red))
-
-  ;;;; Base theme face overrides
-                (((font-lock-comment-face &override)
-                  :slant 'italic
-                  :background (if solarized-brighter-comments
-                                  (doom-blend teal base0 0.07)
-                                'unspecified))
-                 ((font-lock-type-face &override) :slant 'italic)
-                 ((font-lock-builtin-face &override) :slant 'italic)
-                 ((font-lock-function-name-face &override) :foreground type)
-                 ((font-lock-keyword-face &override) :weight 'bold)
-                 ((font-lock-constant-face &override) :weight 'bold)
-                 (hl-line :background base3)
-                 ((line-number &override) :foreground base6)
-                 ((line-number-current-line &override) :foreground fg :background region :weight 'bold)
-
-   ;;;; elscreen
-                 (elscreen-tab-other-screen-face :background "#353a42" :foreground "#1e2022")
-   ;;;; css-mode <built-in> / scss-mode
-                 (css-proprietary-property :foreground orange)
-                 (css-property             :foreground green)
-                 (css-selector             :foreground blue)
-   ;;;; lsp-ui
-                 (lsp-ui-sideline-code-action :foreground blue)
-   ;;;; markdown-mode
-                 (markdown-markup-face :foreground base5)
-                 (markdown-header-face :inherit 'bold :foreground red)
-                 ((markdown-code-face &override) :background (doom-lighten base3 0.05))
-   ;;;; ivy
-                 (ivy-current-match :background (doom-lighten yellow 0.65) :distant-foreground fg)
-                 (ivy-minibuffer-match-face-1 :foreground blue :background base3 :weight 'bold)
-                 (ivy-minibuffer-match-face-2 :foreground magenta :background base3 :weight 'bold)
-                 (ivy-minibuffer-match-face-3 :foreground green   :background base3 :weight 'bold)
-                 (ivy-minibuffer-match-face-4 :foreground yellow  :background base3 :weight 'bold)
-                 (ivy-minibuffer-match-highlight :foreground violet :weight 'bold)
-   ;;;; swiper
-                 (swiper-match-face-1 :inherit 'ivy-minibuffer-match-face-1)
-                 (swiper-match-face-2 :inherit 'ivy-minibuffer-match-face-2)
-                 (swiper-match-face-3 :inherit 'ivy-minibuffer-match-face-3)
-                 (swiper-match-face-4 :inherit 'ivy-minibuffer-match-face-4)
-   ;;;; helm
-                 (helm-selection :foreground base0 :weight 'bold :background blue)
-   ;;;; company
-                 (company-tooltip-selection :background blue :foreground base3)
-   ;;;; org <built-in>
-                 (org-block :background (doom-blend yellow bg 0.04) :extend t)
-                 (org-block-background :background (doom-blend yellow bg 0.04))
-                 (org-block-begin-line :background (doom-blend yellow bg 0.08) :extend t)
-                 (org-block-end-line :background (doom-blend yellow bg 0.08) :extend t)
-   ;;;; widget
-                 (widget-field :foreground fg :background base3)
-                 (widget-single-line-field :foreground fg :background base3)
-   ;;;; latex
-                 (font-latex-sedate-face :foreground base6)
-   ;;;; notmuch
-                 (notmuch-message-summary-face :foreground teal)
-                 (notmuch-wash-cited-text :foreground base6))
-
-  ;;;; Base theme variable overrides-
-                ;; ()
-                )
+                 (vc-deleted     red)))
 
 (custom-theme-set-variables
  'solarized
