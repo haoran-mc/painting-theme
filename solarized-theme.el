@@ -275,12 +275,12 @@
     ((centaur-tabs-unselected &inherit tab-bar-tab-inactive) :box nil)
     (centaur-tabs-selected-modified   :background bg :foreground teal)
     (centaur-tabs-unselected-modified :background bg-alt :foreground teal)
-    (centaur-tabs-active-bar-face :background (if (bound-and-true-p -modeline-bright) modeline-bg highlight))
+    (centaur-tabs-active-bar-face :background highlight)
     (centaur-tabs-modified-marker-selected
-     :foreground (if (bound-and-true-p -modeline-bright) modeline-bg highlight)
+     :foreground highlight
      :inherit 'centaur-tabs-selected)
     (centaur-tabs-modified-marker-unselected
-     :foreground (if (bound-and-true-p -modeline-bright) modeline-bg highlight)
+     :foreground highlight
      :inherit 'centaur-tabs-unselected)
     ;;;; company
     (company-tooltip            :inherit 'tooltip)
@@ -470,9 +470,6 @@
     (disk-usage-percent             :foreground violet)
     (disk-usage-size                :foreground blue)
     (disk-usage-symlink             :foreground cyan :weight 'bold)
-    ;;;; doom-modeline
-    (doom-modeline-eldoc-bar :background green)
-    (doom-modeline-bar-inactive) ; transparent
     ;;;; doom-themes
     (doom-themes-visual-bell :background error)
     ;;;; ediff <built-in>
@@ -1270,57 +1267,6 @@
 
   "TODO")
 
-;;;; --- Package variables ------------------
-(defvar doom-themes-base-vars
-  '(
-    ;;;; ansi-color <built-in> DEPRECATED
-    (ansi-color-names-vector
-     (vconcat (mapcar #'doom-color '(bg red green yellow blue magenta cyan fg))))
-    ;;;; rustic <modes:rustic-mode>
-    (rustic-ansi-faces
-     (vconcat (mapcar #'doom-color '(bg red green yellow blue magenta cyan fg))))
-    ;;;; exwm
-    (exwm-floating-border-color (doom-color 'vertical-bar))
-    ;;;; fill-column-indicator
-    (fci-rule-color (doom-color 'base5))
-    ;;;; jdee <modes:jdee-mode>
-    (jdee-db-spec-breakpoint-face-colors `(cons ,(doom-color 'base0) ,(doom-color 'grey)))
-    (jdee-db-requested-breakpoint-face-colors `(cons ,(doom-color 'base0) ,(doom-color 'green)))
-    (jdee-db-active-breakpoint-face-colors `(cons ,(doom-color 'base0) ,(doom-color 'highlight)))
-    ;;;; highlight-tail
-    (highlight-tail-colors
-     `((,(doom-blend green bg 0.1) . 0)
-       (,(doom-blend cyan bg 0.1) . 20)))
-    ;;;; objed
-    (objed-cursor-color (doom-color 'red))
-    ;;;; pdf-tools
-    (pdf-view-midnight-colors `(cons ,(doom-color 'fg) ,(doom-color 'bg)))
-    ;;;; vc <built-in>
-    (vc-annotate-color-map
-     `(list (cons 20  ,(doom-color 'green))
-            (cons 40  ,(doom-blend 'yellow 'green (/ 1.0 3)))
-            (cons 60  ,(doom-blend 'yellow 'green (/ 2.0 3)))
-            (cons 80  ,(doom-color 'yellow))
-            (cons 100 ,(doom-blend 'orange 'yellow (/ 1.0 3)))
-            (cons 120 ,(doom-blend 'orange 'yellow (/ 2.0 3)))
-            (cons 140 ,(doom-color 'orange))
-            (cons 160 ,(doom-blend 'magenta 'orange (/ 1.0 3)))
-            (cons 180 ,(doom-blend 'magenta 'orange (/ 2.0 3)))
-            (cons 200 ,(doom-color 'magenta))
-            (cons 220 ,(doom-blend 'red 'magenta (/ 1.0 3)))
-            (cons 240 ,(doom-blend 'red 'magenta (/ 2.0 3)))
-            (cons 260 ,(doom-color 'red))
-            (cons 280 ,(doom-blend 'grey 'red (/ 1.0 4)))
-            (cons 300 ,(doom-blend 'grey 'red (/ 2.0 4)))
-            (cons 320 ,(doom-blend 'grey 'red (/ 3.0 4)))
-            (cons 340 ,(doom-color 'base5))
-            (cons 360 ,(doom-color 'base5))))
-    (vc-annotate-very-old-color nil)
-    (vc-annotate-background (doom-color 'bg)))
-;;;; --- END Package variables --------------
-  "TODO")
-
-
 (defgroup doom-themes nil
   "Options for doom-themes."
   :group 'faces)
@@ -1334,7 +1280,6 @@
   "If nil, italics will be disabled across all faces."
   :group 'doom-themes
   :type 'boolean)
-
 
 ;;
 ;;; API
@@ -1580,37 +1525,6 @@ Faces in EXTRA-FACES override the default faces."
   (setq doom-themes--faces (doom-themes--apply-faces custom-faces))
   (mapcar #'doom-themes--build-face doom-themes--faces))
 
-(defun doom-themes-prepare-varlist (vars)
-  "Return an alist of variable definitions for `custom-theme-set-variables'.
-
-Variables in EXTRA-VARS override the default ones."
-  (declare (pure t) (side-effect-free t))
-  (cl-loop for (var val) in (append doom-themes-base-vars vars)
-           collect `(list ',var ,val)))
-
-;;;###autoload
-(defun doom-themes-set-faces (theme &rest faces)
-  "Customize THEME (a symbol) with FACES.
-
-If THEME is nil, it applies to all themes you load. FACES is a list of Doom
-theme face specs. These is a simplified spec. For example:
-
-  (doom-themes-set-faces \\='user
-    \\='(default :background red :foreground blue)
-    \\='(doom-modeline-bar :background (if -modeline-bright modeline-bg highlight))
-    \\='(doom-modeline-buffer-file :inherit \\='mode-line-buffer-id :weight \\='bold)
-    \\='(doom-modeline-buffer-path :inherit \\='mode-line-emphasis :weight \\='bold)
-    \\='(doom-modeline-buffer-project-root :foreground green :weight \\='bold))"
-  (declare (indent defun))
-  (apply #'custom-theme-set-faces
-         (or theme 'user)
-         (eval
-          `(let* ((bold   ,doom-themes-enable-bold)
-                  (italic ,doom-themes-enable-italic)
-                  ,@(cl-loop for (var . val) in doom-themes--colors
-                             collect `(,var ',val)))
-             (list ,@(mapcar #'doom-themes--build-face faces))))))
-
 (defmacro def-doom-theme (name docstring defs &optional extra-faces extra-vars)
   "Define a DOOM theme, named NAME (a symbol)."
   (declare (doc-string 2))
@@ -1624,8 +1538,6 @@ theme face specs. These is a simplified spec. For example:
        (deftheme ,name ,docstring)
        (custom-theme-set-faces
         ',name ,@(doom-themes-prepare-facelist extra-faces))
-       (custom-theme-set-variables
-        ',name ,@(doom-themes-prepare-varlist extra-vars))
        (unless bold (set-face-bold 'bold 'unspecified))
        (unless italic (set-face-italic 'italic 'unspecified))
        (provide-theme ',name))))
@@ -1645,11 +1557,6 @@ theme face specs. These is a simplified spec. For example:
   "Options for the `solarized' theme."
   :group 'doom-themes)
 
-(defcustom solarized-brighter-modeline nil
-  "If non-nil, more vivid colors will be used to style the mode-line."
-  :group 'solarized-theme
-  :type 'boolean)
-
 (defcustom solarized-brighter-comments nil
   "If non-nil, comments will be highlighted in more vivid colors."
   :group 'solarized-theme
@@ -1659,154 +1566,156 @@ theme face specs. These is a simplified spec. For example:
 ;;; Theme definition
 
 (def-doom-theme solarized
-  "A light theme inspired by Solarized light"
+                "A light theme inspired by Solarized light"
 
-  ;; name        default   256       16
-  ((bg         '("#FDF6E3" "#FDF6E3" "white"        ))
-   (fg         '("#556b72" "#556b72" "black"        ))
+                ;; name        default   256       16
+                ((bg         '("#FDF6E3" "#FDF6E3" "white"        ))
+                 (fg         '("#556b72" "#556b72" "black"        ))
 
-   ;; These are off-color variants of bg/fg, used primarily for `solaire-mode',
-   ;; but can also be useful as a basis for subtle highlights (e.g. for hl-line
-   ;; or region), especially when paired with the `doom-darken', `doom-lighten',
-   ;; and `doom-blend' helper functions.
-   (bg-alt     '("#EEE8D5" "#EEE8D5" "white"        ))
-   (fg-alt     '("#7B8787" "#7B8787" "brightwhite"  ))
+                 ;; These are off-color variants of bg/fg, used primarily for `solaire-mode',
+                 ;; but can also be useful as a basis for subtle highlights (e.g. for hl-line
+                 ;; or region), especially when paired with the `doom-darken', `doom-lighten',
+                 ;; and `doom-blend' helper functions.
+                 (bg-alt     '("#EEE8D5" "#EEE8D5" "white"        ))
+                 (fg-alt     '("#7B8787" "#7B8787" "brightwhite"  ))
 
-   ;; These should represent a spectrum from bg to fg, where base0 is a starker
-   ;; bg and base8 is a starker fg. For example, if bg is light grey and fg is
-   ;; dark grey, base0 should be white and base8 should be black.
-   (base0      '("#FFFBF0" "#FFFBF0" "white"        ))
-   (base1      '("#FCF8ED" "#FCF8ED" "brightblack"  ))
-   (base2      '("#FCF7E8" "#FCF7E8" "brightblack"  ))
-   (base3      '("#F2E6CE" "#F2E6CE" "brightblack"  ))
-   (base4      '("#E1DBCD" "#E1DBCD" "brightblack"  ))
-   (base5      '("#D6D6D6" "#D6D6D6" "brightblack"  ))
-   (base6      '("#96A7A9" "#96A7A9" "brightblack"  ))
-   (base7      '("#788484" "#788484" "brightblack"  ))
-   (base8      '("#626C6C" "#626C6C" "black"        ))
+                 ;; These should represent a spectrum from bg to fg, where base0 is a starker
+                 ;; bg and base8 is a starker fg. For example, if bg is light grey and fg is
+                 ;; dark grey, base0 should be white and base8 should be black.
+                 (base0      '("#FFFBF0" "#FFFBF0" "white"        ))
+                 (base1      '("#FCF8ED" "#FCF8ED" "brightblack"  ))
+                 (base2      '("#FCF7E8" "#FCF7E8" "brightblack"  ))
+                 (base3      '("#F2E6CE" "#F2E6CE" "brightblack"  ))
+                 (base4      '("#E1DBCD" "#E1DBCD" "brightblack"  ))
+                 (base5      '("#D6D6D6" "#D6D6D6" "brightblack"  ))
+                 (base6      '("#96A7A9" "#96A7A9" "brightblack"  ))
+                 (base7      '("#788484" "#788484" "brightblack"  ))
+                 (base8      '("#626C6C" "#626C6C" "black"        ))
 
-   (grey       base4)
-   (red        '("#dc322f" "#dc322f" "red"          ))
-   (orange     '("#cb4b16" "#cb4b16" "brightred"    ))
-   (green      '("#859900" "#859900" "green"        ))
-   (teal       '("#35a69c" "#35a69c" "brightgreen"  ))
-   (yellow     '("#b58900" "#b58900" "yellow"       ))
-   (blue       '("#268bd2" "#268bd2" "brightblue"   ))
-   (dark-blue  '("#3F88AD" "#3F88AD" "blue"         ))
-   (magenta    '("#d33682" "#d33682" "magenta"      ))
-   (violet     '("#6c71c4" "#6c71c4" "brightmagenta"))
-   (cyan       '("#2aa198" "#2aa198" "brightcyan"   ))
-   (dark-cyan  '("#204052" "#204052" "cyan"         ))
+                 (grey       base4)
+                 (red        '("#dc322f" "#dc322f" "red"          ))
+                 (orange     '("#cb4b16" "#cb4b16" "brightred"    ))
+                 (green      '("#859900" "#859900" "green"        ))
+                 (teal       '("#35a69c" "#35a69c" "brightgreen"  ))
+                 (yellow     '("#b58900" "#b58900" "yellow"       ))
+                 (blue       '("#268bd2" "#268bd2" "brightblue"   ))
+                 (dark-blue  '("#3F88AD" "#3F88AD" "blue"         ))
+                 (magenta    '("#d33682" "#d33682" "magenta"      ))
+                 (violet     '("#6c71c4" "#6c71c4" "brightmagenta"))
+                 (cyan       '("#2aa198" "#2aa198" "brightcyan"   ))
+                 (dark-cyan  '("#204052" "#204052" "cyan"         ))
 
-   ;; face categories -- required for all themes
-   (highlight      blue)
-   (vertical-bar   base4)
-   (selection      dark-blue)
-   (builtin        magenta)
-   (comments       (if solarized-brighter-comments
-                       (doom-lighten teal 0.25)
-                     base6))
-   (doc-comments   teal)
-   (constants      violet)
-   (functions      magenta)
-   (keywords       green)
-   (methods        cyan)
-   (operators      blue)
-   (type           yellow)
-   (strings        cyan)
-   (variables      blue)
-   (numbers        violet)
-   (region         `(,(doom-darken (car bg-alt) 0.1) ,@(doom-darken (cdr base0) 0.1)))
-   (error          red)
-   (warning        yellow)
-   (success        green)
-   (vc-modified    orange)
-   (vc-added       green)
-   (vc-deleted     red)
-
-   ;; custom categories
-   (-modeline-bright t)
-
-   (modeline-fg     'unspecified)
-   (modeline-fg-alt base6)
-
-   (modeline-bg
-    (if -modeline-bright
-        (doom-lighten bg 0.7)
-      (doom-darken bg 0.05)))
-   (modeline-bg-alt
-    (if -modeline-bright
-        (doom-lighten bg 0.7)
-      (doom-lighten base3 0.2)))
-   (modeline-bg-inactive     (doom-darken bg 0.025))
-   (modeline-bg-inactive-alt (doom-darken bg 0.02)))
-
+                 ;; face categories -- required for all themes
+                 (highlight      blue)
+                 (vertical-bar   base4)
+                 (selection      dark-blue)
+                 (builtin        magenta)
+                 (comments       (if solarized-brighter-comments
+                                     (doom-lighten teal 0.25)
+                                   base6))
+                 (doc-comments   teal)
+                 (constants      violet)
+                 (functions      magenta)
+                 (keywords       green)
+                 (methods        cyan)
+                 (operators      blue)
+                 (type           yellow)
+                 (strings        cyan)
+                 (variables      blue)
+                 (numbers        violet)
+                 (region         `(,(doom-darken (car bg-alt) 0.1) ,@(doom-darken (cdr base0) 0.1)))
+                 (error          red)
+                 (warning        yellow)
+                 (success        green)
+                 (vc-modified    orange)
+                 (vc-added       green)
+                 (vc-deleted     red))
 
   ;;;; Base theme face overrides
-  (((font-lock-comment-face &override)
-    :slant 'italic
-    :background (if solarized-brighter-comments
-                    (doom-blend teal base0 0.07)
-                  'unspecified))
-   ((font-lock-type-face &override) :slant 'italic)
-   ((font-lock-builtin-face &override) :slant 'italic)
-   ((font-lock-function-name-face &override) :foreground type)
-   ((font-lock-keyword-face &override) :weight 'bold)
-   ((font-lock-constant-face &override) :weight 'bold)
-   (hl-line :background base3)
-   ((line-number &override) :foreground base6)
-   ((line-number-current-line &override) :foreground fg :background region :weight 'bold)
+                (((font-lock-comment-face &override)
+                  :slant 'italic
+                  :background (if solarized-brighter-comments
+                                  (doom-blend teal base0 0.07)
+                                'unspecified))
+                 ((font-lock-type-face &override) :slant 'italic)
+                 ((font-lock-builtin-face &override) :slant 'italic)
+                 ((font-lock-function-name-face &override) :foreground type)
+                 ((font-lock-keyword-face &override) :weight 'bold)
+                 ((font-lock-constant-face &override) :weight 'bold)
+                 (hl-line :background base3)
+                 ((line-number &override) :foreground base6)
+                 ((line-number-current-line &override) :foreground fg :background region :weight 'bold)
 
-   ;;;; doom-modeline
-   (doom-modeline-bar :background (if -modeline-bright modeline-bg highlight))
-   (doom-modeline-evil-emacs-state  :foreground magenta)
-   (doom-modeline-evil-insert-state :foreground blue)
    ;;;; elscreen
-   (elscreen-tab-other-screen-face :background "#353a42" :foreground "#1e2022")
+                 (elscreen-tab-other-screen-face :background "#353a42" :foreground "#1e2022")
    ;;;; css-mode <built-in> / scss-mode
-   (css-proprietary-property :foreground orange)
-   (css-property             :foreground green)
-   (css-selector             :foreground blue)
+                 (css-proprietary-property :foreground orange)
+                 (css-property             :foreground green)
+                 (css-selector             :foreground blue)
    ;;;; lsp-ui
-   (lsp-ui-sideline-code-action :foreground blue)
+                 (lsp-ui-sideline-code-action :foreground blue)
    ;;;; markdown-mode
-   (markdown-markup-face :foreground base5)
-   (markdown-header-face :inherit 'bold :foreground red)
-   ((markdown-code-face &override) :background (doom-lighten base3 0.05))
+                 (markdown-markup-face :foreground base5)
+                 (markdown-header-face :inherit 'bold :foreground red)
+                 ((markdown-code-face &override) :background (doom-lighten base3 0.05))
    ;;;; ivy
-   (ivy-current-match :background (doom-lighten yellow 0.65) :distant-foreground fg)
-   (ivy-minibuffer-match-face-1 :foreground blue :background base3 :weight 'bold)
-   (ivy-minibuffer-match-face-2 :foreground magenta :background base3 :weight 'bold)
-   (ivy-minibuffer-match-face-3 :foreground green   :background base3 :weight 'bold)
-   (ivy-minibuffer-match-face-4 :foreground yellow  :background base3 :weight 'bold)
-   (ivy-minibuffer-match-highlight :foreground violet :weight 'bold)
-   ;;;; ivy-posframe
-   (ivy-posframe :background modeline-bg-alt)
+                 (ivy-current-match :background (doom-lighten yellow 0.65) :distant-foreground fg)
+                 (ivy-minibuffer-match-face-1 :foreground blue :background base3 :weight 'bold)
+                 (ivy-minibuffer-match-face-2 :foreground magenta :background base3 :weight 'bold)
+                 (ivy-minibuffer-match-face-3 :foreground green   :background base3 :weight 'bold)
+                 (ivy-minibuffer-match-face-4 :foreground yellow  :background base3 :weight 'bold)
+                 (ivy-minibuffer-match-highlight :foreground violet :weight 'bold)
    ;;;; swiper
-   (swiper-match-face-1 :inherit 'ivy-minibuffer-match-face-1)
-   (swiper-match-face-2 :inherit 'ivy-minibuffer-match-face-2)
-   (swiper-match-face-3 :inherit 'ivy-minibuffer-match-face-3)
-   (swiper-match-face-4 :inherit 'ivy-minibuffer-match-face-4)
+                 (swiper-match-face-1 :inherit 'ivy-minibuffer-match-face-1)
+                 (swiper-match-face-2 :inherit 'ivy-minibuffer-match-face-2)
+                 (swiper-match-face-3 :inherit 'ivy-minibuffer-match-face-3)
+                 (swiper-match-face-4 :inherit 'ivy-minibuffer-match-face-4)
    ;;;; helm
-   (helm-selection :foreground base0 :weight 'bold :background blue)
+                 (helm-selection :foreground base0 :weight 'bold :background blue)
    ;;;; company
-   (company-tooltip-selection :background blue :foreground base3)
+                 (company-tooltip-selection :background blue :foreground base3)
    ;;;; org <built-in>
-   (org-block :background (doom-blend yellow bg 0.04) :extend t)
-   (org-block-background :background (doom-blend yellow bg 0.04))
-   (org-block-begin-line :background (doom-blend yellow bg 0.08) :extend t)
-   (org-block-end-line :background (doom-blend yellow bg 0.08) :extend t)
+                 (org-block :background (doom-blend yellow bg 0.04) :extend t)
+                 (org-block-background :background (doom-blend yellow bg 0.04))
+                 (org-block-begin-line :background (doom-blend yellow bg 0.08) :extend t)
+                 (org-block-end-line :background (doom-blend yellow bg 0.08) :extend t)
    ;;;; widget
-   (widget-field :foreground fg :background base3)
-   (widget-single-line-field :foreground fg :background base3)
+                 (widget-field :foreground fg :background base3)
+                 (widget-single-line-field :foreground fg :background base3)
    ;;;; latex
-   (font-latex-sedate-face :foreground base6)
+                 (font-latex-sedate-face :foreground base6)
    ;;;; notmuch
-   (notmuch-message-summary-face :foreground teal)
-   (notmuch-wash-cited-text :foreground base6))
+                 (notmuch-message-summary-face :foreground teal)
+                 (notmuch-wash-cited-text :foreground base6))
 
   ;;;; Base theme variable overrides-
-  ;; ()
-  )
+                ;; ()
+                )
+
+(custom-theme-set-variables
+ 'solarized
+ `(rustic-ansi-faces
+   (vconcat (mapcar #'doom-color '(bg red green yellow blue magenta cyan fg))))
+ `(vc-annotate-color-map
+   `(list (cons 20  ,(doom-color 'green))
+          (cons 40  ,(doom-blend 'yellow 'green (/ 1.0 3)))
+          (cons 60  ,(doom-blend 'yellow 'green (/ 2.0 3)))
+          (cons 80  ,(doom-color 'yellow))
+          (cons 100 ,(doom-blend 'orange 'yellow (/ 1.0 3)))
+          (cons 120 ,(doom-blend 'orange 'yellow (/ 2.0 3)))
+          (cons 140 ,(doom-color 'orange))
+          (cons 160 ,(doom-blend 'magenta 'orange (/ 1.0 3)))
+          (cons 180 ,(doom-blend 'magenta 'orange (/ 2.0 3)))
+          (cons 200 ,(doom-color 'magenta))
+          (cons 220 ,(doom-blend 'red 'magenta (/ 1.0 3)))
+          (cons 240 ,(doom-blend 'red 'magenta (/ 2.0 3)))
+          (cons 260 ,(doom-color 'red))
+          (cons 280 ,(doom-blend 'grey 'red (/ 1.0 4)))
+          (cons 300 ,(doom-blend 'grey 'red (/ 2.0 4)))
+          (cons 320 ,(doom-blend 'grey 'red (/ 3.0 4)))
+          (cons 340 ,(doom-color 'base5))
+          (cons 360 ,(doom-color 'base5))))
+ `(vc-annotate-very-old-color nil)
+ `(vc-annotate-background (doom-color 'bg)))
 
 ;;; solarized-theme.el ends here
