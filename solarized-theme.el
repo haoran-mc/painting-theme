@@ -345,33 +345,15 @@
     (custom-state                   :foreground green  :background (doom-blend green bg 0.2))
     (custom-changed                 :foreground blue   :background bg)
     ;;;; cider
-    ;; (cider-stacktrace-error-class-face :inherit 'font-lock-warning-face)
-    ;; (cider-stacktrace-error-message-face :inherit 'font-lock-doc-face)
-    ;; (cider-stacktrace-filter-active-face :inherit 'button :underline t :weight 'normal)
-    ;; (cider-stacktrace-filter-inactive-face :inherit 'cider-stacktrace-filter-active-face :underline nil)
-    ;; (cider-stacktrace-face :inherit 'default)
-    ;; (cider-stacktrace-ns-face :inherit 'font-lock-comment-face)
-    ;; (cider-stacktrace-fn-face :inherit 'default :weight 'bold)
-    ;; (cider-docview-emphasis-face :inherit 'default :underline t)
-    ;; (cider-docview-strong-face :inherit 'default :underline t :weight 'bold)
-    ;; (cider-docview-literal-face :inherit 'font-lock-string-face)
-    ;; (cider-docview-table-border-face :inherit 'shadow)
     (cider-debug-code-overlay-face :background base3)
-    ;; (cider-debug-prompt-face :inherit font-lock-builtin-face :underline t)
     (cider-enlightened-face
      :inherit 'cider-result-overlay-face :box `(:color ,orange :line-width -1))
     (cider-enlightened-local-face :foreground orange :weight 'bold)
-    ;; (cider-repl-prompt-face :inherit 'font-lock-keyword-face)
-    ;; (cider-repl-stdout-face :inherit 'font-lock-string-face)
-    ;; (cider-repl-stderr-face :inherit 'font-lock-warning-face)
-    ;; (cider-repl-input-face :weight 'bold)
-    ;; (cider-repl-result-face )
     (cider-result-overlay-face :background base3 :box `(:line-width -1 :color ,base5))
     (cider-fringe-good-face    :foreground green)
     (cider-deprecated-face     :background (doom-blend bg yellow 0.8))
     (cider-instrumented-face   :background (doom-blend bg red 0.8))
     (cider-traced-face         :background (doom-blend bg cyan 0.8))
-    ;; (cider-reader-conditional-face :inherit 'font-lock-comment-face)
     (cider-error-highlight-face
      `((((supports :underline (:style wave)))
         (:inherit unspecified :underline (:style wave :color ,(car error))))
@@ -416,69 +398,11 @@
     (dired-perm-write :foreground fg :underline t)
     (dired-symlink    :foreground cyan :weight 'bold)
     (dired-warning    :foreground warning)
-    ;;;; dired+
-    (diredp-file-name              :foreground base8)
-    (diredp-dir-name               :foreground base8 :weight 'bold)
-    (diredp-ignored-file-name      :foreground base5)
-    (diredp-compressed-file-suffix :foreground base5)
-    (diredp-symlink                :foreground violet)
-    (diredp-dir-heading            :foreground blue  :weight 'bold)
-    (diredp-file-suffix            :foreground violet)
-    (diredp-read-priv              :foreground magenta)
-    (diredp-write-priv             :foreground green)
-    (diredp-exec-priv              :foreground yellow)
-    (diredp-rare-priv              :foreground red   :weight 'bold)
-    (diredp-dir-priv               :foreground blue  :weight 'bold)
-    (diredp-no-priv                :foreground base5)
-    (diredp-number                 :foreground magenta)
-    (diredp-date-time              :foreground blue)
-    ;;;; dired-k
-    (dired-k-modified :foreground vc-modified :weight 'bold)
-    (dired-k-commited :foreground green :weight 'bold)
-    (dired-k-added :foreground vc-added :weight 'bold)
-    (dired-k-untracked :foreground teal :weight 'bold)
-    (dired-k-ignored :foreground base5 :weight 'bold)
-    (dired-k-directory :foreground blue :weight 'bold)
-    ;;;; dired-subtree
-    (dired-subtree-depth-1-face :background (doom-darken bg-alt 0.02))
-    (dired-subtree-depth-2-face :background (doom-darken bg-alt 0.04))
-    (dired-subtree-depth-3-face :background (doom-darken bg-alt 0.06))
-    (dired-subtree-depth-4-face :background (doom-darken bg-alt 0.08))
-    (dired-subtree-depth-5-face :background (doom-darken bg-alt 0.10))
-    (dired-subtree-depth-6-face :background (doom-darken bg-alt 0.12))
-    ;;;; diredfl
-    (diredfl-autofile-name          :foreground base4)
-    (diredfl-compressed-file-name   :foreground yellow)
-    (diredfl-compressed-file-suffix :foreground (doom-blend orange bg 0.6))
-    (diredfl-date-time              :foreground cyan :weight 'light)
-    (diredfl-deletion               :foreground red :background (doom-blend red bg 0.2) :weight 'bold)
-    (diredfl-deletion-file-name     :foreground red :background (doom-blend red bg 0.2))
-    (diredfl-dir-heading            :foreground blue :weight 'bold)
-    (diredfl-dir-name               :foreground blue)
-    (diredfl-dir-priv               :foreground blue)
-    (diredfl-exec-priv              :foreground green)
-    (diredfl-executable-tag         :foreground green)
-    (diredfl-file-name              :foreground fg)
-    (diredfl-file-suffix            :foreground (doom-blend fg bg 0.6))
-    (diredfl-flag-mark              :foreground yellow :background (doom-blend yellow bg 0.2) :weight 'bold)
-    (diredfl-flag-mark-line         :background (doom-blend yellow bg 0.1))
-    (diredfl-ignored-file-name      :foreground comments)
-    (diredfl-link-priv              :foreground violet)
-    (diredfl-no-priv                :inherit 'shadow)
-    (diredfl-number                 :foreground orange)
-    (diredfl-other-priv             :foreground magenta)
-    (diredfl-rare-priv              :foreground fg)
-    (diredfl-read-priv              :foreground yellow)
-    (diredfl-symlink                :foreground violet)
-    (diredfl-tagged-autofile-name   :foreground base5)
-    (diredfl-write-priv             :foreground red)
     ;;;; disk-usage
     (disk-usage-children            :foreground yellow)
     (disk-usage-percent             :foreground violet)
     (disk-usage-size                :foreground blue)
     (disk-usage-symlink             :foreground cyan :weight 'bold)
-    ;;;; doom-themes
-    (doom-themes-visual-bell :background error)
     ;;;; ediff <built-in>
     (ediff-fine-diff-A    :background (doom-blend selection bg 0.7) :weight 'bold :extend t)
     (ediff-fine-diff-B    :inherit 'ediff-fine-diff-A)
@@ -795,58 +719,8 @@
     ;;;; minimap
     (minimap-current-line-face :background selection)
     (minimap-active-region-background :background vertical-bar)
-    ;; mm
-    (mm-uu-extract :background (doom-blend highlight base2 0.07) :foreground (doom-blend highlight fg 0.15))
-    ;;;; mmm-mode
-    (mmm-init-submode-face :background (doom-blend red bg 0.1))
-    (mmm-cleanup-submode-face :background (doom-blend yellow bg 0.1))
-    (mmm-declaration-submode-face :background (doom-blend cyan bg 0.1))
-    (mmm-comment-submode-face :background (doom-blend blue bg 0.1))
-    (mmm-output-submode-face :background (doom-blend violet bg 0.1))
-    (mmm-special-submode-face :background (doom-blend green bg 0.1))
-    (mmm-code-submode-face :background bg-alt)
-    (mmm-default-submode-face) ; make transparent
     ;;;; nav-flash
     (nav-flash-face :background selection :foreground base8 :weight 'bold)
-    ;;;; nerd-icons
-    (nerd-icons-blue       :foreground blue)
-    (nerd-icons-blue-alt   :foreground teal)
-    (nerd-icons-cyan       :foreground cyan)
-    (nerd-icons-cyan-alt   :foreground cyan)
-    (nerd-icons-dblue      :foreground dark-blue)
-    (nerd-icons-dcyan      :foreground dark-cyan)
-    (nerd-icons-dgreen     :foreground (doom-darken green 0.3))
-    (nerd-icons-dmaroon    :foreground (doom-darken magenta 0.3))
-    (nerd-icons-dorange    :foreground (doom-darken orange 0.3))
-    (nerd-icons-dpink      :foreground (doom-lighten red 0.15))
-    (nerd-icons-dpurple    :foreground (doom-darken violet 0.3))
-    (nerd-icons-dred       :foreground (doom-darken red 0.3))
-    (nerd-icons-dsilver    :foreground (doom-lighten grey 0.1))
-    (nerd-icons-dyellow    :foreground (doom-darken yellow 0.3))
-    (nerd-icons-green      :foreground green)
-    (nerd-icons-lblue      :foreground (doom-lighten blue 0.3))
-    (nerd-icons-lcyan      :foreground (doom-lighten cyan 0.3))
-    (nerd-icons-lgreen     :foreground (doom-lighten green 0.3))
-    (nerd-icons-lmaroon    :foreground (doom-lighten magenta 0.3))
-    (nerd-icons-lorange    :foreground (doom-lighten orange 0.3))
-    (nerd-icons-lpink      :foreground (doom-lighten red 0.55))
-    (nerd-icons-lpurple    :foreground (doom-lighten violet 0.3))
-    (nerd-icons-lred       :foreground (doom-lighten red 0.3))
-    (nerd-icons-lsilver    :foreground (doom-lighten grey 0.7))
-    (nerd-icons-lyellow    :foreground (doom-lighten yellow 0.3))
-    (nerd-icons-maroon     :foreground magenta)
-    (nerd-icons-orange     :foreground orange)
-    (nerd-icons-pink       :foreground (doom-lighten red 0.35))
-    (nerd-icons-purple     :foreground violet)
-    (nerd-icons-purple-alt :foreground (doom-blend violet grey 0.15))
-    (nerd-icons-red        :foreground red)
-    (nerd-icons-red-alt    :foreground (doom-blend red grey 0.15))
-    (nerd-icons-silver     :foreground (doom-lighten grey 0.45))
-    (nerd-icons-yellow     :foreground yellow)
-    ;;;; nerd-icons-completion
-    (nerd-icons-completion-dir-face :foreground doc-comments)
-    ;;;; nerd-icons-dired
-    (nerd-icons-dired-dir-face    :foreground doc-comments)
     ;;;; nlinum
     ((nlinum-current-line &inherit line-number-current-line))
     ;;;; nlinum-hl
@@ -991,13 +865,6 @@
     (popup-face           :inherit 'tooltip)
     (popup-tip-face       :inherit 'popup-face :foreground violet :background base0)
     (popup-selection-face :background selection)
-    ;;;; power
-    (powerline-active0   :inherit 'mode-line :background bg)
-    (powerline-active1   :inherit 'mode-line :background (doom-lighten 'bg 0.025))
-    (powerline-active2   :inherit 'mode-line :foreground base8 :background (doom-lighten 'bg 0.08))
-    (powerline-inactive0 :inherit 'mode-line-inactive :background base2)
-    (powerline-inactive1 :inherit 'mode-line-inactive :background (doom-lighten 'base2 0.02))
-    (powerline-inactive2 :inherit 'mode-line-inactive :background (doom-lighten 'base2 0.04))
     ;;;; rainbow-delimiters
     (rainbow-delimiters-depth-1-face :foreground blue)
     (rainbow-delimiters-depth-2-face :foreground magenta)
@@ -1058,24 +925,6 @@
     ;; Emacs <25 compatibility
     ((smerge-mine  &inherit smerge-upper))
     ((smerge-other &inherit smerge-lower))
-    ;;;; solaire-mode
-    (solaire-default-face  :inherit 'default :background bg-alt)
-    (solaire-hl-line-face  :inherit 'hl-line :background bg :extend t)
-    (solaire-org-hide      :inherit 'org-hide :foreground bg-alt)
-    ;;;; spaceline
-    (spaceline-highlight-face   :background highlight)
-    (spaceline-modified         :background vc-modified)
-    (spaceline-unmodified       :background constants)
-    (spaceline-python-venv      :foreground magenta :distant-foreground violet)
-    (spaceline-flycheck-error   :inherit 'error     :distant-background base0)
-    (spaceline-flycheck-warning :inherit 'warning   :distant-background base0)
-    (spaceline-flycheck-info    :inherit 'success   :distant-background base0)
-    (spaceline-evil-normal      :background blue)
-    (spaceline-evil-insert      :background green)
-    (spaceline-evil-emacs       :background cyan)
-    (spaceline-evil-replace     :background orange)
-    (spaceline-evil-visual      :background grey)
-    (spaceline-evil-motion      :background magenta)
     ;;;; spell-fu
     (spell-fu-incorrect-face
      `((((supports :underline (:style wave)))
@@ -1097,12 +946,6 @@
     (symbol-overlay-face-6 :background (doom-blend magenta bg 0.3) :distant-foreground fg-alt)
     (symbol-overlay-face-7 :background (doom-blend green bg 0.4)   :distant-foreground fg-alt)
     (symbol-overlay-face-8 :background (doom-blend cyan bg 0.2)    :distant-foreground fg-alt)
-    ;;;; swiper
-    (swiper-line-face    :background blue    :foreground base0)
-    (swiper-match-face-1 :inherit 'unspecified :background base0   :foreground base5)
-    (swiper-match-face-2 :inherit 'unspecified :background orange  :foreground base0 :weight 'bold)
-    (swiper-match-face-3 :inherit 'unspecified :background magenta :foreground base0 :weight 'bold)
-    (swiper-match-face-4 :inherit 'unspecified :background green   :foreground base0 :weight 'bold)
     ;;;; tabbar
     (tabbar-default             :foreground bg :background bg :height 1.0)
     (tabbar-highlight           :foreground fg :background selection :distant-foreground bg)
@@ -1160,16 +1003,6 @@
     ((ts-fold-replacement-face &inherit +fold-hideshow-folded-face))
     ((ts-fold-replacement-mouse-face &inherit +fold-hideshow-folded-face)
      :box '(:line-width -1 :style released-button))
-    ;;;; twittering-mode
-    (twitter-divider  ; custom face in Doom Emacs
-     (&light :underline `(:color ,(doom-lighten vertical-bar 0.2)))
-     (&dark  :underline `(:color ,(doom-darken vertical-bar 0.2))))
-    ;;;; undo-tree
-    (undo-tree-visualizer-default-face       :foreground base5)
-    (undo-tree-visualizer-current-face       :foreground green :weight 'bold)
-    (undo-tree-visualizer-unmodified-face    :foreground base5)
-    (undo-tree-visualizer-active-branch-face :foreground blue)
-    (undo-tree-visualizer-register-face      :foreground yellow)
     ;;;; vimish-fold
     (vimish-fold-overlay :inherit 'font-lock-comment-face :background base0 :weight 'light)
     (vimish-fold-fringe  :foreground magenta)
@@ -1216,11 +1049,6 @@
     (wgrep-reject-face :foreground red :weight 'bold)
     ;;;; which-func
     (which-func :foreground blue)
-    ;;;; which-key
-    (which-key-key-face                   :foreground green)
-    (which-key-group-description-face     :foreground violet)
-    (which-key-command-description-face   :foreground blue)
-    (which-key-local-map-description-face :foreground magenta)
     ;;;; whitespace <built-in>
     (whitespace-empty    :background base3)
     (whitespace-space    :foreground base4)
@@ -1233,12 +1061,6 @@
      :background (if (default-value 'indent-tabs-mode) base3 'unspecified))
     (whitespace-trailing :inherit 'trailing-whitespace)
     (whitespace-line     :background base0 :foreground red :weight 'bold)
-    ;;;; widget
-    (widget-button-pressed :foreground red)
-    (widget-documentation  :foreground green)
-    (widget-single-line-field :background base3 :distant-foreground bg)
-    (widget-field :background base3 :distant-foreground bg
-                  :box `(:line-width -1 :color ,grey) :extend t)
     ;;;; window-divider
     (window-divider :inherit 'vertical-border)
     (window-divider-first-pixel :inherit 'window-divider)
@@ -1562,11 +1384,6 @@ Faces in EXTRA-FACES override the default faces."
   "Options for the `solarized' theme."
   :group 'doom-themes)
 
-(defcustom solarized-brighter-comments nil
-  "If non-nil, comments will be highlighted in more vivid colors."
-  :group 'solarized-theme
-  :type 'boolean)
-
 ;;
 ;;; Theme definition
 
@@ -1615,9 +1432,7 @@ Faces in EXTRA-FACES override the default faces."
                  (vertical-bar   base4)
                  (selection      dark-blue)
                  (builtin        magenta)
-                 (comments       (if solarized-brighter-comments
-                                     (doom-lighten teal 0.25)
-                                   base6))
+                 (comments       base6)
                  (doc-comments   teal)
                  (constants      violet)
                  (functions      magenta)
