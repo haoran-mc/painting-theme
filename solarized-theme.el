@@ -981,65 +981,7 @@
 
 ;;
 ;;; API
-
 (defvar doom-themes--colors nil)
-(defvar doom--min-colors '(257 256 16))
-(defvar doom--quoted-p nil)
-(defvar doom-themes--faces nil)
-
-(defun doom-themes--colors-p (item)
-  (declare (pure t) (side-effect-free t))
-  (when item
-    (cond ((listp item)
-           (let ((car (car item)))
-             (cond ((memq car '(quote doom-color)) nil)
-
-                   ((memq car '(backquote \`))
-                    (let ((doom--quoted-p t))
-                      (doom-themes--colors-p (cdr item))))
-
-                   ((eq car '\,)
-                    (let (doom--quoted-p)
-                      (doom-themes--colors-p (cdr item))))
-
-                   ((or (doom-themes--colors-p car)
-                        (doom-themes--colors-p (cdr-safe item)))))))
-
-          ((and (symbolp item)
-                (not (keywordp item))
-                (not doom--quoted-p)
-                (not (equal (substring (symbol-name item) 0 1) "-"))
-                (assq item doom-themes--colors))))))
-
-(defun doom-themes--colorize (item type)
-  (declare (pure t) (side-effect-free t))
-  (when item
-    (let ((doom--quoted-p doom--quoted-p))
-      (cond ((listp item)
-             (cond ((memq (car item) '(quote doom-color))
-                    item)
-                   ((eq (car item) 'doom-ref)
-                    (doom-themes--colorize
-                     (apply #'doom-ref (cdr item)) type))
-                   ((let* ((item (append item nil))
-                           (car (car item))
-                           (doom--quoted-p
-                            (cond ((memq car '(backquote \`)) t)
-                                  ((eq car '\,) nil)
-                                  (t doom--quoted-p))))
-                      (cons car
-                            (cl-loop
-                             for i in (cdr item)
-                             collect (doom-themes--colorize i type)))))))
-
-            ((and (symbolp item)
-                  (not (keywordp item))
-                  (not doom--quoted-p)
-                  (not (equal (substring (symbol-name item) 0 1) "-"))
-                  (assq item doom-themes--colors))
-             `(doom-color ',item ',type))
-
-            (item)))))
 
 (defun doom-themes--build-face (face)
   (declare (pure t) (side-effect-free t))
@@ -1049,18 +991,10 @@
        (cond ((keywordp (car face-body))
               (let ((real-attrs face-body)
                     defs)
-                ;; (if (doom-themes--colors-p real-attrs)
-                ;; (dolist (cl doom--min-colors `(list ,@(nreverse defs)))
-                ;; (push `(list '((class color) (min-colors ,cl))
-                ;; (list ,@(doom-themes--colorize real-attrs cl)))
-                ;; defs))
-                `(list (list 't (list ,@real-attrs)))
-                ;; )
-                ))
+                `(list (list 't (list ,@real-attrs)))))
 
              ((memq (car-safe (car face-body)) '(quote backquote \`))
               (car face-body))))))
-
 
 ;;
 ;;; Color helper functions
@@ -1133,24 +1067,6 @@ between 0 and 1)."
                     (nth i colors))))
                (t colors)))))
 
-;;;###autoload
-(defun doom-ref (face prop &optional class)
-  "TODO"
-  (let ((spec (or (cdr (assq face doom-themes--faces))
-                  (error "Couldn't find the '%s' face" face))))
-    (when (memq (car spec) '(quote backquote \`))
-      (user-error "Can't fetch the literal spec for '%s'" face))
-    (when class
-      (setq spec (cdr (assq class spec)))
-      (unless spec
-        (error "Couldn't find the '%s' class in the '%s' face"
-               class face)))
-    (unless (plist-member spec prop)
-      (error "Couldn't find the '%s' property in the '%s' face%s"
-             prop face (if class (format "'s '%s' class" class) "")))
-    (plist-get spec prop)))
-
-
 ;;
 ;;; Defining themes
 
@@ -1159,8 +1075,7 @@ between 0 and 1)."
 
 Faces in EXTRA-FACES override the default faces."
   (declare (pure t) (side-effect-free t))
-  (setq doom-themes--faces doom-themes-base-faces)
-  (mapcar #'doom-themes--build-face doom-themes--faces))
+  (mapcar #'doom-themes--build-face doom-themes-base-faces))
 
 (defmacro def-doom-theme (name docstring defs)
   "Define a DOOM theme, named NAME (a symbol)."
