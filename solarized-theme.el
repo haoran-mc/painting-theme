@@ -97,9 +97,9 @@
     ;; (tab-line-special )
     (tab-line-highlight :inherit 'tab-line-tab)
     (tab-line-close-highlight :foreground highlight)
-    ((tab-bar &inherit tab-line))
-    ((tab-bar-tab &inherit tab-line-tab))
-    ((tab-bar-tab-inactive &inherit tab-line-tab-inactive))
+    (tab-bar :inherit 'tab-line)
+    (tab-bar-tab :inherit 'tab-line-tab)
+    (tab-bar-tab-inactive :inherit 'tab-line-tab-inactive)
     ;;;; Line numbers
     ;; 1. Line number faces must explicitly disable its text style attributes
     ;;    because nearby faces may "bleed" into the line numbers otherwise.
@@ -221,57 +221,6 @@
     (avy-lead-face-0 :inherit 'avy-lead-face :background (doom-darken highlight 0.3))
     (avy-lead-face-1 :inherit 'avy-lead-face :background (doom-darken highlight 0.6))
     (avy-lead-face-2 :inherit 'avy-lead-face :background (doom-darken highlight 0.9))
-    ;;;; bookmark
-    (bookmark-face :background (doom-blend highlight bg 0.1) :extend t)
-    ;;;; bookmark+
-    (bmkp-*-mark :foreground bg :background yellow)
-    (bmkp->-mark :foreground yellow)
-    (bmkp-D-mark :foreground bg :background red)
-    (bmkp-X-mark :foreground red)
-    (bmkp-a-mark :background red)
-    (bmkp-bad-bookmark :foreground bg :background yellow)
-    (bmkp-bookmark-file :foreground violet :background bg-alt)
-    (bmkp-bookmark-list :background bg-alt)
-    (bmkp-buffer :foreground blue)
-    (bmkp-desktop :foreground bg :background violet)
-    (bmkp-file-handler :background red)
-    (bmkp-function :foreground green)
-    (bmkp-gnus :foreground orange)
-    (bmkp-heading :foreground yellow)
-    (bmkp-info :foreground cyan)
-    (bmkp-light-autonamed :foreground bg-alt :background cyan)
-    (bmkp-light-autonamed-region :foreground bg-alt :background red)
-    (bmkp-light-fringe-autonamed :foreground bg-alt :background violet)
-    (bmkp-light-fringe-non-autonamed :foreground bg-alt :background green)
-    (bmkp-light-mark :foreground bg :background cyan)
-    (bmkp-light-non-autonamed :foreground bg :background violet)
-    (bmkp-light-non-autonamed-region :foreground bg :background red)
-    (bmkp-local-directory :foreground bg :background violet)
-    (bmkp-local-file-with-region :foreground yellow)
-    (bmkp-local-file-without-region :foreground comments)
-    (bmkp-man :foreground violet)
-    (bmkp-no-jump :foreground comments)
-    (bmkp-no-local :foreground yellow)
-    (bmkp-non-file :foreground green)
-    (bmkp-remote-file :foreground orange)
-    (bmkp-sequence :foreground blue)
-    (bmkp-su-or-sudo :foreground red)
-    (bmkp-t-mark :foreground violet)
-    (bmkp-url :foreground blue :underline t)
-    (bmkp-variable-list :foreground green)
-    ;;;; centaur-tabs
-    ((centaur-tabs-default &inherit tab-bar) :box nil)
-    ((centaur-tabs-selected &inherit tab-bar-tab) :box nil)
-    ((centaur-tabs-unselected &inherit tab-bar-tab-inactive) :box nil)
-    (centaur-tabs-selected-modified   :background bg :foreground teal)
-    (centaur-tabs-unselected-modified :background bg-alt :foreground teal)
-    (centaur-tabs-active-bar-face :background highlight)
-    (centaur-tabs-modified-marker-selected
-     :foreground highlight
-     :inherit 'centaur-tabs-selected)
-    (centaur-tabs-modified-marker-unselected
-     :foreground highlight
-     :inherit 'centaur-tabs-unselected)
     ;;;; company
     (company-tooltip            :inherit 'tooltip)
     (company-tooltip-common                           :foreground highlight :distant-foreground base0 :weight 'bold)
@@ -468,18 +417,6 @@
     (git-commit-comment-heading       :foreground keywords)
     (git-commit-comment-file          :foreground violet)
     (git-commit-comment-action)
-    ;;;; git-gutter
-    (git-gutter:modified :inherit 'fringe :foreground vc-modified)
-    (git-gutter:added    :inherit 'fringe :foreground vc-added)
-    (git-gutter:deleted  :inherit 'fringe :foreground vc-deleted)
-    ;;;; git-gutter+
-    (git-gutter+-modified :inherit 'fringe :foreground vc-modified :background 'unspecified)
-    (git-gutter+-added    :inherit 'fringe :foreground vc-added    :background 'unspecified)
-    (git-gutter+-deleted  :inherit 'fringe :foreground vc-deleted  :background 'unspecified)
-    ;;;; git-gutter-fringe
-    ((git-gutter-fr:modified &inherit git-gutter:modified))
-    ((git-gutter-fr:added    &inherit git-gutter:added))
-    ((git-gutter-fr:deleted  &inherit git-gutter:deleted))
     ;;;; helpful
     (helpful-heading :weight 'bold :height 1.2)
     ;;;; hi-lock <built-in>
@@ -534,8 +471,6 @@
     (imenu-list-entry-subalist-face-1 :inherit 'imenu-list-entry-face-1 :weight 'bold)
     (imenu-list-entry-face-2 :foreground yellow)
     (imenu-list-entry-subalist-face-2 :inherit 'imenu-list-entry-face-2 :weight 'bold)
-    ;;;; indent-guide
-    ((indent-guide-face &inherit highlight-indentation-face))
     ;;;; isearch <built-in>
     (isearch :inherit 'lazy-highlight :weight 'bold)
     (isearch-fail :background error :foreground base0 :weight 'bold)
@@ -566,10 +501,6 @@
     (ledger-font-payee-cleared-face   :foreground violet :weight 'bold)
     (ledger-font-payee-uncleared-face :foreground base5  :weight 'bold)
     (ledger-font-xact-highlight-face  :background base0)
-    ;;;; linum <built-in>
-    ((linum &inherit line-number))
-    ;;;; linum-relative
-    ((linum-relative-current-face &inherit line-number-current-line))
     ;;;; lui
     (lui-time-stamp-face :foreground violet)
     (lui-highlight-face :foreground highlight)
@@ -683,11 +614,6 @@
     (message-header-xheader    :foreground doc-comments)
     (message-separator         :foreground comments)
     (message-mml               :foreground comments :slant 'italic)
-    ((message-cited-text   &inherit gnus-cite-1))
-    ((message-cited-text-1 &inherit gnus-cite-2))
-    ((message-cited-text-2 &inherit gnus-cite-3))
-    ((message-cited-text-3 &inherit gnus-cite-4))
-    ((message-cited-text-4 &inherit gnus-cite-5))
     ;;;; mic-paren
     (paren-face-match    :foreground red   :background base0 :weight 'ultra-bold)
     (paren-face-mismatch :foreground base0 :background red   :weight 'ultra-bold)
@@ -697,12 +623,6 @@
     (minimap-active-region-background :background vertical-bar)
     ;;;; nav-flash
     (nav-flash-face :background selection :foreground base8 :weight 'bold)
-    ;;;; nlinum
-    ((nlinum-current-line &inherit line-number-current-line))
-    ;;;; nlinum-hl
-    ((nlinum-hl-face &inherit line-number-current-line))
-    ;;;; nlinum-relative
-    ((nlinum-relative-current-face &inherit line-number-current-line))
     ;;;; lsp-mode
     (lsp-face-highlight-textual :background base3 :foreground base0 :distant-foreground base8)
     (lsp-face-highlight-read    :inherit 'lsp-face-highlight-textual)
@@ -882,12 +802,12 @@
     (sh-heredoc :inherit 'font-lock-string-face :weight 'normal)
     (sh-quoted-exec :inherit 'font-lock-preprocessor-face)
     ;;;; show-paren <built-in>
-    ((show-paren-match &inherit paren-face-match))
-    ((show-paren-mismatch &inherit paren-face-mismatch))
+    (show-paren-match :inherit 'paren-face-match)
+    (show-paren-mismatch :inherit 'paren-face-mismatch)
     ;;;; smartparens
     (sp-pair-overlay-face :background region)
-    ((sp-show-pair-match-face    &inherit show-paren-match))
-    ((sp-show-pair-mismatch-face &inherit show-paren-mismatch))
+    (sp-show-pair-match-face    :inherit 'show-paren-match)
+    (sp-show-pair-mismatch-face :inherit 'show-paren-mismatch)
     ;;;; smerge-tool
     (smerge-lower :background (doom-blend green bg 0.2))
     (smerge-upper :background (doom-blend red base3 0.2))
@@ -896,8 +816,8 @@
     (smerge-refined-added   :inherit 'diff-added :inverse-video t)
     (smerge-refined-removed :inherit 'diff-removed :inverse-video t)
     ;; Emacs <25 compatibility
-    ((smerge-mine  &inherit smerge-upper))
-    ((smerge-other &inherit smerge-lower))
+    (smerge-mine  :inherit 'smerge-upper)
+    (smerge-other :inherit 'smerge-lower)
     ;;;; spell-fu
     (spell-fu-incorrect-face
      `((((supports :underline (:style wave)))
@@ -967,11 +887,6 @@
     ;;;; treemacs-nerd-icons
     (treemacs-nerd-icons-file-face :foreground doc-comments)
     (treemacs-nerd-icons-root-face :inherit 'font-lock-string-face :weight 'bold :height 1.2)
-    ;;;; ts-fold
-    (ts-fold-fringe-face)
-    ((ts-fold-replacement-face &inherit +fold-hideshow-folded-face))
-    ((ts-fold-replacement-mouse-face &inherit +fold-hideshow-folded-face)
-     :box '(:line-width -1 :style released-button))
     ;;;; vimish-fold
     (vimish-fold-overlay :inherit 'font-lock-comment-face :background base0 :weight 'light)
     (vimish-fold-fringe  :foreground magenta)
@@ -1056,9 +971,9 @@
     ;;;; yasnippet
     (yas-field-highlight-face :inherit 'match)
     ;;;; xref <built-in>
-    ((xref-file-header &inherit compilation-info))
-    ((xref-line-number &inherit compilation-line-number))
-    ((xref-match &inherit match)))
+    (xref-file-header :inherit 'compilation-info)
+    (xref-line-number :inherit 'compilation-line-number)
+    (xref-match :inherit 'match))
     ;;;; --- END Package faces ------------------
 
   "TODO")
@@ -1108,54 +1023,6 @@
                 (not doom--quoted-p)
                 (not (equal (substring (symbol-name item) 0 1) "-"))
                 (assq item doom-themes--colors))))))
-
-(defun doom-themes--apply-faces (new-faces &optional default-faces)
-  (declare (pure t) (side-effect-free t))
-  ;; (let ((default-faces (or default-faces doom-themes-base-faces))
-  ;; (faces (make-hash-table :test #'eq :size (+ (length default-faces) (length new-faces))))
-  (let ((default-faces doom-themes-base-faces)
-        (faces (make-hash-table :test #'eq :size (length new-faces)))
-        (directives (make-hash-table :test #'eq)))
-    (dolist (spec (append (mapcar #'copy-sequence default-faces) new-faces))
-      (if (listp (car spec))
-          (cl-destructuring-bind (face action &optional arg) (car spec)
-            (unless (assq face new-faces)
-              (puthash face (list action arg (cdr spec))
-                       directives)))
-        (puthash (car spec) (cdr spec) faces)))
-    (cl-loop for face being the hash-keys of directives
-             for (action target spec) = (gethash face directives)
-             unless (memq action '(&inherit &extend &override))
-             do (error "Invalid operation (%s) for '%s' face" action face)
-             if (eq (car spec) 'quote)
-             do (error "Can't extend literal face spec (for '%s')" face)
-             ;; TODO Add &all/&light/&dark extension support
-             else if (memq (car spec) '(&all &light &dark))
-             do (error "Can't extend face with &all, &light or &dark specs (for '%s')" face)
-             else do
-             (puthash face
-                      (let ((old-spec (gethash (or target face) faces))
-                            (plist spec))
-                        ;; remove duplicates
-                        (while (keywordp (car plist))
-                          (setq old-spec (plist-put old-spec (car plist) (cadr plist))
-                                plist (cddr plist)))
-                        old-spec)
-                      faces))
-    (let (results)
-      (maphash (lambda (face plist)
-                 (when (keywordp (car plist))
-                   ;; TODO Clean up duplicates in &all/&light/&dark blocks
-                   (dolist (prop (append (unless doom-themes-enable-bold   '(:weight normal :bold unspecified))
-                                         (unless doom-themes-enable-italic '(:slant normal :italic unspecified))))
-                     (when (and (plist-member plist prop)
-                                (not (eq (plist-get plist prop) 'inherit)))
-                       (plist-put plist prop
-                                  (if (memq prop '(:weight :slant))
-                                      (quote 'normal))))))
-                 (push (cons face plist) results))
-               faces)
-      (nreverse results))))
 
 (defun doom-themes--colorize (item type)
   (declare (pure t) (side-effect-free t))
@@ -1298,15 +1165,15 @@ between 0 and 1)."
 ;;
 ;;; Defining themes
 
-(defun doom-themes-prepare-facelist (custom-faces)
+(defun doom-themes-prepare-facelist ()
   "Return an alist of face definitions for `custom-theme-set-faces'.
 
 Faces in EXTRA-FACES override the default faces."
   (declare (pure t) (side-effect-free t))
-  (setq doom-themes--faces (doom-themes--apply-faces custom-faces))
+  (setq doom-themes--faces doom-themes-base-faces)
   (mapcar #'doom-themes--build-face doom-themes--faces))
 
-(defmacro def-doom-theme (name docstring defs &optional extra-faces)
+(defmacro def-doom-theme (name docstring defs)
   "Define a DOOM theme, named NAME (a symbol)."
   (declare (doc-string 2))
   (let ((doom-themes--colors defs))
@@ -1318,7 +1185,7 @@ Faces in EXTRA-FACES override the default faces."
                               collect `(cons ',var ,val))))
        (deftheme ,name ,docstring)
        (custom-theme-set-faces
-        ',name ,@(doom-themes-prepare-facelist extra-faces))
+        ',name ,@(doom-themes-prepare-facelist))
        (unless bold (set-face-bold 'bold 'unspecified))
        (unless italic (set-face-italic 'italic 'unspecified))
        (provide-theme ',name))))
