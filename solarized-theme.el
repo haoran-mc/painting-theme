@@ -6,38 +6,58 @@
 ;; Source: https://github.com/bbatsov/solarized-emacs
 ;; Source: https://ethanschoonover.com/solarized
 ;;
-
-;;; Commentary:
-;;
-;; ## Install
-;;
-;;   `M-x package-install RET doom-themes`
-;;
-;; A comprehensive configuration example:
-;;
-;;   (require 'doom-themes)
-;;
-;;   ;; Global settings (defaults)
-;;   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-;;         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-;;
-;;   ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each
-;;   ;; theme may have their own settings.
-;;   (load-theme 'doom-one t)
-;;
-;;   ;; Enable flashing mode-line on errors
-;;   (doom-themes-visual-bell-config)
-;;
-;;   ;; Enable custom neotree theme
-;;   (doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
-;;
-;;; Code:
-
 (require 'cl-lib)
 
-;; These are used as a basis for every Doom theme defined with `def-doom-theme',
-;; as a set of reasonble defaults. They are intended to be overidden where it
-;; makes sense to.
+;;;###autoload
+(defun doom-name-to-rgb (color)
+  "Retrieves the hexidecimal string repesented the named COLOR (e.g. \"red\")
+for FRAME (defaults to the current frame)."
+  (cl-loop with div = (float (car (tty-color-standard-values "#ffffff")))
+           for x in (tty-color-standard-values (downcase color))
+           collect (/ x div)))
+
+;;;###autoload
+(defun doom-blend (color1 color2 alpha)
+  "Blend two colors (hexidecimal strings) together by a coefficient ALPHA (a
+float between 0 and 1)"
+  (when (and color1 color2)
+    (cond ((or (listp color1) (listp color2))
+           (cl-loop for x in color1
+                    when (if (listp color2) (pop color2) color2)
+                    collect (doom-blend x it alpha)))
+
+          ((and (string-prefix-p "#" color1) (string-prefix-p "#" color2))
+           (apply (lambda (r g b) (format "#%02x%02x%02x" (* r 255) (* g 255) (* b 255)))
+                  (cl-loop for it    in (doom-name-to-rgb color1)
+                           for other in (doom-name-to-rgb color2)
+                           collect (+ (* alpha it) (* other (- 1 alpha))))))
+
+          (color1))))
+
+;;;###autoload
+(defun doom-darken (color alpha)
+  "Darken a COLOR (a hexidecimal string) by a coefficient ALPHA (a float between
+0 and 1)."
+  (if (listp color)
+      (cl-loop for c in color collect (doom-darken c alpha))
+    (doom-blend color "#000000" (- 1 alpha))))
+
+;;;###autoload
+(defun doom-lighten (color alpha)
+  "Brighten a COLOR (a hexidecimal string) by a coefficient ALPHA (a float
+between 0 and 1)."
+  (if (listp color)
+      (cl-loop for c in color collect (doom-lighten c alpha))
+    (doom-blend color "#FFFFFF" (- 1 alpha))))
+
+;;;###autoload
+(when (and (boundp 'custom-theme-load-path) load-file-name)
+  (let* ((base (file-name-directory load-file-name))
+         (dir (expand-file-name "themes/" base)))
+    (add-to-list 'custom-theme-load-path
+                 (or (and (file-directory-p dir) dir)
+                     base))))
+
 (defvar doom-themes-base-faces
   '((bold        :weight 'bold :foreground (if bold 'unspecified base8))
     (bold-italic :inherit '(bold italic))
@@ -965,22 +985,6 @@
 
   "TODO")
 
-(defgroup doom-themes nil
-  "Options for doom-themes."
-  :group 'faces)
-
-(defcustom doom-themes-enable-bold nil
-  "If nil, bold will be disabled across all faces."
-  :group 'doom-themes
-  :type 'boolean)
-
-(defcustom doom-themes-enable-italic nil
-  "If nil, italics will be disabled across all faces."
-  :group 'doom-themes
-  :type 'boolean)
-
-;;
-;;; API
 (defvar doom-themes--colors nil)
 
 (defun doom-themes--build-face (face)
@@ -996,63 +1000,6 @@
              ((memq (car-safe (car face-body)) '(quote backquote \`))
               (car face-body))))))
 
-;;
-;;; Color helper functions
-
-;; Shamelessly *borrowed* from solarized
-;;;###autoload
-(defun doom-name-to-rgb (color)
-  "Retrieves the hexidecimal string repesented the named COLOR (e.g. \"red\")
-for FRAME (defaults to the current frame)."
-  (cl-loop with div = (float (car (tty-color-standard-values "#ffffff")))
-           for x in (tty-color-standard-values (downcase color))
-           collect (/ x div)))
-
-;;;###autoload
-(defun doom-blend (color1 color2 alpha)
-  "Blend two colors (hexidecimal strings) together by a coefficient ALPHA (a
-float between 0 and 1)"
-  (when (and color1 color2)
-    (cond ((and color1 color2 (symbolp color1) (symbolp color2))
-           (doom-blend (doom-color color1) (doom-color color2) alpha))
-
-          ((or (listp color1) (listp color2))
-           (cl-loop for x in color1
-                    when (if (listp color2) (pop color2) color2)
-                    collect (doom-blend x it alpha)))
-
-          ((and (string-prefix-p "#" color1) (string-prefix-p "#" color2))
-           (apply (lambda (r g b) (format "#%02x%02x%02x" (* r 255) (* g 255) (* b 255)))
-                  (cl-loop for it    in (doom-name-to-rgb color1)
-                           for other in (doom-name-to-rgb color2)
-                           collect (+ (* alpha it) (* other (- 1 alpha))))))
-
-          (color1))))
-
-;;;###autoload
-(defun doom-darken (color alpha)
-  "Darken a COLOR (a hexidecimal string) by a coefficient ALPHA (a float between
-0 and 1)."
-  (cond ((and color (symbolp color))
-         (doom-darken (doom-color color) alpha))
-
-        ((listp color)
-         (cl-loop for c in color collect (doom-darken c alpha)))
-
-        ((doom-blend color "#000000" (- 1 alpha)))))
-
-;;;###autoload
-(defun doom-lighten (color alpha)
-  "Brighten a COLOR (a hexidecimal string) by a coefficient ALPHA (a float
-between 0 and 1)."
-  (cond ((and color (symbolp color))
-         (doom-lighten (doom-color color) alpha))
-
-        ((listp color)
-         (cl-loop for c in color collect (doom-lighten c alpha)))
-
-        ((doom-blend color "#FFFFFF" (- 1 alpha)))))
-
 ;;;###autoload
 (defun doom-color (name &optional type)
   "Retrieve a specific color named NAME (a symbol) from the current theme."
@@ -1067,9 +1014,6 @@ between 0 and 1)."
                     (nth i colors))))
                (t colors)))))
 
-;;
-;;; Defining themes
-
 (defun doom-themes-prepare-facelist ()
   "Return an alist of face definitions for `custom-theme-set-faces'.
 
@@ -1081,8 +1025,8 @@ Faces in EXTRA-FACES override the default faces."
   "Define a DOOM theme, named NAME (a symbol)."
   (declare (doc-string 2))
   (let ((doom-themes--colors defs))
-    `(let* ((bold   doom-themes-enable-bold)
-            (italic doom-themes-enable-italic)
+    `(let* ((bold   nil)
+            (italic nil)
             ,@defs)
        (setq doom-themes--colors
              (list ,@(cl-loop for (var val) in defs
@@ -1090,27 +1034,13 @@ Faces in EXTRA-FACES override the default faces."
        (deftheme ,name ,docstring)
        (custom-theme-set-faces
         ',name ,@(doom-themes-prepare-facelist))
-       (unless bold (set-face-bold 'bold 'unspecified))
-       (unless italic (set-face-italic 'italic 'unspecified))
+       (set-face-bold 'bold 'unspecified) ;; TODO no bold
+       (set-face-italic 'italic 'unspecified) ;; TODO no italic
        (provide-theme ',name))))
-
-;;;###autoload
-(when (and (boundp 'custom-theme-load-path) load-file-name)
-  (let* ((base (file-name-directory load-file-name))
-         (dir (expand-file-name "themes/" base)))
-    (add-to-list 'custom-theme-load-path
-                 (or (and (file-directory-p dir) dir)
-                     base))))
-
-;;
-;;; Variables
 
 (defgroup solarized-theme nil
   "Options for the `solarized' theme."
-  :group 'doom-themes)
-
-;;
-;;; Theme definition
+  :group 'faces)
 
 (def-doom-theme solarized
                 "A light theme inspired by Solarized light"
@@ -1168,8 +1098,7 @@ Faces in EXTRA-FACES override the default faces."
                  (strings        cyan)
                  (variables      blue)
                  (numbers        violet)
-                 ;;(region         `(,(doom-darken (car bg-alt) 0.1) ,@(doom-darken (cdr base0) 0.1)))
-                 (region         bg-alt) ;; TODO
+                 (region         (doom-darken bg-alt 0.1))
                  (error          red)
                  (warning        yellow)
                  (success        green)
