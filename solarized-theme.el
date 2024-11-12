@@ -8,6 +8,8 @@
 ;;
 (require 'cl-lib)
 
+(deftheme solarized "A light theme inspired by Solarized light")
+
 ;;;###autoload
 (defun doom-name-to-rgb (color)
   "Retrieves the hexidecimal string repesented the named COLOR (e.g. \"red\")
@@ -1031,12 +1033,10 @@ Faces in EXTRA-FACES override the default faces."
        (setq doom-themes--colors
              (list ,@(cl-loop for (var val) in defs
                               collect `(cons ',var ,val))))
-       (deftheme ,name ,docstring)
        (custom-theme-set-faces
         ',name ,@(doom-themes-prepare-facelist))
-       (set-face-bold 'bold 'unspecified) ;; TODO no bold
-       (set-face-italic 'italic 'unspecified) ;; TODO no italic
-       (provide-theme ',name))))
+       (set-face-bold 'bold 'unspecified)
+       (set-face-italic 'italic 'unspecified))))
 
 (defgroup solarized-theme nil
   "Options for the `solarized' theme."
@@ -1132,4 +1132,5 @@ Faces in EXTRA-FACES override the default faces."
  `(vc-annotate-very-old-color nil)
  `(vc-annotate-background (doom-color 'bg)))
 
+(provide-theme 'solarized)
 ;;; solarized-theme.el ends here
