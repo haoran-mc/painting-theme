@@ -52,6 +52,8 @@ between 0 and 1)."
                  (or (and (file-directory-p dir) dir)
                      base))))
 
+(defface org-bold nil "My org bold face.")
+
 (let* ((lazycat-background      "#242525")
        (lazycat-background-alt  "#333333")
        (lazycat-base0           "#1B2229")
@@ -712,7 +714,6 @@ between 0 and 1)."
    `(org-checkbox                 ((t (:inherit org-todo))))
    `(org-checkbox-statistics-done ((t (:inherit org-done))))
    `(org-checkbox-statistics-todo ((t (:inherit org-todo))))
-   `(org-code                     ((t (:foreground ,lazycat-orange))))
    `(org-date                     ((t (:foreground ,lazycat-yellow))))
    `(org-default                  ((t (:inherit variable-pitch))))
    `(org-ellipsis                 ((t (:underline nil :background unspecified :foreground ,lazycat-deepgrey))))
@@ -730,8 +731,15 @@ between 0 and 1)."
    `(org-tag               ((t (:foreground ,lazycat-doc-comments :weight normal))))
    `(org-ref-cite-face     ((t (:foreground ,lazycat-yellow :weight light :underline t))))
    `(org-latex-and-related ((t (:foreground ,lazycat-base8 :weight bold))))
-   `(org-verbatim          ((t (:foreground ,lazycat-green))))
    `(org-warning           ((t (:foreground ,lazycat-warning))))
+
+   ;; org-emphasis-alist
+   `(org-bold              ((t ( :foreground "#ff4cff"
+                                 :weight normal
+                                 :underline (:color "red" :style line)
+                                 :overline nil))))
+   `(org-verbatim          ((t (:foreground "yellow" :background "#595530"))))
+   `(org-code              ((t (:foreground "orange"))))
 
    ;; org-agenda
    `(org-agenda-done               ((t (:inherit org-done))))
