@@ -214,26 +214,6 @@ between 0 and 1)."
     (annotate-annotation-secondary :background (doom-blend green bg 0.1)     :foreground doc-comments)
     (annotate-highlight            :background (doom-blend highlight bg 0.1) :underline highlight)
     (annotate-highlight-secondary  :background (doom-blend green bg 0.1)     :underline green)
-    ;;;; ansi-color <built-in>
-    (ansi-color-black          :foreground bg      :background bg)
-    (ansi-color-red            :foreground red     :background red)
-    (ansi-color-green          :foreground green   :background green)
-    (ansi-color-yellow         :foreground yellow  :background yellow)
-    (ansi-color-blue           :foreground blue    :background blue)
-    (ansi-color-magenta        :foreground magenta :background magenta)
-    (ansi-color-cyan           :foreground cyan    :background cyan)
-    (ansi-color-white          :foreground fg      :background fg)
-    ;; This color is used effectively as grayed out foreground text.
-    ;; base5 and up have too much contrast in light themes;
-    ;; base5 and lower have too little contrast in dark themes.
-    (ansi-color-bright-black :foreground base4 :background base4)
-    (ansi-color-bright-red     :foreground (doom-lighten red 0.15)     :background (doom-lighten red 0.15))
-    (ansi-color-bright-green   :foreground (doom-lighten green 0.15)   :background (doom-lighten green 0.15))
-    (ansi-color-bright-yellow  :foreground (doom-lighten yellow 0.15)  :background (doom-lighten yellow 0.15))
-    (ansi-color-bright-blue    :foreground (doom-lighten blue 0.15)    :background (doom-lighten blue 0.15))
-    (ansi-color-bright-magenta :foreground (doom-lighten magenta 0.15) :background (doom-lighten magenta 0.15))
-    (ansi-color-bright-cyan    :foreground (doom-lighten cyan 0.15)    :background (doom-lighten cyan 0.15))
-    (ansi-color-bright-white   :foreground base8   :background base8)
     ;;;; anzu
     (anzu-replace-highlight :background base0 :foreground red   :weight 'bold :strike-through t)
     (anzu-replace-to        :background base0 :foreground green :weight 'bold)
@@ -302,19 +282,6 @@ between 0 and 1)."
     (custom-variable-obsolete       :foreground grey   :background bg)
     (custom-state                   :foreground green  :background (doom-blend green bg 0.2))
     (custom-changed                 :foreground blue   :background bg)
-    ;;;; cider
-    (cider-debug-code-overlay-face :background base3)
-    (cider-enlightened-face
-     :inherit 'cider-result-overlay-face :box `(:color ,orange :line-width -1))
-    (cider-enlightened-local-face :foreground orange :weight 'bold)
-    (cider-result-overlay-face :background base3 :box `(:line-width -1 :color ,base5))
-    (cider-fringe-good-face    :foreground green)
-    (cider-deprecated-face     :background (doom-blend bg yellow 0.8))
-    (cider-instrumented-face   :background (doom-blend bg red 0.8))
-    (cider-traced-face         :background (doom-blend bg cyan 0.8))
-    (cider-test-failure-face :background (doom-blend bg error 0.7))
-    (cider-test-error-face   :background orange)
-    (cider-test-success-face :foreground base0 :background green)
     ;;;; css-mode <built-in> / scss-mode
     (css-proprietary-property :foreground orange)
     (css-property             :foreground green)
@@ -344,11 +311,6 @@ between 0 and 1)."
     (dired-perm-write :foreground fg :underline t)
     (dired-symlink    :foreground cyan :weight 'bold)
     (dired-warning    :foreground warning)
-    ;;;; disk-usage
-    (disk-usage-children            :foreground yellow)
-    (disk-usage-percent             :foreground violet)
-    (disk-usage-size                :foreground blue)
-    (disk-usage-symlink             :foreground cyan :weight 'bold)
     ;;;; ediff <built-in>
     (ediff-fine-diff-A    :background (doom-blend selection bg 0.7) :weight 'bold :extend t)
     (ediff-fine-diff-B    :inherit 'ediff-fine-diff-A)
@@ -508,13 +470,6 @@ between 0 and 1)."
     ;;;; keycast
     (keycast-command :inherit 'mode-line-emphasis)
     (keycast-key     :inherit '(bold mode-line-highlight))
-    ;;;; ledger-mode <modes:ledger-mode>
-    (ledger-font-posting-date-face    :foreground blue)
-    (ledger-font-posting-amount-face  :foreground yellow)
-    (ledger-font-posting-account-face :foreground base8)
-    (ledger-font-payee-cleared-face   :foreground violet :weight 'bold)
-    (ledger-font-payee-uncleared-face :foreground base5  :weight 'bold)
-    (ledger-font-xact-highlight-face  :background base0)
     ;;;; lui
     (lui-time-stamp-face :foreground violet)
     (lui-highlight-face :foreground highlight)
@@ -760,12 +715,6 @@ between 0 and 1)."
     ;;;; parinfer
     (parinfer-pretty-parens:dim-paren-face :foreground base5)
     (parinfer-smart-tab:indicator-face :foreground base5)
-    ;;;; perspective
-    (persp-selected-face :foreground blue :weight 'bold)
-    ;;;; persp-mode
-    (persp-face-lighter-default :foreground highlight :weight 'bold)
-    (persp-face-lighter-buffer-not-in-persp :foreground doc-comments)
-    (persp-face-lighter-nil-persp :foreground comments)
     ;;;; pkgbuild-mode <modes:pkgbuild-mode>
     (pkgbuild-error-face :underline `(:style wave :color ,red))
     ;;;; popup
@@ -794,16 +743,6 @@ between 0 and 1)."
     ;;;; rjsx-mode <modes:rjsx-mode>
     (rjsx-tag :foreground type)
     (rjsx-attr :foreground functions)
-    ;;;; rpm-spec-mode <modes:rpm-spec-mode>
-    (rpm-spec-macro-face        :foreground yellow)
-    (rpm-spec-var-face          :foreground violet)
-    (rpm-spec-tag-face          :foreground blue)
-    (rpm-spec-obsolete-tag-face :foreground red)
-    (rpm-spec-package-face      :foreground orange)
-    (rpm-spec-dir-face          :foreground green)
-    (rpm-spec-doc-face          :foreground orange)
-    (rpm-spec-ghost-face        :foreground comments)
-    (rpm-spec-section-face      :foreground magenta)
     ;;;; rst <built-in> <modes:rst-mode>
     (rst-block :inherit 'font-lock-constant-face)
     (rst-level-1 :inherit 'rst-adornment :weight 'bold)
@@ -822,16 +761,6 @@ between 0 and 1)."
     (sp-pair-overlay-face :background region)
     (sp-show-pair-match-face    :inherit 'show-paren-match)
     (sp-show-pair-mismatch-face :inherit 'show-paren-mismatch)
-    ;;;; smerge-tool
-    (smerge-lower :background (doom-blend green bg 0.2))
-    (smerge-upper :background (doom-blend red base3 0.2))
-    (smerge-base  :background (doom-blend blue bg 0.2))
-    (smerge-markers :background comments :foreground bg :distant-foreground fg :weight 'bold)
-    (smerge-refined-added   :inherit 'diff-added :inverse-video t)
-    (smerge-refined-removed :inherit 'diff-removed :inverse-video t)
-    ;; Emacs <25 compatibility
-    (smerge-mine  :inherit 'smerge-upper)
-    (smerge-other :inherit 'smerge-lower)
     ;;;; stripe-buffer
     (stripe-highlight :background base5)
     ;;;; symbol-overlay
@@ -844,18 +773,6 @@ between 0 and 1)."
     (symbol-overlay-face-6 :background (doom-blend magenta bg 0.3) :distant-foreground fg-alt)
     (symbol-overlay-face-7 :background (doom-blend green bg 0.4)   :distant-foreground fg-alt)
     (symbol-overlay-face-8 :background (doom-blend cyan bg 0.2)    :distant-foreground fg-alt)
-    ;;;; tabbar
-    (tabbar-default             :foreground bg :background bg :height 1.0)
-    (tabbar-highlight           :foreground fg :background selection :distant-foreground bg)
-    (tabbar-button              :foreground fg :background bg)
-    (tabbar-button-highlight    :inherit 'tabbar-button :inverse-video t)
-    (tabbar-modified            :inherit 'tabbar-default :foreground red :weight 'bold)
-    (tabbar-unselected          :inherit 'tabbar-default :foreground base5)
-    (tabbar-unselected-modified :inherit 'tabbar-modified)
-    (tabbar-selected
-     :inherit 'tabbar-default :weight 'bold
-     :foreground fg :background bg-alt)
-    (tabbar-selected-modified :inherit 'tabbar-selected :foreground green)
     ;;;; term <built-in>
     (term               :foreground fg)
     (term-bold          :weight 'bold)
@@ -899,13 +816,6 @@ between 0 and 1)."
     ;;;; vimish-fold
     (vimish-fold-overlay :inherit 'font-lock-comment-face :background base0 :weight 'light)
     (vimish-fold-fringe  :foreground magenta)
-    ;;;; visual-regexp
-    (vr/group-0 :background blue    :foreground bg)
-    (vr/group-1 :background magenta :foreground bg)
-    (vr/group-2 :background green   :foreground bg)
-    (vr/match-0 :background (doom-blend green bg 0.2) :foreground fg)
-    (vr/match-1 :background (doom-blend green bg 0.4) :foreground fg)
-    (vr/match-separator-face :inherit 'bold :foreground red)
     ;;;; volatile-highlights
     (vhl/default-face :background grey)
     ;;;; vterm
@@ -1037,10 +947,6 @@ Faces in EXTRA-FACES override the default faces."
         ',name ,@(doom-themes-prepare-facelist))
        (set-face-bold 'bold 'unspecified)
        (set-face-italic 'italic 'unspecified))))
-
-(defgroup solarized-theme nil
-  "Options for the `solarized' theme."
-  :group 'faces)
 
 (def-doom-theme solarized
                 "A light theme inspired by Solarized light"
